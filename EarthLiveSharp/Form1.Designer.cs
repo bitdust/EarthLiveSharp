@@ -40,12 +40,15 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(57, 96);
+            this.button1.Location = new System.Drawing.Point(57, 120);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -76,7 +79,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(138, 96);
+            this.button2.Location = new System.Drawing.Point(138, 120);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -132,7 +135,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(138, 74);
+            this.checkBox1.Location = new System.Drawing.Point(138, 100);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 6;
@@ -141,20 +144,49 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(73, 74);
+            this.label3.Location = new System.Drawing.Point(73, 100);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 12);
             this.label3.TabIndex = 7;
             this.label3.Text = "Autostart";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 72);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(125, 12);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Max Number of Images";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(138, 70);
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.ReadOnly = true;
+            this.numericUpDown2.Size = new System.Drawing.Size(98, 21);
+            this.numericUpDown2.TabIndex = 5;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(250, 127);
+            this.ClientSize = new System.Drawing.Size(250, 155);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -167,6 +199,7 @@
             this.Text = "EarthLive#";
             this.Deactivate += new System.EventHandler(this.Form1_Deactivate);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,6 +217,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
     }
 }
 

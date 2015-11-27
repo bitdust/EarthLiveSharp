@@ -78,11 +78,11 @@ namespace EarthLiveSharp
             if(Directory.Exists(image_folder))
             {
                 // delete all images in the image folder.
-                string[] files = Directory.GetFiles(image_folder);
-                foreach (string fn in files)
-                {
-                    File.Delete(fn);
-                }
+                //string[] files = Directory.GetFiles(image_folder);
+                //foreach (string fn in files)
+                //{
+                //    File.Delete(fn);
+                //}
             }
             else
             {
@@ -90,7 +90,7 @@ namespace EarthLiveSharp
             }
             GetLatestAddress();
             SaveImage();
-            File.Copy(image_folder + (image_cnt-1).ToString() + ".png", image_folder + image_cnt.ToString() + ".png");
+            File.Copy(image_folder + (image_cnt-1).ToString() + ".png", image_folder + image_cnt.ToString() + ".png",true);
             image_cnt = image_cnt + 1;
             saved_address = latest_address;
         }
