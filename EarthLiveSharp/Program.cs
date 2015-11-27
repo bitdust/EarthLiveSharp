@@ -90,6 +90,8 @@ namespace EarthLiveSharp
             }
             GetLatestAddress();
             SaveImage();
+            File.Copy(image_folder + (image_cnt-1).ToString() + ".png", image_folder + image_cnt.ToString() + ".png");
+            image_cnt = image_cnt + 1;
             saved_address = latest_address;
         }
         public static void UpdateImage()
