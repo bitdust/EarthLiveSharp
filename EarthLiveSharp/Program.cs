@@ -38,18 +38,28 @@ namespace EarthLiveSharp
         private static int max_number = 5;
         public static string GetLatestAddress()
         {
-            string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
+            string json_url = "http://himawari8.nict.go.jpp/img/D531106/latest.json";
             string pic_url = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/1d/550/";
             HttpWebRequest request = WebRequest.Create(json_url) as HttpWebRequest;
-            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
-            {    
+            try 
+            {
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
                 StreamReader reader = new StreamReader(response.GetResponseStream());
                 String date = reader.ReadToEnd().Substring(9,19);           
                 String date_formated = date.Replace("-", "/").Replace(" ", "/").Replace(":", "");
                 latest_address = pic_url + date_formated + "_0_0.png";
                 Trace.WriteLine("[get latest address] " + date);
-                return latest_address;
+                response.Dispose();
             }
+            catch(Exception e)
+            {
+                Trace.WriteLine(e.Message);
+            }
+            finally
+            {
+                ;
+            }
+            return latest_address;
         }
 
         public static void SaveImage()
@@ -60,8 +70,19 @@ namespace EarthLiveSharp
                 File.Delete(image_path + image_cnt.ToString() + ".png");
             }
             WebClient client = new WebClient();
-            client.DownloadFile(latest_address, image_path);
-            Trace.WriteLine("[save image]" + latest_address + " [to] " + image_path);
+            try
+            {
+                client.DownloadFile(latest_address, image_path);
+                Trace.WriteLine("[save image]" + latest_address + " to " + image_path);
+            }
+            catch(Exception e)
+            {
+                Trace.WriteLine(e.Message);
+            }
+            finally
+            {
+                client.Dispose();
+            }
             if (image_cnt+1 < max_number)
             {
                 image_cnt = image_cnt + 1;
@@ -70,7 +91,6 @@ namespace EarthLiveSharp
             {
                 image_cnt = 0;
             }
-            client.Dispose();
         }
 
         public static void InitFolder()
