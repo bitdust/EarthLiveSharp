@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EarthLiveSharp
@@ -15,19 +13,46 @@ namespace EarthLiveSharp
         public Form1()
         {
             InitializeComponent();
+            Cfg.load();
+            if(Cfg.source_select=="orgin")
+            {
+                comboBox1.SelectedIndex = 0;
+            }
+            else
+            {
+                comboBox1.SelectedIndex = 1;
+            }
+            numericUpDown1.Value = Cfg.interval;
+            numericUpDown2.Value = Cfg.max_number;
+            checkBox1.Checked = Cfg.autostart;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //MessageBox.Show(scraper.GetLatestAdress());
+            //scraper.InitFolder();
+            if (Cfg.source_select == "cdn")
+            {
+                scraper.pic_url = Cfg.cdn_addr;     
+            }
+            else
+            {
+                scraper.pic_url = Cfg.orgin_addr;
+            }
+            panel1.Enabled = false;
+            button1.Enabled = false;
+            button4.Enabled = true;
             scraper.InitFolder();
-            timer1.Enabled = true;
+            timer1.Interval = Cfg.interval * 1000 * 60;
+            timer1.Start();
+            scraper.UpdateImage();
             //pictureBox1.ImageLocation = @".\images\1.png";
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            timer1.Enabled = false;
+            Form2 f2 = new Form2();
+            f2.ShowDialog();
         }
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
@@ -52,5 +77,23 @@ namespace EarthLiveSharp
         {
             scraper.UpdateImage();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Cfg.source_select = comboBox1.Text;
+            Cfg.interval = (int)(numericUpDown1.Value);
+            Cfg.max_number = (int)(numericUpDown2.Value);
+            Cfg.autostart = checkBox1.Checked;
+            Cfg.commit();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            panel1.Enabled = true;
+            button1.Enabled = true;
+            button4.Enabled = false;
+        }
+
     }
 }
