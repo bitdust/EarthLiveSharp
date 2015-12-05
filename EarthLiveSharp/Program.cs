@@ -34,7 +34,7 @@ namespace EarthLiveSharp
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Form2());
         }
     }
     public class scraper
@@ -81,7 +81,7 @@ namespace EarthLiveSharp
             try
             {
                 client.DownloadFile(latest_address, image_path);
-                Trace.WriteLine("[save image]" + latest_address + " to " + image_path);
+                Trace.WriteLine("[save image] " + latest_address + " > " + image_path);
                 if (Directory.GetFiles(image_folder, "*.png").Length == 1)
                 {
                     File.Copy(image_path, image_folder + "1.png", true);
