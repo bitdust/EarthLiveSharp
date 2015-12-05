@@ -27,7 +27,7 @@ namespace EarthLiveSharp
             {
                 Cfg.load();
             }
-            catch (Exception e)
+            catch
             {
                 return;
             }
@@ -59,7 +59,7 @@ namespace EarthLiveSharp
                 Trace.WriteLine("[get latest address] " + date);
                 response.Close();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Trace.WriteLine(e.Message);
             }
