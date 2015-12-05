@@ -1,6 +1,6 @@
 ﻿namespace EarthLiveSharp
 {
-    partial class main
+    partial class mainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,9 +49,10 @@
             this.linkLabel2.Location = new System.Drawing.Point(68, 200);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(155, 12);
-            this.linkLabel2.TabIndex = 1;
+            this.linkLabel2.TabIndex = 5;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "how to set live wallpaper";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // label1
             // 
@@ -79,7 +80,7 @@
             this.linkLabel3.Location = new System.Drawing.Point(56, 168);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(173, 12);
-            this.linkLabel3.TabIndex = 5;
+            this.linkLabel3.TabIndex = 4;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "http://himawari8.nict.go.jp/";
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
@@ -99,7 +100,7 @@
             this.button_start.Location = new System.Drawing.Point(12, 215);
             this.button_start.Name = "button_start";
             this.button_start.Size = new System.Drawing.Size(75, 23);
-            this.button_start.TabIndex = 7;
+            this.button_start.TabIndex = 1;
             this.button_start.Text = "start";
             this.button_start.UseVisualStyleBackColor = true;
             this.button_start.Click += new System.EventHandler(this.button_start_Click);
@@ -109,7 +110,7 @@
             this.button_stop.Location = new System.Drawing.Point(93, 215);
             this.button_stop.Name = "button_stop";
             this.button_stop.Size = new System.Drawing.Size(75, 23);
-            this.button_stop.TabIndex = 8;
+            this.button_stop.TabIndex = 2;
             this.button_stop.Text = "stop";
             this.button_stop.UseVisualStyleBackColor = true;
             this.button_stop.Click += new System.EventHandler(this.button_stop_Click);
@@ -119,7 +120,7 @@
             this.button_settings.Location = new System.Drawing.Point(174, 215);
             this.button_settings.Name = "button_settings";
             this.button_settings.Size = new System.Drawing.Size(75, 23);
-            this.button_settings.TabIndex = 9;
+            this.button_settings.TabIndex = 3;
             this.button_settings.Text = "settings";
             this.button_settings.UseVisualStyleBackColor = true;
             this.button_settings.Click += new System.EventHandler(this.button_settings_Click);
@@ -137,7 +138,7 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             // 
-            // main
+            // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -153,9 +154,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "main";
+            this.Name = "mainForm";
             this.Text = "Earth Live #";
             this.Deactivate += new System.EventHandler(this.Form2_Deactivate);
+            this.Load += new System.EventHandler(this.mainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

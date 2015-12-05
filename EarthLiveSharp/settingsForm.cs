@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace EarthLiveSharp
 {
-    public partial class settings : Form
+    public partial class settingsForm : Form
     {
-        public settings()
+        public settingsForm()
         {
             InitializeComponent();
             Cfg.Load();
@@ -36,6 +36,22 @@ namespace EarthLiveSharp
             Cfg.autostart = checkBox1.Checked;
             Cfg.Save();
             Autostart.Set(Cfg.autostart);
+        }
+
+        private void button_select_folder_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+            folderBrowserDialog1.RootFolder = Environment.SpecialFolder.Desktop;
+            folderBrowserDialog1.SelectedPath = Cfg.image_folder;
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Cfg.image_folder = folderBrowserDialog1.SelectedPath;
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("iexplore.exe", "https://github.com/bitdust/EarthLiveSharp/releases");
         }
     }
 }

@@ -15,7 +15,7 @@ namespace EarthLiveSharp
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             if (File.Exists(@"trace.log"))
             {
@@ -32,21 +32,35 @@ namespace EarthLiveSharp
             {
                 return;
             }
-
+            if (Cfg.image_folder == "")
+            {
+                Cfg.image_folder = Application.StartupPath + @"\images";
+                Cfg.Save();
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new main());
+            Application.Run(new mainForm());
         }
     }
     public static class scraper
     {
-        public static string latest_address = "";
-        public static string saved_address = "";
-        private static string image_folder = @".\\images\\";
-        private static int image_cnt = 0;
-        private static int max_number = 5;
-        public static string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
+        public static string image_folder = "";
+        public static int max_number = 5;
         public static string pic_url = "";
+        private static int image_cnt = 0;
+        private static string latest_address = "";
+        private static string saved_address = "";
+
+        private static string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
+
+        public static void Reset()
+        {
+            image_cnt = 0;
+            latest_address = "";
+            saved_address = "";
+            return;
+        }
+
         public static string GetLatestAddress()
         {
             HttpWebRequest request = WebRequest.Create(json_url) as HttpWebRequest;
@@ -74,7 +88,7 @@ namespace EarthLiveSharp
 
         public static void SaveImage()
         {
-            String image_path = image_folder + image_cnt.ToString() + ".png";
+            String image_path = image_folder+ @"\" + image_cnt.ToString() + ".png";
             //if(File.Exists(image_path))
             //{
             //    File.Delete(image_path + image_cnt.ToString() + ".png");
@@ -86,7 +100,7 @@ namespace EarthLiveSharp
                 Trace.WriteLine("[save image] " + latest_address + " > " + image_path);
                 if (Directory.GetFiles(image_folder, "*.png").Length == 1)
                 {
-                    File.Copy(image_path, image_folder + "1.png", true);
+                    File.Copy(image_path, image_folder + @"\" + "1.png", true);
                 }
             }
             catch(Exception e)
@@ -135,6 +149,7 @@ namespace EarthLiveSharp
     public static class Cfg
     {
         public static string version;
+        public static string image_folder;
         public static string orgin_addr;
         public static string cdn_addr;
         public static string source_select;
@@ -150,6 +165,7 @@ namespace EarthLiveSharp
                 Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
                 AppSettingsSection app = config.AppSettings;
                 version = app.Settings["version"].Value;
+                image_folder = app.Settings["image_folder"].Value;
                 orgin_addr = app.Settings["orgin"].Value;
                 cdn_addr = app.Settings["cdn"].Value;
                 source_select = app.Settings["source_select"].Value;
@@ -172,6 +188,7 @@ namespace EarthLiveSharp
             AppSettingsSection app = config.AppSettings;
             //app.Settings["orgin"].Value = orgin_addr;
             //app.Settings["cdn"].Value = cdn_addr;
+            app.Settings["image_folder"].Value = image_folder;
             app.Settings["source_select"].Value = source_select;
             app.Settings["interval"].Value = interval.ToString();
             app.Settings["max_number"].Value = max_number.ToString();
@@ -197,6 +214,7 @@ namespace EarthLiveSharp
                 }
                 else
                 {
+                    runKey.SetValue(key, path); // dirty fix: to avoid exception in next statement.
                     runKey.DeleteValue(key);
                 }
                 return true;
