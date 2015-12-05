@@ -150,7 +150,7 @@ namespace EarthLiveSharp
     {
         public static string version;
         public static string image_folder;
-        public static string orgin_addr;
+        public static string origin_addr;
         public static string cdn_addr;
         public static string source_select;
         public static int interval;
@@ -166,7 +166,7 @@ namespace EarthLiveSharp
                 AppSettingsSection app = config.AppSettings;
                 version = app.Settings["version"].Value;
                 image_folder = app.Settings["image_folder"].Value;
-                orgin_addr = app.Settings["orgin"].Value;
+                origin_addr = app.Settings["origin"].Value;
                 cdn_addr = app.Settings["cdn"].Value;
                 source_select = app.Settings["source_select"].Value;
                 interval = Convert.ToInt32(app.Settings["interval"].Value);
@@ -186,7 +186,7 @@ namespace EarthLiveSharp
             ExeConfigurationFileMap map = new ExeConfigurationFileMap();
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             AppSettingsSection app = config.AppSettings;
-            //app.Settings["orgin"].Value = orgin_addr;
+            //app.Settings["origin"].Value = origin_addr;
             //app.Settings["cdn"].Value = cdn_addr;
             app.Settings["image_folder"].Value = image_folder;
             app.Settings["source_select"].Value = source_select;

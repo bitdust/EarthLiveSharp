@@ -39,7 +39,7 @@ namespace EarthLiveSharp
             }
             else
             {
-                scraper.pic_url = Cfg.orgin_addr;
+                scraper.pic_url = Cfg.origin_addr;
             }
             scraper.image_folder = Cfg.image_folder;
             scraper.max_number = Cfg.max_number;

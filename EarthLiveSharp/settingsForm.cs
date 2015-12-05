@@ -14,7 +14,7 @@ namespace EarthLiveSharp
         {
             InitializeComponent();
             Cfg.Load();
-            if(Cfg.source_select=="orgin")
+            if(Cfg.source_select=="origin")
             {
                 comboBox1.SelectedIndex = 0;
             }
