@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace EarthLiveSharp
 {
-    public partial class Form1 : Form
+    public partial class settings : Form
     {
-        public Form1()
+        public settings()
         {
             InitializeComponent();
-            Cfg.load();
+            Cfg.Load();
             if(Cfg.source_select=="orgin")
             {
                 comboBox1.SelectedIndex = 0;
@@ -34,7 +34,8 @@ namespace EarthLiveSharp
             Cfg.interval = (int)(numericUpDown1.Value);
             Cfg.max_number = (int)(numericUpDown2.Value);
             Cfg.autostart = checkBox1.Checked;
-            Cfg.commit();
+            Cfg.Save();
+            Autostart.Set(Cfg.autostart);
         }
     }
 }

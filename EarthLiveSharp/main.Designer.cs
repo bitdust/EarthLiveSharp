@@ -1,6 +1,6 @@
 ﻿namespace EarthLiveSharp
 {
-    partial class Form2
+    partial class main
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,7 +46,7 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(68, 216);
+            this.linkLabel2.Location = new System.Drawing.Point(68, 200);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(155, 12);
             this.linkLabel2.TabIndex = 1;
@@ -67,7 +67,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 151);
+            this.label2.Location = new System.Drawing.Point(56, 156);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(167, 12);
             this.label2.TabIndex = 4;
@@ -76,7 +76,7 @@
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(56, 172);
+            this.linkLabel3.Location = new System.Drawing.Point(56, 168);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(173, 12);
             this.linkLabel3.TabIndex = 5;
@@ -87,16 +87,16 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EarthLiveSharp.Properties.Resources.About;
-            this.pictureBox1.Location = new System.Drawing.Point(0, -1);
+            this.pictureBox1.Location = new System.Drawing.Point(-1, -4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(284, 90);
+            this.pictureBox1.Size = new System.Drawing.Size(267, 90);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
             // button_start
             // 
-            this.button_start.Location = new System.Drawing.Point(12, 277);
+            this.button_start.Location = new System.Drawing.Point(12, 215);
             this.button_start.Name = "button_start";
             this.button_start.Size = new System.Drawing.Size(75, 23);
             this.button_start.TabIndex = 7;
@@ -106,7 +106,7 @@
             // 
             // button_stop
             // 
-            this.button_stop.Location = new System.Drawing.Point(97, 277);
+            this.button_stop.Location = new System.Drawing.Point(93, 215);
             this.button_stop.Name = "button_stop";
             this.button_stop.Size = new System.Drawing.Size(75, 23);
             this.button_stop.TabIndex = 8;
@@ -116,7 +116,7 @@
             // 
             // button_settings
             // 
-            this.button_settings.Location = new System.Drawing.Point(185, 277);
+            this.button_settings.Location = new System.Drawing.Point(174, 215);
             this.button_settings.Name = "button_settings";
             this.button_settings.Size = new System.Drawing.Size(75, 23);
             this.button_settings.TabIndex = 9;
@@ -128,6 +128,7 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 300000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // notifyIcon1
             // 
@@ -136,11 +137,11 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             // 
-            // Form2
+            // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(272, 312);
+            this.ClientSize = new System.Drawing.Size(262, 250);
             this.Controls.Add(this.button_settings);
             this.Controls.Add(this.button_stop);
             this.Controls.Add(this.button_start);
@@ -152,7 +153,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Form2";
+            this.Name = "main";
             this.Text = "Earth Live #";
             this.Deactivate += new System.EventHandler(this.Form2_Deactivate);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

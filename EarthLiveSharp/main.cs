@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace EarthLiveSharp
 {
-    public partial class Form2 : Form
+    public partial class main : Form
     {
-        public Form2()
+        public main()
         {
             InitializeComponent();
         }
@@ -22,7 +22,7 @@ namespace EarthLiveSharp
 
         private void button_settings_Click(object sender, EventArgs e)
         {
-            Form1 f1 = new Form1();
+            settings f1 = new settings();
             f1.ShowDialog();
         }
 

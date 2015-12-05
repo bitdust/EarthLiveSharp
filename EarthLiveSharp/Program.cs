@@ -5,6 +5,7 @@ using System.Net;
 using System.IO;
 using System.Diagnostics;
 using System.Configuration;
+using Microsoft.Win32;
 
 namespace EarthLiveSharp
 {
@@ -25,7 +26,7 @@ namespace EarthLiveSharp
 
             try
             {
-                Cfg.load();
+                Cfg.Load();
             }
             catch
             {
@@ -34,10 +35,10 @@ namespace EarthLiveSharp
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form2());
+            Application.Run(new main());
         }
     }
-    public class scraper
+    public static class scraper
     {
         public static string latest_address = "";
         public static string saved_address = "";
@@ -57,6 +58,7 @@ namespace EarthLiveSharp
                 String date_formated = date.Replace("-", "/").Replace(" ", "/").Replace(":", "");
                 latest_address = pic_url + date_formated + "_0_0.png";
                 Trace.WriteLine("[get latest address] " + date);
+                reader.Close();
                 response.Close();
             }
             catch (Exception e)
@@ -130,7 +132,7 @@ namespace EarthLiveSharp
         }
     }
 
-    public class Cfg
+    public static class Cfg
     {
         public static string version;
         public static string orgin_addr;
@@ -140,7 +142,7 @@ namespace EarthLiveSharp
         public static int max_number;
         public static bool autostart;
 
-        public static void load()
+        public static void Load()
         {
             try
             {
@@ -163,7 +165,7 @@ namespace EarthLiveSharp
                 throw (e);
             }
         }
-        public static void commit()
+        public static void Save()
         {
             ExeConfigurationFileMap map = new ExeConfigurationFileMap();
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -176,6 +178,41 @@ namespace EarthLiveSharp
             app.Settings["autostart"].Value = autostart.ToString();
             config.Save();
             return;
+        }
+    }
+
+    public static class Autostart
+    {
+        static string key = "EarthLiveSharp_" + Application.StartupPath.GetHashCode();
+        public static bool Set(bool enabled)
+        {
+            RegistryKey runKey = null;
+            try
+            {
+                string path = Application.ExecutablePath;
+                runKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+                if (enabled)
+                {
+                    runKey.SetValue(key, path);
+                }
+                else
+                {
+                    runKey.DeleteValue(key);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                if(runKey!=null)
+                {
+                    runKey.Close();
+                }
+            }
         }
     }
 }
