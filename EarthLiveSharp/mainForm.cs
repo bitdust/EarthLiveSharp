@@ -84,13 +84,13 @@ namespace EarthLiveSharp
 
         private void mainForm_Load(object sender, EventArgs e)
         {
+            button_stop.Enabled = false;
             if (Cfg.autostart)
             {
                 button_start.PerformClick();
                 this.WindowState = FormWindowState.Minimized;
                 this.ShowInTaskbar = false;
             }
-            button_stop.Enabled = false;
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
