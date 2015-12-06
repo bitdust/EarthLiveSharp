@@ -71,7 +71,10 @@ namespace EarthLiveSharp
             {
                 this.ShowInTaskbar = false;
                 this.Hide();
-                notifyIcon1.ShowBalloonTip(1000, "", "EarthLive# is running", ToolTipIcon.Warning);
+                if (!Cfg.autostart)
+                {
+                    notifyIcon1.ShowBalloonTip(1000, "", "EarthLive# is running", ToolTipIcon.Warning);
+                }
             }
         }
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
