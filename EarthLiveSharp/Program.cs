@@ -200,7 +200,7 @@ namespace EarthLiveSharp
 
     public static class Autostart
     {
-        static string key = "EarthLiveSharp_" + Application.StartupPath.GetHashCode();
+        static string key = "EarthLiveSharp";
         public static bool Set(bool enabled)
         {
             RegistryKey runKey = null;
