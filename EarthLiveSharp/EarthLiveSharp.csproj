@@ -106,7 +106,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="About.png" />
+    <None Include="Banner.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="EarthLive.ico" />
