@@ -47,11 +47,12 @@ namespace EarthLiveSharp
             {
                 Cfg.image_folder = folderBrowserDialog1.SelectedPath;
             }
+            folderBrowserDialog1.Dispose();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", "https://github.com/bitdust/EarthLiveSharp/releases");
+            System.Diagnostics.Process.Start("iexplore.exe", "https://github.com/bitdust/EarthLiveSharp");
         }
     }
 }

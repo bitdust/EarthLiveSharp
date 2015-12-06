@@ -214,7 +214,7 @@ namespace EarthLiveSharp
                 }
                 else
                 {
-                    runKey.SetValue(key, path); // dirty fix: to avoid exception in next statement.
+                    runKey.SetValue(key, path); // dirty fix: to avoid exception in next line.
                     runKey.DeleteValue(key);
                 }
                 return true;
