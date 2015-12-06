@@ -5,7 +5,7 @@ Give you a live view of earth from space.
 ## Screenshots
 ![screenshot1](https://cloud.githubusercontent.com/assets/6072743/11613119/73ea46c8-9c50-11e5-92e7-cfcba2558c1f.png)
 
-![sample](https://cloud.githubusercontent.com/assets/6072743/11613124/a73b086e-9c50-11e5-9253-9510ed0528e8.png)  
+![sample](https://cloud.githubusercontent.com/assets/6072743/11613290/6af013a8-9c56-11e5-8d7e-553cc8226d5a.png)  
 ## Usage
 Just [download](https://github.com/bitdust/EarthLiveSharp/releases) & run.
 ## How to set a live wallpaper?
