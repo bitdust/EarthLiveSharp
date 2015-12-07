@@ -47,6 +47,7 @@ namespace EarthLiveSharp
         public static string image_folder = "";
         public static int max_number = 5;
         public static string pic_url = "";
+        public static string saved_path = "";
         private static int image_cnt = 0;
         private static string latest_address = "";
         private static string saved_address = "";
@@ -97,6 +98,7 @@ namespace EarthLiveSharp
             try
             {
                 client.DownloadFile(latest_address, image_path);
+                saved_path = image_path;
                 Trace.WriteLine("[save image] " + latest_address + " > " + image_path);
                 if (Directory.GetFiles(image_folder, "*.png").Length == 1)
                 {
@@ -146,57 +148,7 @@ namespace EarthLiveSharp
         }
     }
 
-    public static class Cfg
-    {
-        public static string version;
-        public static string image_folder;
-        public static string origin_addr;
-        public static string cdn_addr;
-        public static string source_select;
-        public static int interval;
-        public static int max_number;
-        public static bool autostart;
 
-        public static void Load()
-        {
-            try
-            {
-                ExeConfigurationFileMap map = new ExeConfigurationFileMap();
-                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                AppSettingsSection app = config.AppSettings;
-                version = app.Settings["version"].Value;
-                image_folder = app.Settings["image_folder"].Value;
-                origin_addr = app.Settings["origin"].Value;
-                cdn_addr = app.Settings["cdn"].Value;
-                source_select = app.Settings["source_select"].Value;
-                interval = Convert.ToInt32(app.Settings["interval"].Value);
-                max_number = Convert.ToInt32(app.Settings["max_number"].Value);
-                autostart = Convert.ToBoolean(app.Settings["autostart"].Value);
-                return;
-            }
-            catch (Exception e)
-            {
-                Trace.WriteLine(e.Message);
-                MessageBox.Show("Configure error!");
-                throw (e);
-            }
-        }
-        public static void Save()
-        {
-            ExeConfigurationFileMap map = new ExeConfigurationFileMap();
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            AppSettingsSection app = config.AppSettings;
-            //app.Settings["origin"].Value = origin_addr;
-            //app.Settings["cdn"].Value = cdn_addr;
-            app.Settings["image_folder"].Value = image_folder;
-            app.Settings["source_select"].Value = source_select;
-            app.Settings["interval"].Value = interval.ToString();
-            app.Settings["max_number"].Value = max_number.ToString();
-            app.Settings["autostart"].Value = autostart.ToString();
-            config.Save();
-            return;
-        }
-    }
 
     public static class Autostart
     {

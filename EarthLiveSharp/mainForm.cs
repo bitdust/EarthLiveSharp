@@ -50,7 +50,26 @@ namespace EarthLiveSharp
             timer1.Interval = Cfg.interval * 1000 * 60;
             timer1.Start();
             scraper.UpdateImage();
-            //pictureBox1.ImageLocation = @".\images\1.png";
+            
+            if (Cfg.display_mode == 0)
+            {
+                if (scraper.saved_path.Length > 0)
+                {
+                    Wallpaper.Set(scraper.saved_path);
+                }
+                Wallpaper.SetDefaultStyle();
+            }
+            else if (Cfg.display_mode == 1)
+            {
+                if (scraper.saved_path.Length > 0)
+                {
+                    Wallpaper.Set(scraper.saved_path);
+                }
+            }
+            else if (Cfg.display_mode == 2)
+            {
+                ;
+            }
         }
 
         private void button_stop_Click(object sender, EventArgs e)
@@ -63,6 +82,25 @@ namespace EarthLiveSharp
         private void timer1_Tick(object sender, EventArgs e)
         {
             scraper.UpdateImage();
+            if (Cfg.display_mode == 0)
+            {
+                if (scraper.saved_path.Length > 0)
+                {
+                    Wallpaper.Set(scraper.saved_path);
+                }
+                Wallpaper.SetDefaultStyle();
+            }
+            else if (Cfg.display_mode == 1)
+            {
+                if (scraper.saved_path.Length > 0)
+                {
+                    Wallpaper.Set(scraper.saved_path);
+                }
+            }
+            else if (Cfg.display_mode == 2)
+            {
+                ;
+            }
         }
 
         private void Form2_Deactivate(object sender, EventArgs e)

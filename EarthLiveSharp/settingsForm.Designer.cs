@@ -31,7 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(settingsForm));
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button_select_folder = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,18 +41,21 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.button3 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button_select_folder = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBox_DisplayMode = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(48, 178);
+            this.linkLabel1.Location = new System.Drawing.Point(48, 289);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(83, 12);
             this.linkLabel1.TabIndex = 7;
@@ -78,15 +82,24 @@
             this.panel1.TabIndex = 11;
             this.panel1.Tag = "";
             // 
-            // button3
+            // button_select_folder
             // 
-            this.button3.Location = new System.Drawing.Point(231, 167);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "save";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button_select_folder.Location = new System.Drawing.Point(175, 95);
+            this.button_select_folder.Name = "button_select_folder";
+            this.button_select_folder.Size = new System.Drawing.Size(97, 23);
+            this.button_select_folder.TabIndex = 4;
+            this.button_select_folder.Text = "select folder";
+            this.button_select_folder.UseVisualStyleBackColor = true;
+            this.button_select_folder.Click += new System.EventHandler(this.button_select_folder_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(92, 100);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 12);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Image Folder";
             // 
             // comboBox1
             // 
@@ -190,40 +203,63 @@
             0,
             0});
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(231, 278);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "save";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 178);
+            this.label5.Location = new System.Drawing.Point(10, 289);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 12;
             this.label5.Text = "v0.0";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label6
+            // panel2
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(92, 100);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 12);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Image Folder";
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.comboBox_DisplayMode);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Location = new System.Drawing.Point(13, 171);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(292, 90);
+            this.panel2.TabIndex = 13;
             // 
-            // button_select_folder
+            // label7
             // 
-            this.button_select_folder.Location = new System.Drawing.Point(175, 95);
-            this.button_select_folder.Name = "button_select_folder";
-            this.button_select_folder.Size = new System.Drawing.Size(97, 23);
-            this.button_select_folder.TabIndex = 4;
-            this.button_select_folder.Text = "select folder";
-            this.button_select_folder.UseVisualStyleBackColor = true;
-            this.button_select_folder.Click += new System.EventHandler(this.button_select_folder_Click);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(77, 12);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Display mode";
+            // 
+            // comboBox_DisplayMode
+            // 
+            this.comboBox_DisplayMode.FormattingEnabled = true;
+            this.comboBox_DisplayMode.Items.AddRange(new object[] {
+            "Only latest (Default)",
+            "Only latest (Customized Style)",
+            "Slideshow  (Customized Style)"});
+            this.comboBox_DisplayMode.Location = new System.Drawing.Point(96, 7);
+            this.comboBox_DisplayMode.Name = "comboBox_DisplayMode";
+            this.comboBox_DisplayMode.Size = new System.Drawing.Size(176, 20);
+            this.comboBox_DisplayMode.TabIndex = 4;
             // 
             // settingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(318, 206);
+            this.ClientSize = new System.Drawing.Size(318, 313);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.panel1);
@@ -239,6 +275,8 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,6 +298,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button_select_folder;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ComboBox comboBox_DisplayMode;
+        private System.Windows.Forms.Label label7;
     }
 }
 
