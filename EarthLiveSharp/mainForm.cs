@@ -53,11 +53,11 @@ namespace EarthLiveSharp
             
             if (Cfg.display_mode == 0)
             {
+                Wallpaper.SetDefaultStyle();
                 if (scraper.saved_path.Length > 0)
                 {
                     Wallpaper.Set(scraper.saved_path);
                 }
-                Wallpaper.SetDefaultStyle();
             }
             else if (Cfg.display_mode == 1)
             {
@@ -84,11 +84,11 @@ namespace EarthLiveSharp
             scraper.UpdateImage();
             if (Cfg.display_mode == 0)
             {
+                // Wallpaper.SetDefaultStyle();
                 if (scraper.saved_path.Length > 0)
                 {
                     Wallpaper.Set(scraper.saved_path);
-                }
-                Wallpaper.SetDefaultStyle();
+                }             
             }
             else if (Cfg.display_mode == 1)
             {
