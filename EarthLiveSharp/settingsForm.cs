@@ -26,6 +26,7 @@ namespace EarthLiveSharp
             numericUpDown2.Value = Cfg.max_number;
             checkBox1.Checked = Cfg.autostart;
             label5.Text = Cfg.version;
+            comboBox_DisplayMode.SelectedIndex = Cfg.display_mode;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -34,6 +35,7 @@ namespace EarthLiveSharp
             Cfg.interval = (int)(numericUpDown1.Value);
             Cfg.max_number = (int)(numericUpDown2.Value);
             Cfg.autostart = checkBox1.Checked;
+            Cfg.display_mode = comboBox_DisplayMode.SelectedIndex;
             Cfg.Save();
             Autostart.Set(Cfg.autostart);
         }
@@ -52,7 +54,7 @@ namespace EarthLiveSharp
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", "https://github.com/bitdust/EarthLiveSharp");
+            System.Diagnostics.Process.Start("iexplore.exe", "https://github.com/bitdust/EarthLiveSharp/Releases");
         }
     }
 }

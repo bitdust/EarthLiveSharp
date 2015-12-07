@@ -12,6 +12,9 @@ namespace EarthLiveSharp
 {
     static class Wallpaper
     {
+        public const int COLOR_DESKTOP = 1;
+        public const int SPIF_UPDATEINIFILE = 0x01;
+        public const int SPIF_SENDWININICHANGE = 0x02;
         private static int SPI_SETDESKWALLPAPER = 20;
         public static void Set(string fpath)
         {
@@ -43,6 +46,9 @@ namespace EarthLiveSharp
 
         public static void  SetDefaultStyle()
         {
+            int[] elements = { COLOR_DESKTOP };
+            int[] colors = { System.Drawing.ColorTranslator.ToWin32(Color.Black) };
+            SetSysColors(1, elements, colors);
             RegistryKey runKey = null;
             try
             {
@@ -56,6 +62,9 @@ namespace EarthLiveSharp
             }
             return;
         }
+
+        [DllImport("user32.dll")]
+        private static extern bool SetSysColors(int cElements, int[] lpaElements, int[] lpaRgbValues);
         /// <summary>
         /// 调用电脑底层的接口
         /// </summary>
