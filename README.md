@@ -11,5 +11,5 @@ Just [download](https://github.com/bitdust/EarthLiveSharp/releases) & run.
 ## Support Us
 This tool is currently using the **AWESOME** & **FREE** CDN service from [cloudinary](http://cloudinary.com/invites/lpov9zyyucivvxsnalc5/wsi2ymxheeqswcr9ijij).  
 But the monthly bandwidth is limited.  
-**YOU** can help us by accepting [this invite](http://cloudinary.com/invites/lpov9zyyucivvxsnalc5/wsi2ymxheeqswcr9ijij)
+Please help us by accepting [this invite](http://cloudinary.com/invites/lpov9zyyucivvxsnalc5/wsi2ymxheeqswcr9ijij)
 and sign up for a totally free account.
