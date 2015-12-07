@@ -8,5 +8,8 @@ Give you a live view of earth from space.
 ![sample](https://cloud.githubusercontent.com/assets/6072743/11613290/6af013a8-9c56-11e5-8d7e-553cc8226d5a.png)  
 ## Usage
 Just [download](https://github.com/bitdust/EarthLiveSharp/releases) & run.
-## How to set a live wallpaper?
-Read this [issue](https://github.com/bitdust/EarthLiveSharp/issues/3).
+## Support Us
+This tool is currently using the **AWESOME** & **FREE** CDN service from [cloudinary](http://cloudinary.com/invites/lpov9zyyucivvxsnalc5/wsi2ymxheeqswcr9ijij).  
+But the monthly bandwidth is limited.  
+**YOU** can help us by accepting [this invite](http://cloudinary.com/invites/lpov9zyyucivvxsnalc5/wsi2ymxheeqswcr9ijij)
+and sign up for a totally free account.
