@@ -33,6 +33,7 @@ namespace EarthLiveSharp
                     PictureBox picutrebox = new PictureBox();
                     picutrebox.Image = Image.FromFile(fpath);
                     picutrebox.Image.Save(bmp_path, ImageFormat.Bmp);
+                    picutrebox.Image.Dispose();
                     picutrebox.Dispose();
                 }
                 else
@@ -40,6 +41,7 @@ namespace EarthLiveSharp
                     PictureBox picutrebox = new PictureBox();
                     picutrebox.Image = Image.FromFile(fpath);
                     picutrebox.Image.Save(bmp_path, ImageFormat.Bmp);
+                    picutrebox.Image.Dispose();
                     picutrebox.Dispose();
                 }
                 SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, bmp_path, 1);
