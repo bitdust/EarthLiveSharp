@@ -17,11 +17,11 @@ namespace EarthLiveSharp
         [STAThread]
         static void Main(string[] args)
         {
-            if (File.Exists(@"trace.log"))
+            if (File.Exists(Application.StartupPath + @"\trace.log"))
             {
-                File.Delete(@"trace.log");
+                File.Delete(Application.StartupPath + @"\trace.log");
             }
-            Trace.Listeners.Add(new TextWriterTraceListener("trace.log"));
+            Trace.Listeners.Add(new TextWriterTraceListener(Application.StartupPath + @"\trace.log"));
             Trace.AutoFlush = true;
 
             try
@@ -98,6 +98,7 @@ namespace EarthLiveSharp
             try
             {
                 client.DownloadFile(latest_address, image_path);
+                saved_address = latest_address;
                 saved_path = image_path;
                 Trace.WriteLine("[save image] " + latest_address + " > " + image_path);
                 if (Directory.GetFiles(image_folder, "*.png").Length == 1)
@@ -107,7 +108,7 @@ namespace EarthLiveSharp
             }
             catch(Exception e)
             {
-                Trace.WriteLine(e.Message);
+                Trace.WriteLine(e.Message + "[latest_address] " + latest_address + " [image_path] " + image_path);
             }
             finally
             {
@@ -143,7 +144,6 @@ namespace EarthLiveSharp
             else
             {
                 SaveImage();
-                saved_address = latest_address;
             }
         }
     }

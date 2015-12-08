@@ -9,6 +9,7 @@ using System.Threading;
 
 namespace EarthLiveSharp
 {
+    // It's a terrible mistake to mix the UI and business logic together.
     public partial class mainForm : Form
     {
         public mainForm()
@@ -32,7 +33,7 @@ namespace EarthLiveSharp
             //MessageBox.Show(scraper.GetLatestAdress());
             //scraper.InitFolder();
             Cfg.Load();
-            scraper.Reset();
+            //scraper.Reset();
             if (Cfg.source_select == "cdn")
             {
                 scraper.pic_url = Cfg.cdn_addr;
@@ -47,9 +48,9 @@ namespace EarthLiveSharp
             button_stop.Enabled = true;
             button_settings.Enabled = false;
             scraper.InitFolder();
+            scraper.UpdateImage();
             timer1.Interval = Cfg.interval * 1000 * 60;
             timer1.Start();
-            scraper.UpdateImage();
             
             if (Cfg.display_mode == 0)
             {
