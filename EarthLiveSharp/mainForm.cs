@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,7 +9,6 @@ using System.Threading;
 
 namespace EarthLiveSharp
 {
-    // It's a terrible mistake to mix the UI and business logic together.
     public partial class mainForm : Form
     {
         public mainForm()
@@ -33,7 +32,7 @@ namespace EarthLiveSharp
             //MessageBox.Show(scraper.GetLatestAdress());
             //scraper.InitFolder();
             Cfg.Load();
-            //scraper.Reset();
+            scraper.Reset();
             if (Cfg.source_select == "cdn")
             {
                 scraper.pic_url = Cfg.cdn_addr;
@@ -43,36 +42,21 @@ namespace EarthLiveSharp
                 scraper.pic_url = Cfg.origin_addr;
             }
             scraper.image_folder = Cfg.image_folder;
+            scraper.today_folder = Cfg.image_folder + "\\" + DateTime.Now.ToString("yyyy-MM-dd");
             scraper.max_number = Cfg.max_number;
             button_start.Enabled = false;
             button_stop.Enabled = true;
             button_settings.Enabled = false;
             scraper.InitFolder();
-            scraper.UpdateImage();
             timer1.Interval = Cfg.interval * 1000 * 60;
             timer1.Start();
-            
-            if (Cfg.display_mode == 0)
-            {
-                Wallpaper.SetDefaultStyle();
-                if (scraper.saved_path.Length > 0)
-                {
-                    Wallpaper.Set(scraper.saved_path);
-                }
-            }
-            else if (Cfg.display_mode == 1)
-            {
-                if (scraper.saved_path.Length > 0)
-                {
-                    Wallpaper.Set(scraper.saved_path);
-                }
-            }
-            else if (Cfg.display_mode == 2)
-            {
-                ;
-            }
-        }
 
+            //采用线程避免UpdateImage方法耗时过长引发界面假死
+            Thread thread = new Thread(scraper.UpdateImage);
+            thread.Start();
+            //scraper.UpdateImage();
+            //pictureBox1.ImageLocation = @".\images\1.png";
+        }
         private void button_stop_Click(object sender, EventArgs e)
         {
             timer1.Stop();
@@ -82,26 +66,8 @@ namespace EarthLiveSharp
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            scraper.UpdateImage();
-            if (Cfg.display_mode == 0)
-            {
-                // Wallpaper.SetDefaultStyle();
-                if (scraper.saved_path.Length > 0)
-                {
-                    Wallpaper.Set(scraper.saved_path);
-                }             
-            }
-            else if (Cfg.display_mode == 1)
-            {
-                if (scraper.saved_path.Length > 0)
-                {
-                    Wallpaper.Set(scraper.saved_path);
-                }
-            }
-            else if (Cfg.display_mode == 2)
-            {
-                ;
-            }
+            Thread thread = new Thread(scraper.UpdateImage);
+            thread.Start();
         }
 
         private void Form2_Deactivate(object sender, EventArgs e)
@@ -110,10 +76,7 @@ namespace EarthLiveSharp
             {
                 this.ShowInTaskbar = false;
                 this.Hide();
-                if (!Cfg.autostart)
-                {
-                    notifyIcon1.ShowBalloonTip(1000, "", "EarthLive# is running", ToolTipIcon.Warning);
-                }
+                notifyIcon1.ShowBalloonTip(1000, "", "EarthLive# is running", ToolTipIcon.Info);
             }
         }
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
