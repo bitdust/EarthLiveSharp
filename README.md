@@ -1,7 +1,8 @@
 Earth Live Sharp
 ===
 Fetch real-time images from [himawari-8](http://himawari8.nict.go.jp/) ([wiki](https://en.wikipedia.org/wiki/Himawari_8))  
-Give you a live view of earth from space.
+Give you a live view of earth from space.  
+Linux or OSX users can try scripts in [this thread](https://www.v2ex.com/t/241563).
 ## Screenshots
 ![screenshot1](https://cloud.githubusercontent.com/assets/6072743/11613119/73ea46c8-9c50-11e5-92e7-cfcba2558c1f.png)
 
