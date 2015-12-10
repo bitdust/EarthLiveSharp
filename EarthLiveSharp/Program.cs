@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Net;
@@ -6,6 +6,8 @@ using System.IO;
 using System.Diagnostics;
 using System.Configuration;
 using Microsoft.Win32;
+using Newtonsoft.Json;
+using System.Threading;
 
 namespace EarthLiveSharp
 {
@@ -17,11 +19,11 @@ namespace EarthLiveSharp
         [STAThread]
         static void Main(string[] args)
         {
-            if (File.Exists(Application.StartupPath + @"\trace.log"))
+            if (File.Exists(@"trace.log"))
             {
-                File.Delete(Application.StartupPath + @"\trace.log");
+                File.Delete(@"trace.log");
             }
-            Trace.Listeners.Add(new TextWriterTraceListener(Application.StartupPath + @"\trace.log"));
+            Trace.Listeners.Add(new TextWriterTraceListener("trace.log"));
             Trace.AutoFlush = true;
 
             try
@@ -44,13 +46,15 @@ namespace EarthLiveSharp
     }
     public static class scraper
     {
+        public static string today_folder = "";
         public static string image_folder = "";
         public static int max_number = 5;
         public static string pic_url = "";
-        public static string saved_path = "";
         private static int image_cnt = 0;
         private static string latest_address = "";
         private static string saved_address = "";
+        private static DateTime chineseTime;
+        
 
         private static string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
 
@@ -73,6 +77,7 @@ namespace EarthLiveSharp
                 String date_formated = date.Replace("-", "/").Replace(" ", "/").Replace(":", "");
                 latest_address = pic_url + date_formated + "_0_0.png";
                 Trace.WriteLine("[get latest address] " + date);
+                chineseTime = DateTime.Parse(date).AddHours(9);
                 reader.Close();
                 response.Close();
             }
@@ -89,7 +94,9 @@ namespace EarthLiveSharp
 
         public static void SaveImage()
         {
-            String image_path = image_folder+ @"\" + image_cnt.ToString() + ".png";
+            //String image_path = image_folder+ @"\" + image_cnt.ToString() + ".png";
+            //只保存一张作为背景，这样就是实时的了
+            string image_path = image_folder + "\\Background.png";
             //if(File.Exists(image_path))
             //{
             //    File.Delete(image_path + image_cnt.ToString() + ".png");
@@ -98,17 +105,18 @@ namespace EarthLiveSharp
             try
             {
                 client.DownloadFile(latest_address, image_path);
-                saved_address = latest_address;
-                saved_path = image_path;
                 Trace.WriteLine("[save image] " + latest_address + " > " + image_path);
-                if (Directory.GetFiles(image_folder, "*.png").Length == 1)
-                {
-                    File.Copy(image_path, image_folder + @"\" + "1.png", true);
-                }
+                //每次下载文件都按时间copy一份保存
+                File.Copy(image_path, today_folder + @"\" +chineseTime.ToString("yyyy-MM-dd HHmm")+ ".png", true);
+
+                //if (Directory.GetFiles(image_folder, "*.png").Length == 1)
+                //{
+                //    File.Copy(image_path, image_folder + @"\" + "1.png", true);
+                //}
             }
             catch(Exception e)
             {
-                Trace.WriteLine(e.Message + "[latest_address] " + latest_address + " [image_path] " + image_path);
+                Trace.WriteLine(e.Message);
             }
             finally
             {
@@ -121,6 +129,11 @@ namespace EarthLiveSharp
         {
             if(Directory.Exists(image_folder))
             {
+                //为每天创建一个文件夹，保存每天的图片
+                if (!Directory.Exists(today_folder))
+                {
+                    Directory.CreateDirectory(today_folder);
+                }
                 // delete all images in the image folder.
                 //string[] files = Directory.GetFiles(image_folder);
                 //foreach (string fn in files)
@@ -132,6 +145,7 @@ namespace EarthLiveSharp
             {
                 Trace.WriteLine("[create folder]");
                 Directory.CreateDirectory(image_folder);
+                Directory.CreateDirectory(today_folder);
             }
         }
         public static void UpdateImage()
@@ -144,15 +158,66 @@ namespace EarthLiveSharp
             else
             {
                 SaveImage();
+                saved_address = latest_address;
             }
         }
     }
 
+    public static class Cfg
+    {
+        public static string version;
+        public static string image_folder;
+        public static string origin_addr;
+        public static string cdn_addr;
+        public static string source_select;
+        public static int interval;
+        public static int max_number;
+        public static bool autostart;
 
+        public static void Load()
+        {
+            try
+            {
+                ExeConfigurationFileMap map = new ExeConfigurationFileMap();
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                AppSettingsSection app = config.AppSettings;
+                version = app.Settings["version"].Value;
+                image_folder = app.Settings["image_folder"].Value;
+                origin_addr = app.Settings["origin"].Value;
+                cdn_addr = app.Settings["cdn"].Value;
+                source_select = app.Settings["source_select"].Value;
+                interval = Convert.ToInt32(app.Settings["interval"].Value);
+                max_number = Convert.ToInt32(app.Settings["max_number"].Value);
+                autostart = Convert.ToBoolean(app.Settings["autostart"].Value);
+                return;
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                MessageBox.Show("Configure error!");
+                throw (e);
+            }
+        }
+        public static void Save()
+        {
+            ExeConfigurationFileMap map = new ExeConfigurationFileMap();
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            AppSettingsSection app = config.AppSettings;
+            //app.Settings["origin"].Value = origin_addr;
+            //app.Settings["cdn"].Value = cdn_addr;
+            app.Settings["image_folder"].Value = image_folder;
+            app.Settings["source_select"].Value = source_select;
+            app.Settings["interval"].Value = interval.ToString();
+            app.Settings["max_number"].Value = max_number.ToString();
+            app.Settings["autostart"].Value = autostart.ToString();
+            config.Save();
+            return;
+        }
+    }
 
     public static class Autostart
     {
-        static string key = "EarthLiveSharp";
+        static string key = "EarthLiveSharp_" + Application.StartupPath.GetHashCode();
         public static bool Set(bool enabled)
         {
             RegistryKey runKey = null;
