@@ -134,13 +134,19 @@ namespace EarthLiveSharp
         public static void UpdateImage()
         {
             GetLatestAddress();
-            if(latest_address.Equals(saved_address))
+            if (saved_address.Length==0)
+            {
+                SaveImage();
+                return;
+            }
+            else if (latest_address.Substring(latest_address.Length - 85, 85).Equals(saved_address.Substring(saved_address.Length - 85, 85)))
             {
                 return;
             }
             else
             {
                 SaveImage();
+                return;
             }
         }
     }
