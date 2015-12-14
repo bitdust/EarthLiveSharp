@@ -37,7 +37,7 @@ namespace EarthLiveSharp
             if (Cfg.source_select == "cdn")
             {
                 Random rd = new Random();
-                int selector = rd.Next(1,4);
+                int selector = rd.Next(1,5);
                 switch (selector)
                 {
                     case 1: scraper.pic_url = Cfg.cdn1_addr; break;
@@ -93,7 +93,7 @@ namespace EarthLiveSharp
         private void timer1_Tick(object sender, EventArgs e)
         {
             Random rd = new Random();
-            int selector = rd.Next(1, 4);
+            int selector = rd.Next(1, 5);
             switch (selector)
             {
                 case 1: scraper.pic_url = Cfg.cdn1_addr; break;
