@@ -132,11 +132,6 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Increment = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
             this.numericUpDown1.Location = new System.Drawing.Point(175, 41);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             15,
