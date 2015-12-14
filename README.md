@@ -1,6 +1,9 @@
 Earth Live Sharp
 ===
-Fetch real-time images from [himawari-8](http://himawari8.nict.go.jp/) ([wiki](https://en.wikipedia.org/wiki/Himawari_8))  
+**WARMING： Please update your EarthLive# to the [latest version](https://github.com/bitdust/EarthLiveSharp/releases)  
+or my bandwidth will be exhausted! **
+
+Fetch real-time images from [himawari-8](http://himawari8.nict.go.jp/)  ([wiki](https://en.wikipedia.org/wiki/Himawari_8))  and set it as your wallpaper  
 Give you a live view of earth from space.  
 Linux or OSX users can try Shell/Ruby/Python scripts in [this thread](https://www.v2ex.com/t/241563).
 ## Screenshots
@@ -12,5 +15,5 @@ Just [download](https://github.com/bitdust/EarthLiveSharp/releases) & run.
 ## Support Us
 This tool is currently using the **AWESOME** & **FREE** CDN service from [cloudinary](http://cloudinary.com/invites/lpov9zyyucivvxsnalc5/wsi2ymxheeqswcr9ijij).  
 But the monthly bandwidth is limited.  
-Please help us by accepting [this invite](http://cloudinary.com/invites/lpov9zyyucivvxsnalc5/wsi2ymxheeqswcr9ijij)
+You can help us by accepting [this invite](http://cloudinary.com/invites/lpov9zyyucivvxsnalc5/wsi2ymxheeqswcr9ijij)
 and sign up for a totally free account.
