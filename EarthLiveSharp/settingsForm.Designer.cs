@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(settingsForm));
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button_select_folder = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,7 +57,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(48, 300);
+            this.linkLabel1.Location = new System.Drawing.Point(47, 270);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(83, 12);
             this.linkLabel1.TabIndex = 7;
@@ -70,8 +68,6 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.button_select_folder);
-            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
@@ -82,28 +78,9 @@
             this.panel1.Controls.Add(this.numericUpDown2);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(294, 149);
+            this.panel1.Size = new System.Drawing.Size(294, 123);
             this.panel1.TabIndex = 11;
             this.panel1.Tag = "";
-            // 
-            // button_select_folder
-            // 
-            this.button_select_folder.Location = new System.Drawing.Point(175, 95);
-            this.button_select_folder.Name = "button_select_folder";
-            this.button_select_folder.Size = new System.Drawing.Size(97, 23);
-            this.button_select_folder.TabIndex = 4;
-            this.button_select_folder.Text = "select folder";
-            this.button_select_folder.UseVisualStyleBackColor = true;
-            this.button_select_folder.Click += new System.EventHandler(this.button_select_folder_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(82, 100);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 12);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Image Folder";
             // 
             // comboBox1
             // 
@@ -147,7 +124,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(100, 124);
+            this.label3.Location = new System.Drawing.Point(100, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 12);
             this.label3.TabIndex = 7;
@@ -184,7 +161,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(175, 124);
+            this.checkBox1.Location = new System.Drawing.Point(175, 99);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 5;
@@ -209,7 +186,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(231, 289);
+            this.button3.Location = new System.Drawing.Point(231, 259);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 6;
@@ -220,7 +197,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 300);
+            this.label5.Location = new System.Drawing.Point(10, 270);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 12;
@@ -236,7 +213,7 @@
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.comboBox_DisplayMode);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(13, 171);
+            this.panel2.Location = new System.Drawing.Point(14, 141);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(292, 112);
             this.panel2.TabIndex = 13;
@@ -306,7 +283,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(318, 325);
+            this.ClientSize = new System.Drawing.Size(318, 295);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.linkLabel1);
@@ -319,6 +296,7 @@
             this.ShowInTaskbar = false;
             this.Text = "settings";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.settingsForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -344,8 +322,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button_select_folder;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox comboBox_DisplayMode;
         private System.Windows.Forms.Label label7;

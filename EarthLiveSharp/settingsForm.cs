@@ -61,5 +61,10 @@ namespace EarthLiveSharp
         {
             System.Diagnostics.Process.Start("iexplore.exe", "https://github.com/bitdust/EarthLiveSharp/issues/2");
         }
+
+        private void settingsForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -42,7 +42,8 @@ namespace EarthLiveSharp
             {
                 scraper.pic_url = Cfg.origin_addr;
             }
-            scraper.image_folder = Cfg.image_folder;
+            //scraper.image_folder = Cfg.image_folder;
+            scraper.image_folder = Application.StartupPath + @"\images";
             scraper.max_number = Cfg.max_number;
             button_start.Enabled = false;
             button_stop.Enabled = true;

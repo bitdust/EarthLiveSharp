@@ -32,11 +32,8 @@ namespace EarthLiveSharp
             {
                 return;
             }
-            if (Cfg.image_folder == "")
-            {
-                Cfg.image_folder = Application.StartupPath + @"\images";
-                Cfg.Save();
-            }
+            Cfg.image_folder = Application.StartupPath + @"\images";
+            Cfg.Save();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new mainForm());
