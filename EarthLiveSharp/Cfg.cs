@@ -13,7 +13,10 @@ namespace EarthLiveSharp
         public static string version;
         public static string image_folder;
         public static string origin_addr;
-        public static string cdn_addr;
+        public static string cdn1_addr;
+        public static string cdn2_addr;
+        public static string cdn3_addr;
+        public static string cdn4_addr;
         public static string source_select;
         public static int interval;
         public static int max_number;
@@ -30,7 +33,10 @@ namespace EarthLiveSharp
                 version = app.Settings["version"].Value;
                 image_folder = app.Settings["image_folder"].Value;
                 origin_addr = app.Settings["origin"].Value;
-                cdn_addr = app.Settings["cdn"].Value;
+                cdn1_addr = app.Settings["cdn1"].Value;
+                cdn2_addr = app.Settings["cdn2"].Value;
+                cdn3_addr = app.Settings["cdn3"].Value;
+                cdn4_addr = app.Settings["cdn4"].Value;
                 source_select = app.Settings["source_select"].Value;
                 interval = Convert.ToInt32(app.Settings["interval"].Value);
                 max_number = Convert.ToInt32(app.Settings["max_number"].Value);

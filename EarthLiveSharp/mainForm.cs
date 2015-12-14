@@ -36,7 +36,16 @@ namespace EarthLiveSharp
             //scraper.Reset();
             if (Cfg.source_select == "cdn")
             {
-                scraper.pic_url = Cfg.cdn_addr;
+                Random rd = new Random();
+                int selector = rd.Next(1,4);
+                switch (selector)
+                {
+                    case 1: scraper.pic_url = Cfg.cdn1_addr; break;
+                    case 2: scraper.pic_url = Cfg.cdn2_addr; break;
+                    case 3: scraper.pic_url = Cfg.cdn3_addr; break;
+                    case 4: scraper.pic_url = Cfg.cdn4_addr; break;
+                    default: scraper.pic_url = Cfg.cdn1_addr; break;
+                }
             }
             else
             {
@@ -83,6 +92,16 @@ namespace EarthLiveSharp
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            Random rd = new Random();
+            int selector = rd.Next(1, 4);
+            switch (selector)
+            {
+                case 1: scraper.pic_url = Cfg.cdn1_addr; break;
+                case 2: scraper.pic_url = Cfg.cdn2_addr; break;
+                case 3: scraper.pic_url = Cfg.cdn3_addr; break;
+                case 4: scraper.pic_url = Cfg.cdn4_addr; break;
+                default: scraper.pic_url = Cfg.cdn1_addr; break;
+            }
             scraper.UpdateImage();
             if (Cfg.display_mode == 0)
             {
