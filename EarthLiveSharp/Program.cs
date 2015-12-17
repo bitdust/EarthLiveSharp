@@ -66,10 +66,17 @@ namespace EarthLiveSharp
             {
                 HttpWebResponse response = request.GetResponse() as HttpWebResponse;
                 StreamReader reader = new StreamReader(response.GetResponseStream());
-                String date = reader.ReadToEnd().Substring(9,19);           
-                String date_formated = date.Replace("-", "/").Replace(" ", "/").Replace(":", "");
-                latest_address = pic_url + date_formated + "_0_0.png";
-                Trace.WriteLine("[get latest address] " + date);
+                String date = reader.ReadToEnd();
+                if (date.Length > 30)
+                {
+                    String date_formated = date.Substring(9,19).Replace("-", "/").Replace(" ", "/").Replace(":", "");
+                    latest_address = pic_url + date_formated + "_0_0.png";
+                    Trace.WriteLine("[get latest address] " + date);
+                }
+                else
+                {
+                    ; // do nothing
+                }
                 reader.Close();
                 response.Close();
             }
