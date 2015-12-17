@@ -75,7 +75,7 @@ namespace EarthLiveSharp
                 }
                 else
                 {
-                    ; // do nothing
+                    Trace.WriteLine("[pic address is too short]"); // do nothing
                 }
                 reader.Close();
                 response.Close();
