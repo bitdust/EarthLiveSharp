@@ -1,8 +1,7 @@
 Earth Live Sharp
 ===
-**WARNING：** Please update your EarthLive# to the [latest version](https://github.com/bitdust/EarthLiveSharp/releases)  
-or my bandwidth will be exhausted!  
-请务必将您的EarthLive#升级至[最新版本](https://github.com/bitdust/EarthLiveSharp/releases)，否则我的带宽资源会被迅速耗尽！
+**重要：**[关于流量即将耗尽的通知以及应对办法](https://github.com/bitdust/EarthLiveSharp/issues/13)  
+**WARNING:** [Important Notification About the Bandwidth](https://github.com/bitdust/EarthLiveSharp/issues/13)  
 
 Fetch real-time images from [himawari-8](http://himawari8.nict.go.jp/)  ([wiki](https://en.wikipedia.org/wiki/Himawari_8))  and set it as your wallpaper  
 Give you a live view of earth from space.  
