@@ -66,5 +66,17 @@ namespace EarthLiveSharp
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Cfg.source_select = comboBox1.Text;
+            Cfg.interval = (int)(numericUpDown1.Value);
+            Cfg.max_number = (int)(numericUpDown2.Value);
+            Cfg.autostart = checkBox1.Checked;
+            Cfg.display_mode = comboBox_DisplayMode.SelectedIndex;
+            Cfg.Save();
+            Autostart.Set(Cfg.autostart);
+            this.Close();
+        }
     }
 }
