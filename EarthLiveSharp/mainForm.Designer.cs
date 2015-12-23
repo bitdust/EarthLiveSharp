@@ -39,16 +39,17 @@
             this.button_settings = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.runningLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(65, 108);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(44, 97);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 25);
+            this.label1.Size = new System.Drawing.Size(172, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Earth Live Sharp";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -56,18 +57,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 156);
+            this.label2.Location = new System.Drawing.Point(56, 169);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(167, 12);
+            this.label2.Size = new System.Drawing.Size(134, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "All images are fetched from";
             // 
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(56, 168);
+            this.linkLabel3.Location = new System.Drawing.Point(56, 182);
             this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(173, 12);
+            this.linkLabel3.Size = new System.Drawing.Size(136, 13);
             this.linkLabel3.TabIndex = 4;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "http://himawari8.nict.go.jp/";
@@ -78,16 +79,16 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(-1, -4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(267, 90);
+            this.pictureBox1.Size = new System.Drawing.Size(267, 98);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
             // button_start
             // 
-            this.button_start.Location = new System.Drawing.Point(12, 215);
+            this.button_start.Location = new System.Drawing.Point(12, 233);
             this.button_start.Name = "button_start";
-            this.button_start.Size = new System.Drawing.Size(75, 23);
+            this.button_start.Size = new System.Drawing.Size(75, 25);
             this.button_start.TabIndex = 1;
             this.button_start.Text = "start";
             this.button_start.UseVisualStyleBackColor = true;
@@ -95,9 +96,9 @@
             // 
             // button_stop
             // 
-            this.button_stop.Location = new System.Drawing.Point(93, 215);
+            this.button_stop.Location = new System.Drawing.Point(93, 233);
             this.button_stop.Name = "button_stop";
-            this.button_stop.Size = new System.Drawing.Size(75, 23);
+            this.button_stop.Size = new System.Drawing.Size(75, 25);
             this.button_stop.TabIndex = 2;
             this.button_stop.Text = "stop";
             this.button_stop.UseVisualStyleBackColor = true;
@@ -105,9 +106,9 @@
             // 
             // button_settings
             // 
-            this.button_settings.Location = new System.Drawing.Point(174, 215);
+            this.button_settings.Location = new System.Drawing.Point(174, 233);
             this.button_settings.Name = "button_settings";
-            this.button_settings.Size = new System.Drawing.Size(75, 23);
+            this.button_settings.Size = new System.Drawing.Size(75, 25);
             this.button_settings.TabIndex = 3;
             this.button_settings.Text = "settings";
             this.button_settings.UseVisualStyleBackColor = true;
@@ -126,11 +127,23 @@
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             // 
+            // runningLabel
+            // 
+            this.runningLabel.AutoSize = true;
+            this.runningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.runningLabel.ForeColor = System.Drawing.Color.DarkRed;
+            this.runningLabel.Location = new System.Drawing.Point(90, 122);
+            this.runningLabel.Name = "runningLabel";
+            this.runningLabel.Size = new System.Drawing.Size(76, 15);
+            this.runningLabel.TabIndex = 5;
+            this.runningLabel.Text = "Not Running";
+            // 
             // mainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(262, 250);
+            this.ClientSize = new System.Drawing.Size(262, 271);
+            this.Controls.Add(this.runningLabel);
             this.Controls.Add(this.button_settings);
             this.Controls.Add(this.button_stop);
             this.Controls.Add(this.button_start);
@@ -162,5 +175,6 @@
         private System.Windows.Forms.Button button_settings;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Label runningLabel;
     }
 }
