@@ -226,7 +226,7 @@ namespace EarthLiveSharp
                         break;
                 };
                 serviceRunning = true;
-                runningLabel.Text = "Running";
+                runningLabel.Text = "    Running";
                 runningLabel.ForeColor = Color.DarkGreen;
 
             }

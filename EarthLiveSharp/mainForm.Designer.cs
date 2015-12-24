@@ -57,7 +57,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 156);
+            this.label2.Location = new System.Drawing.Point(49, 156);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(167, 12);
             this.label2.TabIndex = 4;
@@ -66,7 +66,7 @@
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(56, 168);
+            this.linkLabel3.Location = new System.Drawing.Point(47, 170);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(173, 12);
             this.linkLabel3.TabIndex = 4;
@@ -132,11 +132,12 @@
             this.runningLabel.AutoSize = true;
             this.runningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.runningLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.runningLabel.Location = new System.Drawing.Point(90, 113);
+            this.runningLabel.Location = new System.Drawing.Point(90, 116);
             this.runningLabel.Name = "runningLabel";
             this.runningLabel.Size = new System.Drawing.Size(76, 15);
             this.runningLabel.TabIndex = 5;
             this.runningLabel.Text = "Not Running";
+            this.runningLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // mainForm
             // 
