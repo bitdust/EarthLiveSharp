@@ -1,5 +1,7 @@
 Earth Live Sharp
 ===
+
+
 **重要：**[关于流量即将耗尽的通知以及应对办法](https://github.com/bitdust/EarthLiveSharp/issues/13)  
 **WARNING:** [Important Notification About the Bandwidth](https://github.com/bitdust/EarthLiveSharp/issues/13)  
 
@@ -17,3 +19,7 @@ This tool is currently using the **AWESOME** & **FREE** CDN service from [cloudi
 But the monthly bandwidth is limited.  
 You can help us by accepting [this invite](http://cloudinary.com/invites/lpov9zyyucivvxsnalc5/wsi2ymxheeqswcr9ijij)
 and sign up for a totally free account.
+
+![license](https://img.shields.io/github/license/bitdust/earthlivesharp.svg)
+![Build Status](https://travis-ci.org/bitdust/EarthLiveSharp.svg)
+![downloads](https://img.shields.io/github/downloads/bitdust/earthlivesharp/total.svg)
