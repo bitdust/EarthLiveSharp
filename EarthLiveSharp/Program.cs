@@ -50,6 +50,7 @@ namespace EarthLiveSharp
         private static string saved_address = "";
 
         private static string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
+        private static string ping_url = "http://www.baidu.com";
 
         public static void Reset()
         {
@@ -62,12 +63,20 @@ namespace EarthLiveSharp
         public static string GetLatestAddress()
         {
             HttpWebRequest request = WebRequest.Create(json_url) as HttpWebRequest;
+            HttpWebRequest pingRequest = WebRequest.Create(ping_url) as HttpWebRequest;
             try 
             {
                 HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                HttpWebResponse pingResponse = pingRequest.GetResponse() as HttpWebResponse;
                 StreamReader reader = new StreamReader(response.GetResponseStream());
+                StreamReader pingReader = new StreamReader(pingResponse.GetResponseStream());
                 String date = reader.ReadToEnd();
-                if (date.Length > 30)
+                String pingDate = pingReader.ReadToEnd();
+                if (date.Equals(pingDate))
+                {
+                    Trace.WriteLine("[perhaps you are in the LAN environment and not authenticated]");
+                }
+                else if (date.Length > 30)
                 {
                     String date_formated = date.Substring(9,19).Replace("-", "/").Replace(" ", "/").Replace(":", "");
                     latest_address = pic_url + date_formated + "_0_0.png";
@@ -79,6 +88,8 @@ namespace EarthLiveSharp
                 }
                 reader.Close();
                 response.Close();
+                pingReader.Close();
+                pingResponse.Close();
             }
             catch (Exception e)
             {
