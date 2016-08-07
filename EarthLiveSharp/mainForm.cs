@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.Threading;
 
 namespace EarthLiveSharp
 {
-    // It's a terrible mistake to mix the UI and business logic together.
     public partial class mainForm : Form
     {
         bool serviceRunning = false;
@@ -58,7 +52,7 @@ namespace EarthLiveSharp
             if (confirmIfQuitting == DialogResult.Yes)
             {
                 stopLogic();
-                System.Windows.Forms.Application.Exit();
+                Application.Exit();
             }
 
         }
@@ -86,36 +80,8 @@ namespace EarthLiveSharp
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Random rd = new Random();
-            int selector = rd.Next(1, 5);
-            switch (selector)
-            {
-                case 1: scraper.pic_url = Cfg.cdn1_addr; break;
-                case 2: scraper.pic_url = Cfg.cdn2_addr; break;
-                case 3: scraper.pic_url = Cfg.cdn3_addr; break;
-                case 4: scraper.pic_url = Cfg.cdn4_addr; break;
-                default: scraper.pic_url = Cfg.cdn1_addr; break;
-            }
             scraper.UpdateImage();
-            if (Cfg.display_mode == 0)
-            {
-                // Wallpaper.SetDefaultStyle();
-                if (scraper.saved_path.Length > 0)
-                {
-                    Wallpaper.Set(scraper.saved_path);
-                }             
-            }
-            else if (Cfg.display_mode == 1)
-            {
-                if (scraper.saved_path.Length > 0)
-                {
-                    Wallpaper.Set(scraper.saved_path);
-                }
-            }
-            else if (Cfg.display_mode == 2)
-            {
-                //
-            }
+            Wallpaper.Set(scraper.image_folder+"\\wallpaper.bmp");
         }
 
         private void Form2_Deactivate(object sender, EventArgs e)
@@ -129,10 +95,7 @@ namespace EarthLiveSharp
                     notifyIcon1.ShowBalloonTip(1000, "", "EarthLive# is running", ToolTipIcon.Warning);
                 }
             }
-        }
-
-
-        
+        }   
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -163,7 +126,6 @@ namespace EarthLiveSharp
         {
             if (serviceRunning)
             {
-                //notifyIcon1.ShowBalloonTip(200, "", "EarthLive# Service Stopped", ToolTipIcon.Warning);
                 timer1.Stop();
                 button_start.Enabled = true;
                 button_stop.Enabled = false;
@@ -181,56 +143,22 @@ namespace EarthLiveSharp
         {
             if (!serviceRunning)
             {
-                //notifyIcon1.ShowBalloonTip(200, "", "EarthLive# Service Started", ToolTipIcon.Warning);
-                Cfg.Load();
-                if (Cfg.source_select == "cdn")
-                {
-                    Random rd = new Random();
-                    int selector = rd.Next(1, 5);
-                    switch (selector)
-                    {
-                        case 1: scraper.pic_url = Cfg.cdn1_addr; break;
-                        case 2: scraper.pic_url = Cfg.cdn2_addr; break;
-                        case 3: scraper.pic_url = Cfg.cdn3_addr; break;
-                        case 4: scraper.pic_url = Cfg.cdn4_addr; break;
-                        default: scraper.pic_url = Cfg.cdn1_addr; break;
-                    }
-                }
-                else
-                {
-                    scraper.pic_url = Cfg.origin_addr;
-                }
-                //scraper.image_folder = Cfg.image_folder;
-                scraper.image_folder = Application.StartupPath + @"\images";
-                scraper.max_number = Cfg.max_number;
                 button_start.Enabled = false;
                 button_stop.Enabled = true;
                 button_settings.Enabled = false;
-                scraper.InitFolder();
                 scraper.UpdateImage();
                 timer1.Interval = Cfg.interval * 1000 * 60;
                 timer1.Start();
-
-                switch (Cfg.display_mode)
-                {
-                    case 0:
-                        Wallpaper.SetDefaultStyle();
-                        if (scraper.saved_path.Length > 0) Wallpaper.Set(scraper.saved_path);
-                        break;
-                    case 1:
-                        if (scraper.saved_path.Length > 0) Wallpaper.Set(scraper.saved_path);
-                        break;
-                    case 2:
-                        break;
-                    default:
-                        break;
-                };
+                Wallpaper.SetDefaultStyle();
+                Wallpaper.Set(scraper.image_folder + "\\wallpaper.bmp");
                 serviceRunning = true;
                 runningLabel.Text = "    Running";
                 runningLabel.ForeColor = Color.DarkGreen;
-
             }
-            else if (serviceRunning) MessageBox.Show("Service already running");
+            else
+            {
+                MessageBox.Show("Service already running");
+            }
             contextMenuSetter();
         }
 

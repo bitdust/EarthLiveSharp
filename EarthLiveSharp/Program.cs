@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
 using System.Diagnostics;
-using System.Configuration;
 using Microsoft.Win32;
+using System.Drawing;
 
 namespace EarthLiveSharp
 {
@@ -15,7 +14,7 @@ namespace EarthLiveSharp
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
             if (File.Exists(Application.StartupPath + @"\trace.log"))
             {
@@ -34,6 +33,10 @@ namespace EarthLiveSharp
             }
             Cfg.image_folder = Application.StartupPath + @"\images";
             Cfg.Save();
+            scraper.size = Cfg.size;
+            scraper.image_folder = Cfg.image_folder;
+            scraper.image_source = Cfg.image_source;
+            // scraper.image_source = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new mainForm());
@@ -41,55 +44,33 @@ namespace EarthLiveSharp
     }
     public static class scraper
     {
+        public static int size = 1;
         public static string image_folder = "";
-        public static int max_number = 5;
-        public static string pic_url = "";
-        public static string saved_path = "";
-        private static int image_cnt = 0;
-        private static string latest_address = "";
-        private static string saved_address = "";
-
+        public static string pic_url = "";  // TODO delete
+        public static string image_source = "";
+        private static string imageID = "";
+        private static string last_imageID = "0";
         private static string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
-        private static string ping_url = "http://www.baidu.com";
 
-        public static void Reset()
-        {
-            image_cnt = 0;
-            latest_address = "";
-            saved_address = "";
-            return;
-        }
-
-        public static string GetLatestAddress()
+        private static string GetImageID()
         {
             HttpWebRequest request = WebRequest.Create(json_url) as HttpWebRequest;
-            HttpWebRequest pingRequest = WebRequest.Create(ping_url) as HttpWebRequest;
             try 
             {
                 HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-                HttpWebResponse pingResponse = pingRequest.GetResponse() as HttpWebResponse;
                 StreamReader reader = new StreamReader(response.GetResponseStream());
-                StreamReader pingReader = new StreamReader(pingResponse.GetResponseStream());
-                String date = reader.ReadToEnd();
-                String pingDate = pingReader.ReadToEnd();
-                if (date.Equals(pingDate))
+                string date = reader.ReadToEnd();
+                if (date.Length > 30)
                 {
-                    Trace.WriteLine("[perhaps you are in the LAN environment and not authenticated]");
-                }
-                else if (date.Length > 30)
-                {
-                    String date_formated = date.Substring(9,19).Replace("-", "/").Replace(" ", "/").Replace(":", "");
-                    latest_address = pic_url + date_formated + "_0_0.png";
-                    Trace.WriteLine("[get latest address] " + date);
+                    imageID = date.Substring(9,19).Replace("-", "/").Replace(" ", "/").Replace(":", "");
+                    Trace.WriteLine("[get latest ImageID] " + imageID);
                 }
                 else
                 {
-                    Trace.WriteLine("[pic address is too short]"); // do nothing
+                    Trace.WriteLine("[json data is too short]"); // do nothing
                 }
                 reader.Close();
                 response.Close();
-                pingReader.Close();
-                pingResponse.Close();
             }
             catch (Exception e)
             {
@@ -99,40 +80,56 @@ namespace EarthLiveSharp
             {
                 ;
             }
-            return latest_address;
+            return imageID;
         }
 
-        public static void SaveImage()
+        private static void SaveImage()
         {
-            String image_path = image_folder+ @"\" + image_cnt.ToString() + ".png";
-            //if(File.Exists(image_path))
-            //{
-            //    File.Delete(image_path + image_cnt.ToString() + ".png");
-            //}
             WebClient client = new WebClient();
             try
             {
-                client.DownloadFile(latest_address, image_path);
-                saved_address = latest_address;
-                saved_path = image_path;
-                Trace.WriteLine("[save image] " + latest_address + " > " + image_path);
-                if (Directory.GetFiles(image_folder, "*.png").Length == 1)
+                for (int ii = 0; ii < size; ii++)
                 {
-                    File.Copy(image_path, image_folder + @"\" + "1.png", true);
+                    for (int jj = 0; jj < size; jj++)
+                    {
+                        string url = string.Format("{0}/{1}d/550/{2}_{3}_{4}.png", image_source, size, imageID, ii, jj);
+                        string image_path = string.Format("{0}\\{1}{2}_{3}.png", image_folder, imageID.Replace("/",""), ii, jj); // remove the '/' in imageID
+                        client.DownloadFile(url, image_path);
+                    }
                 }
+                Trace.WriteLine("[save image] " + imageID);
+                last_imageID = imageID;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                Trace.WriteLine(e.Message + "[latest_address] " + latest_address + " [image_path] " + image_path);
+                Trace.WriteLine(e.Message + " " + imageID);
             }
             finally
             {
                 client.Dispose();
             }
-            image_cnt = (image_cnt + 1) % max_number;
         }
 
-        public static void InitFolder()
+        private static void JoinImage()
+        {
+            // join & convert the images to wallpaper.bmp
+            Bitmap bitmap = new Bitmap(550 * size, 550 * size);
+            Image[,] tile = new Image[size, size];
+            Graphics g = Graphics.FromImage(bitmap);
+            for (int ii = 0; ii < size; ii++)
+            {
+                for (int jj = 0; jj < size; jj++)
+                {
+                    tile[ii,jj] = Image.FromFile(string.Format("{0}\\{1}{2}_{3}.png", image_folder, imageID.Replace("/", ""), ii, jj));
+                    g.DrawImage(tile[ii, jj], 550 * ii, 550 * jj);
+                }
+            }
+            g.Save();
+            g.Dispose();
+            bitmap.Save(string.Format("{0}\\wallpaper.bmp", image_folder));
+        }
+
+        private static void InitFolder()
         {
             if(Directory.Exists(image_folder))
             {
@@ -151,25 +148,20 @@ namespace EarthLiveSharp
         }
         public static void UpdateImage()
         {
-            GetLatestAddress();
-            if (saved_address.Length==0)
-            {
-                SaveImage();
-                return;
-            }
-            else if (latest_address.Substring(latest_address.Length - 85, 85).Equals(saved_address.Substring(saved_address.Length - 85, 85)))
+            InitFolder();
+            GetImageID();
+            if (imageID.Equals(last_imageID))
             {
                 return;
             }
             else
             {
                 SaveImage();
+                JoinImage();
                 return;
             }
         }
     }
-
-
 
     public static class Autostart
     {
