@@ -43,16 +43,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cloud_name = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.image_zoom = new System.Windows.Forms.NumericUpDown();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.image_size = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.interval)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.image_zoom)).BeginInit();
             this.SuspendLayout();
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(63, 224);
+            this.linkLabel1.Location = new System.Drawing.Point(63, 272);
             this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(111, 15);
@@ -63,7 +67,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(200, 212);
+            this.button3.Location = new System.Drawing.Point(200, 260);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 29);
@@ -75,7 +79,7 @@
             // version_number
             // 
             this.version_number.AutoSize = true;
-            this.version_number.Location = new System.Drawing.Point(13, 224);
+            this.version_number.Location = new System.Drawing.Point(13, 272);
             this.version_number.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.version_number.Name = "version_number";
             this.version_number.Size = new System.Drawing.Size(39, 15);
@@ -85,7 +89,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(308, 212);
+            this.button1.Location = new System.Drawing.Point(308, 260);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 29);
@@ -97,7 +101,7 @@
             // autostart
             // 
             this.autostart.AutoSize = true;
-            this.autostart.Location = new System.Drawing.Point(220, 81);
+            this.autostart.Location = new System.Drawing.Point(220, 110);
             this.autostart.Margin = new System.Windows.Forms.Padding(4);
             this.autostart.Name = "autostart";
             this.autostart.Size = new System.Drawing.Size(18, 17);
@@ -106,7 +110,7 @@
             // 
             // interval
             // 
-            this.interval.Location = new System.Drawing.Point(220, 47);
+            this.interval.Location = new System.Drawing.Point(220, 77);
             this.interval.Margin = new System.Windows.Forms.Padding(4);
             this.interval.Maximum = new decimal(new int[] {
             120,
@@ -131,7 +135,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(133, 80);
+            this.label3.Location = new System.Drawing.Point(133, 109);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 15);
@@ -141,7 +145,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 49);
+            this.label2.Location = new System.Drawing.Point(5, 79);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(207, 15);
@@ -152,7 +156,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(109, 110);
+            this.label1.Location = new System.Drawing.Point(109, 139);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 15);
@@ -162,7 +166,7 @@
             // radioButton_Orgin
             // 
             this.radioButton_Orgin.AutoSize = true;
-            this.radioButton_Orgin.Location = new System.Drawing.Point(220, 107);
+            this.radioButton_Orgin.Location = new System.Drawing.Point(220, 136);
             this.radioButton_Orgin.Name = "radioButton_Orgin";
             this.radioButton_Orgin.Size = new System.Drawing.Size(68, 19);
             this.radioButton_Orgin.TabIndex = 8;
@@ -174,7 +178,7 @@
             // radioButton_CDN
             // 
             this.radioButton_CDN.AutoSize = true;
-            this.radioButton_CDN.Location = new System.Drawing.Point(220, 132);
+            this.radioButton_CDN.Location = new System.Drawing.Point(220, 161);
             this.radioButton_CDN.Name = "radioButton_CDN";
             this.radioButton_CDN.Size = new System.Drawing.Size(172, 19);
             this.radioButton_CDN.TabIndex = 8;
@@ -185,7 +189,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(125, 158);
+            this.label4.Location = new System.Drawing.Point(125, 187);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 15);
@@ -196,7 +200,7 @@
             // 
             // cloud_name
             // 
-            this.cloud_name.Location = new System.Drawing.Point(220, 155);
+            this.cloud_name.Location = new System.Drawing.Point(220, 184);
             this.cloud_name.Name = "cloud_name";
             this.cloud_name.Size = new System.Drawing.Size(131, 25);
             this.cloud_name.TabIndex = 10;
@@ -205,6 +209,9 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.image_zoom);
+            this.panel1.Controls.Add(this.linkLabel2);
             this.panel1.Controls.Add(this.image_size);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.cloud_name);
@@ -219,20 +226,51 @@
             this.panel1.Location = new System.Drawing.Point(16, 15);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(391, 189);
+            this.panel1.Size = new System.Drawing.Size(391, 237);
             this.panel1.TabIndex = 11;
             this.panel1.Tag = "";
             // 
-            // label5
+            // label6
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(53, 12);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(159, 15);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Image Size (pixels)";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(61, 43);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(151, 15);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Wallpaper Zoom (%)";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // image_zoom
+            // 
+            this.image_zoom.Location = new System.Drawing.Point(220, 41);
+            this.image_zoom.Margin = new System.Windows.Forms.Padding(4);
+            this.image_zoom.Minimum = new decimal(new int[] {
+            51,
+            0,
+            0,
+            0});
+            this.image_zoom.Name = "image_zoom";
+            this.image_zoom.ReadOnly = true;
+            this.image_zoom.Size = new System.Drawing.Size(131, 25);
+            this.image_zoom.TabIndex = 14;
+            this.image_zoom.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(136, 212);
+            this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(215, 15);
+            this.linkLabel2.TabIndex = 7;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "(How to get a cloud name?)";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // image_size
             // 
@@ -248,11 +286,22 @@
             this.image_size.Size = new System.Drawing.Size(132, 23);
             this.image_size.TabIndex = 13;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(29, 12);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(183, 15);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Image Quality (pixels)";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // settingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 250);
+            this.ClientSize = new System.Drawing.Size(424, 297);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.version_number);
             this.Controls.Add(this.linkLabel1);
@@ -270,6 +319,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.interval)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.image_zoom)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,6 +343,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox image_size;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown image_zoom;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }
 

@@ -60,7 +60,7 @@ namespace EarthLiveSharp
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", "http://himawari8.nict.go.jp/");
+            System.Diagnostics.Process.Start("http://himawari8.nict.go.jp/");
         }
 
         private void button_settings_Click(object sender, EventArgs e)
@@ -80,6 +80,10 @@ namespace EarthLiveSharp
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            scraper.size = Cfg.size;
+            scraper.zoom = Cfg.zoom;
+            scraper.image_folder = Cfg.image_folder;
+            scraper.image_source = Cfg.image_source;
             scraper.UpdateImage();
             Wallpaper.Set(scraper.image_folder+"\\wallpaper.bmp");
         }
@@ -116,11 +120,6 @@ namespace EarthLiveSharp
             }
         }
 
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("iexplore.exe", "https://github.com/bitdust/EarthLiveSharp/issues/3");
-        }
-
         //All logic pertaining to stopping the service
         private void stopLogic()
         {
@@ -141,6 +140,11 @@ namespace EarthLiveSharp
         //All logic pertaining to starting the service
         private void startLogic()
         {
+            scraper.size = Cfg.size;
+            scraper.zoom = Cfg.zoom;
+            scraper.image_folder = Cfg.image_folder;
+            scraper.image_source = Cfg.image_source;
+            scraper.last_imageID = "0"; // reset the scraper record.
             if (!serviceRunning)
             {
                 button_start.Enabled = false;

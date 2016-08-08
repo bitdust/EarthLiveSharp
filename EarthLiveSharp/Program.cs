@@ -31,11 +31,16 @@ namespace EarthLiveSharp
             {
                 return;
             }
+            if (Cfg.source_selection ==0 & Cfg.cloud_name.Equals("demo"))
+            {
+                DialogResult dr = MessageBox.Show("WARNING: it's recommended to get images from CDN. \n 注意：推荐使用CDN方式来抓取图片，以提高稳定性。", "EarthLiveSharp");
+                if (dr == DialogResult.OK)
+                {
+                    Process.Start("https://github.com/bitdust/EarthLiveSharp/issues/32");
+                }
+            }
             Cfg.image_folder = Application.StartupPath + @"\images";
             Cfg.Save();
-            scraper.size = Cfg.size;
-            scraper.image_folder = Cfg.image_folder;
-            scraper.image_source = Cfg.image_source;
             // scraper.image_source = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -48,8 +53,9 @@ namespace EarthLiveSharp
         public static string image_folder = "";
         public static string pic_url = "";  // TODO delete
         public static string image_source = "";
+        public static int zoom; // max_zoom = 100%
         private static string imageID = "";
-        private static string last_imageID = "0";
+        public static string last_imageID = "0";
         private static string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
 
         private static string GetImageID()
@@ -93,7 +99,7 @@ namespace EarthLiveSharp
                     for (int jj = 0; jj < size; jj++)
                     {
                         string url = string.Format("{0}/{1}d/550/{2}_{3}_{4}.png", image_source, size, imageID, ii, jj);
-                        string image_path = string.Format("{0}\\{1}{2}_{3}.png", image_folder, imageID.Replace("/",""), ii, jj); // remove the '/' in imageID
+                        string image_path = string.Format("{0}\\{1}_{2}.png", image_folder, ii, jj); // remove the '/' in imageID
                         client.DownloadFile(url, image_path);
                     }
                 }
@@ -120,13 +126,34 @@ namespace EarthLiveSharp
             {
                 for (int jj = 0; jj < size; jj++)
                 {
-                    tile[ii,jj] = Image.FromFile(string.Format("{0}\\{1}{2}_{3}.png", image_folder, imageID.Replace("/", ""), ii, jj));
+                    tile[ii,jj] = Image.FromFile(string.Format("{0}\\{1}_{2}.png", image_folder, ii, jj));
                     g.DrawImage(tile[ii, jj], 550 * ii, 550 * jj);
+                    tile[ii, jj].Dispose();
                 }
             }
             g.Save();
             g.Dispose();
-            bitmap.Save(string.Format("{0}\\wallpaper.bmp", image_folder));
+            if (zoom == 100)
+            {
+                bitmap.Save(string.Format("{0}\\wallpaper.bmp", image_folder));
+            }
+            else if (1 < zoom & zoom <100)
+            {
+                int new_size = bitmap.Height * zoom/100;
+                Bitmap zoom_bitmap = new Bitmap(new_size, new_size);
+                Graphics g_2 = Graphics.FromImage(zoom_bitmap);
+                g_2.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g_2.DrawImage(bitmap, 0, 0, new_size, new_size);
+                g_2.Save();
+                g_2.Dispose();
+                zoom_bitmap.Save(string.Format("{0}\\wallpaper.bmp", image_folder));
+                zoom_bitmap.Dispose();
+            }
+            else
+            {
+                Trace.WriteLine("[zoom error]");
+            }
+            bitmap.Dispose();
         }
 
         private static void InitFolder()

@@ -14,6 +14,7 @@ namespace EarthLiveSharp
         private void button3_Click(object sender, EventArgs e)
         {
             Cfg.interval = (int)(interval.Value);
+            Cfg.zoom = (int)(image_zoom.Value);
             Cfg.autostart = autostart.Checked;
             if (radioButton_CDN.Checked)
             {
@@ -53,12 +54,7 @@ namespace EarthLiveSharp
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("iexplore.exe", "https://github.com/bitdust/EarthLiveSharp/releases");
-        }
-
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("iexplore.exe", "https://github.com/bitdust/EarthLiveSharp/issues/2");
+            System.Diagnostics.Process.Start("https://github.com/bitdust/EarthLiveSharp/issues/32");
         }
 
         private void settingsForm_Load(object sender, EventArgs e)
@@ -68,6 +64,7 @@ namespace EarthLiveSharp
             cloud_name.Text = Cfg.cloud_name;
             autostart.Checked = Cfg.autostart;
             interval.Value = Cfg.interval;
+            image_zoom.Value = Cfg.zoom;
             if (Cfg.source_selection == 1)
             {
                 radioButton_CDN.Checked = true;
@@ -96,6 +93,7 @@ namespace EarthLiveSharp
         private void button1_Click(object sender, EventArgs e)
         {
             Cfg.interval = (int)(interval.Value);
+            Cfg.zoom = (int)(image_zoom.Value);
             Cfg.autostart = autostart.Checked;     
             if (radioButton_CDN.Checked)
             {
@@ -128,11 +126,13 @@ namespace EarthLiveSharp
             {
                 label4.Visible = true;
                 cloud_name.Visible = true;
+                linkLabel2.Visible = true;
             }
             else
             {
                 label4.Visible = false;
                 cloud_name.Visible = false;
+                linkLabel2.Visible = false;
             }
         }
     }
