@@ -51,7 +51,6 @@ namespace EarthLiveSharp
     {
         public static int size = 1;
         public static string image_folder = "";
-        public static string pic_url = "";  // TODO delete
         public static string image_source = "";
         public static int zoom; // max_zoom = 100%
         private static string imageID = "";
@@ -109,6 +108,7 @@ namespace EarthLiveSharp
             catch (Exception e)
             {
                 Trace.WriteLine(e.Message + " " + imageID);
+                Trace.WriteLine(string.Format("[image_folder]{0} [image_source]{1} [size]{2}",image_folder,image_source,size));
             }
             finally
             {
