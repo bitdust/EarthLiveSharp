@@ -274,6 +274,7 @@
             // 
             // image_size
             // 
+            this.image_size.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.image_size.FormattingEnabled = true;
             this.image_size.Items.AddRange(new object[] {
             "550*550",
