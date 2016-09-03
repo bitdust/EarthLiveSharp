@@ -135,7 +135,7 @@ namespace EarthLiveSharp
             g.Dispose();
             if (zoom == 100)
             {
-                bitmap.Save(string.Format("{0}\\wallpaper.bmp", image_folder));
+                bitmap.Save(string.Format("{0}\\wallpaper.bmp", image_folder),System.Drawing.Imaging.ImageFormat.Bmp);
             }
             else if (1 < zoom & zoom <100)
             {
@@ -146,7 +146,7 @@ namespace EarthLiveSharp
                 g_2.DrawImage(bitmap, 0, 0, new_size, new_size);
                 g_2.Save();
                 g_2.Dispose();
-                zoom_bitmap.Save(string.Format("{0}\\wallpaper.bmp", image_folder));
+                zoom_bitmap.Save(string.Format("{0}\\wallpaper.bmp", image_folder),System.Drawing.Imaging.ImageFormat.Bmp);
                 zoom_bitmap.Dispose();
             }
             else
