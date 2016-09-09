@@ -33,11 +33,15 @@ namespace EarthLiveSharp
             }
             if (Cfg.source_selection ==0 & Cfg.cloud_name.Equals("demo"))
             {
+                #if DEBUG
+
+                #else
                 DialogResult dr = MessageBox.Show("WARNING: it's recommended to get images from CDN. \n 注意：推荐使用CDN方式来抓取图片，以提高稳定性。", "EarthLiveSharp");
                 if (dr == DialogResult.OK)
                 {
                     Process.Start("https://github.com/bitdust/EarthLiveSharp/issues/32");
                 }
+                #endif
             }
             Cfg.image_folder = Application.StartupPath + @"\images";
             Cfg.Save();

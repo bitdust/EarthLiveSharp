@@ -31,9 +31,9 @@ namespace EarthLiveSharp
             {
                 case 0: Cfg.size = 1; break;
                 case 1: Cfg.size = 2; break;
-                case 3: Cfg.size = 4; break;
-                case 4: Cfg.size = 8; break;
-                case 5: Cfg.size = 16; break;
+                case 2: Cfg.size = 4; break;
+                case 3: Cfg.size = 8; break;
+                case 4: Cfg.size = 16; break;
                 default: Cfg.size = 1; break;
             }
             Cfg.Save();
@@ -110,9 +110,9 @@ namespace EarthLiveSharp
             {
                 case 0: Cfg.size = 1; break;
                 case 1: Cfg.size = 2; break;
-                case 3: Cfg.size = 4; break;
-                case 4: Cfg.size = 8; break;
-                case 5: Cfg.size = 16; break;
+                case 2: Cfg.size = 4; break;
+                case 3: Cfg.size = 8; break;
+                case 4: Cfg.size = 16; break;
                 default: Cfg.size = 1; break;
             }
             Cfg.Save();
