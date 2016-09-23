@@ -61,7 +61,7 @@ namespace EarthLiveSharp
         public static string last_imageID = "0";
         private static string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
 
-        private static string GetImageID()
+        private static int GetImageID()
         {
             HttpWebRequest request = WebRequest.Create(json_url) as HttpWebRequest;
             try 
@@ -83,16 +83,14 @@ namespace EarthLiveSharp
             }
             catch (Exception e)
             {
+                Trace.WriteLine("[connection error,cant reach the orgin source.]");
                 Trace.WriteLine(e.Message);
+                return -1;
             }
-            finally
-            {
-                ;
-            }
-            return imageID;
+            return 0;
         }
 
-        private static void SaveImage()
+        private static int SaveImage()
         {
             WebClient client = new WebClient();
             try
@@ -108,15 +106,13 @@ namespace EarthLiveSharp
                 }
                 Trace.WriteLine("[save image] " + imageID);
                 last_imageID = imageID;
+                return 0;
             }
             catch (Exception e)
             {
                 Trace.WriteLine(e.Message + " " + imageID);
                 Trace.WriteLine(string.Format("[image_folder]{0} [image_source]{1} [size]{2}",image_folder,image_source,size));
-            }
-            finally
-            {
-                client.Dispose();
+                return -1;
             }
         }
 
@@ -180,17 +176,19 @@ namespace EarthLiveSharp
         public static void UpdateImage()
         {
             InitFolder();
-            GetImageID();
+            if (GetImageID() == -1)
+            {
+                return;
+            }
             if (imageID.Equals(last_imageID))
             {
                 return;
             }
-            else
+            if (SaveImage()==0)
             {
-                SaveImage();
                 JoinImage();
-                return;
             }
+            return;
         }
     }
 
