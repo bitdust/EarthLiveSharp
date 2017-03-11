@@ -10,7 +10,7 @@ Give you a live view of earth from space.
 It's also recommanded to use [Mantou Earth](https://github.com/oxoooo/earth) on Android.  
 Linux or OSX users can try Shell/Ruby/Python scripts in [this thread](https://www.v2ex.com/t/241563).
 ## Screenshots
-![screenshot1](https://cloud.githubusercontent.com/assets/6072743/17474278/b7e1bf20-5d87-11e6-82c9-fc1b528b042d.png)
+![screenshot1](https://cloud.githubusercontent.com/assets/6072743/23821657/7d53554e-0674-11e7-8ccc-260070261967.png)
 
 ![sample](https://cloud.githubusercontent.com/assets/6072743/11613290/6af013a8-9c56-11e5-8d7e-553cc8226d5a.png)  
 ## Download
