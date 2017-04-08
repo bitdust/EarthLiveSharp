@@ -70,23 +70,22 @@ namespace EarthLiveSharp
             try 
             {
                 HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    throw new Exception("[connection error]");
+                }
+                if (!response.ContentType.Equals("application/json"))
+                {
+                    throw new Exception("[no json recieved. your Internet connection is hijacked]");
+                }
                 StreamReader reader = new StreamReader(response.GetResponseStream());
                 string date = reader.ReadToEnd();
-                if (date.Length > 30)
-                {
-                    imageID = date.Substring(9,19).Replace("-", "/").Replace(" ", "/").Replace(":", "");
-                    Trace.WriteLine("[get latest ImageID] " + imageID);
-                }
-                else
-                {
-                    Trace.WriteLine("[json data is too short]"); // do nothing
-                }
+                imageID = date.Substring(9,19).Replace("-", "/").Replace(" ", "/").Replace(":", "");
+                Trace.WriteLine("[get latest ImageID] " + imageID);
                 reader.Close();
-                response.Close();
             }
             catch (Exception e)
             {
-                Trace.WriteLine("[connection error,cant reach the orgin source.]");
                 Trace.WriteLine(e.Message);
                 return -1;
             }
