@@ -15,6 +15,8 @@ namespace EarthLiveSharp
         public static int zoom;
         public static string image_source;
         public static string cloud_name;
+        public static string api_key;
+        public static string api_secret;
         public static int source_selection;
         public static void Load()
         {
@@ -31,6 +33,8 @@ namespace EarthLiveSharp
                 zoom = Convert.ToInt32(app.Settings["zoom"].Value);
                 image_source = app.Settings["image_source"].Value;
                 cloud_name = app.Settings["cloud_name"].Value;
+                api_key = app.Settings["api_key"].Value;
+                api_secret = app.Settings["api_secret"].Value;
                 source_selection = Convert.ToInt16(app.Settings["source_selection"].Value);
                 return;
             }
@@ -51,6 +55,8 @@ namespace EarthLiveSharp
             app.Settings["autostart"].Value = autostart.ToString();
             app.Settings["size"].Value = size.ToString();
             app.Settings["cloud_name"].Value = cloud_name;
+            app.Settings["api_key"].Value = api_key;
+            app.Settings["api_secret"].Value = api_secret;
             app.Settings["source_selection"].Value = source_selection.ToString();
             app.Settings["image_source"].Value = image_source;
             app.Settings["zoom"].Value = zoom.ToString();

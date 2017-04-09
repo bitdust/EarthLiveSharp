@@ -65,17 +65,17 @@ namespace EarthLiveSharp
             autostart.Checked = Cfg.autostart;
             interval.Value = Cfg.interval;
             image_zoom.Value = Cfg.zoom;
+            api_key.Text = Cfg.api_key;
+            api_secret.Text = Cfg.api_secret;
             if (Cfg.source_selection == 1)
             {
                 radioButton_CDN.Checked = true;
-                label4.Visible = true;
-                cloud_name.Visible = true;
+                panel2.Enabled = true;
             }
             else
             {
                 radioButton_Orgin.Checked = true;
-                label4.Visible = false;
-                cloud_name.Visible = false;
+                panel2.Enabled = false;
             }
 
             switch (Cfg.size)
@@ -99,6 +99,8 @@ namespace EarthLiveSharp
             {
                 Cfg.source_selection = 1;
                 Cfg.cloud_name = cloud_name.Text;
+                Cfg.api_key = api_key.Text;
+                Cfg.api_secret = api_secret.Text;
                 Cfg.image_source = "http://res.cloudinary.com/"+ Cfg.cloud_name + "/image/fetch/http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
             }
             else
@@ -124,15 +126,12 @@ namespace EarthLiveSharp
         {
             if(radioButton_CDN.Checked)
             {
-                label4.Visible = true;
-                cloud_name.Visible = true;
-                linkLabel2.Visible = true;
+                panel2.Enabled = true;
+                settingsForm.ActiveForm.Height = 355;
             }
             else
             {
-                label4.Visible = false;
-                cloud_name.Visible = false;
-                linkLabel2.Visible = false;
+                panel2.Enabled = false;
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Net;
+using System.Net.Cache;  
 using System.IO;
 using System.Diagnostics;
 using Microsoft.Win32;
@@ -74,7 +75,7 @@ namespace EarthLiveSharp
                 {
                     throw new Exception("[connection error]");
                 }
-                if (!response.ContentType.Equals("application/json"))
+                if (!response.ContentType.Contains("application/json"))
                 {
                     throw new Exception("[no json recieved. your Internet connection is hijacked]");
                 }
@@ -191,6 +192,56 @@ namespace EarthLiveSharp
                 JoinImage();
             }
             return;
+        }
+        public static void CleanCDN()
+        {
+            Cfg.Load();
+            if (Cfg.api_key.Length == 0) return;
+            if (Cfg.api_secret.Length == 0) return;
+            try
+            {
+                HttpWebRequest request = WebRequest.Create("https://api.cloudinary.com/v1_1/" + Cfg.cloud_name + "/resources/image/fetch?prefix=http://himawari8-dl") as HttpWebRequest;
+                request.Method = "DELETE";
+                request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
+                string svcCredentials = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(Cfg.api_key + ":" + Cfg.api_secret));
+                request.Headers.Add("Authorization", "Basic " + svcCredentials);
+                HttpWebResponse response = null;
+                StreamReader reader = null;
+                string result = null;
+                for (int i = 0; i < 3;i++ ) // max 3 request each hour.
+                {
+                    response = request.GetResponse() as HttpWebResponse;
+                    if (response.StatusCode != HttpStatusCode.OK)
+                    {
+                        throw new Exception("[clean CND cache connection error]");
+                    }
+                    if (!response.ContentType.Contains("application/json"))
+                    {
+                        throw new Exception("[clean CND cache no json recieved. your Internet connection is hijacked]");
+                    }
+                    reader = new StreamReader(response.GetResponseStream());
+                    result = reader.ReadToEnd();
+                    if (result.Contains("\"error\""))
+                    {
+                        throw new Exception("[clean CND cache request error]\n" + result);
+                    }
+                    if (result.Contains("\"partial\":false"))
+                    {
+                        Trace.WriteLine("[clean CDN cache done]");
+                        break; // end of Clean CDN
+                    }
+                    else
+                    {
+                        Trace.WriteLine("[more images to delete]");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine("[error when delete CDN cache]");
+                Trace.WriteLine(e.Message);
+                return;
+            }
         }
     }
 

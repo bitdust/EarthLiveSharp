@@ -84,6 +84,7 @@ namespace EarthLiveSharp
             scraper.zoom = Cfg.zoom;
             scraper.image_folder = Cfg.image_folder;
             scraper.image_source = Cfg.image_source;
+            System.Threading.Thread.Sleep(10000); // wait 10 secs for Internet reconnection after system resume.
             scraper.UpdateImage();
             Wallpaper.Set(scraper.image_folder+"\\wallpaper.bmp");
         }
@@ -180,6 +181,11 @@ namespace EarthLiveSharp
                 stopService.Enabled = false;
                 startService.Enabled = true;
             }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            scraper.CleanCDN();
         }
 
     }
