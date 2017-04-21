@@ -127,7 +127,6 @@ namespace EarthLiveSharp
             if(radioButton_CDN.Checked)
             {
                 panel2.Enabled = true;
-                settingsForm.ActiveForm.Height = 355;
             }
             else
             {
