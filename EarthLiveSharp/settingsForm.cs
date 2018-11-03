@@ -13,6 +13,7 @@ namespace EarthLiveSharp
 
         private void button3_Click(object sender, EventArgs e)
         {
+            Cfg.satellite = satellite.Text;
             Cfg.interval = (int)(interval.Value);
             Cfg.zoom = (int)(image_zoom.Value);
             Cfg.autostart = autostart.Checked;
@@ -78,6 +79,13 @@ namespace EarthLiveSharp
                 panel2.Enabled = false;
             }
 
+            switch (Cfg.satellite)
+            {
+                case "Himawari8": satellite.SelectedIndex = 0; image_size.Enabled = true; break;
+                case "FengYun4": satellite.SelectedIndex = 1; image_size.Enabled = false; break;
+                default: satellite.SelectedIndex = 0; image_size.Enabled = true; break;
+            }
+
             switch (Cfg.size)
             {
                 case 1: image_size.SelectedIndex = 0; break;
@@ -92,6 +100,7 @@ namespace EarthLiveSharp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Cfg.satellite = satellite.Text;
             Cfg.interval = (int)(interval.Value);
             Cfg.zoom = (int)(image_zoom.Value);
             Cfg.autostart = autostart.Checked;     
@@ -131,6 +140,16 @@ namespace EarthLiveSharp
             else
             {
                 panel2.Enabled = false;
+            }
+        }
+
+        private void satellite_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (satellite.Text)
+            {
+                case "Himawari8": image_size.Enabled = true; break;
+                case "FengYun4": image_size.Enabled = false; break;
+                default: image_size.Enabled = true; break;
             }
         }
     }
