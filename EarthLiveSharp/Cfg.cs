@@ -14,7 +14,6 @@ namespace EarthLiveSharp
         public static bool autostart;    
         public static int size;
         public static int zoom;
-        public static string image_source;
         public static string cloud_name;
         public static string api_key;
         public static string api_secret;
@@ -33,7 +32,6 @@ namespace EarthLiveSharp
                 autostart = Convert.ToBoolean(app.Settings["autostart"].Value);
                 size = Convert.ToInt32(app.Settings["size"].Value);
                 zoom = Convert.ToInt32(app.Settings["zoom"].Value);
-                image_source = app.Settings["image_source"].Value;
                 cloud_name = app.Settings["cloud_name"].Value;
                 api_key = app.Settings["api_key"].Value;
                 api_secret = app.Settings["api_secret"].Value;
@@ -61,7 +59,6 @@ namespace EarthLiveSharp
             app.Settings["api_key"].Value = api_key;
             app.Settings["api_secret"].Value = api_secret;
             app.Settings["source_selection"].Value = source_selection.ToString();
-            app.Settings["image_source"].Value = image_source;
             app.Settings["zoom"].Value = zoom.ToString();
             config.Save();
             return;

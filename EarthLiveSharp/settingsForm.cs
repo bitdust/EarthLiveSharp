@@ -21,12 +21,10 @@ namespace EarthLiveSharp
             {
                 Cfg.source_selection = 1;
                 Cfg.cloud_name = cloud_name.Text;
-                Cfg.image_source = "http://res.cloudinary.com/" + Cfg.cloud_name + "/image/fetch/http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
             }
             else
             {
                 Cfg.source_selection = 0;
-                Cfg.image_source = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
             }
             switch (image_size.SelectedIndex)
             {
@@ -39,18 +37,6 @@ namespace EarthLiveSharp
             }
             Cfg.Save();
             Autostart.Set(Cfg.autostart);
-        }
-
-        private void button_select_folder_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
-            folderBrowserDialog1.RootFolder = Environment.SpecialFolder.Desktop;
-            folderBrowserDialog1.SelectedPath = Cfg.image_folder;
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
-            {
-                Cfg.image_folder = folderBrowserDialog1.SelectedPath;
-            };
-            folderBrowserDialog1.Dispose();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -110,12 +96,10 @@ namespace EarthLiveSharp
                 Cfg.cloud_name = cloud_name.Text;
                 Cfg.api_key = api_key.Text;
                 Cfg.api_secret = api_secret.Text;
-                Cfg.image_source = "http://res.cloudinary.com/"+ Cfg.cloud_name + "/image/fetch/http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
             }
             else
             {
                 Cfg.source_selection = 0;
-                Cfg.image_source = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
             }
             switch (image_size.SelectedIndex)
             {

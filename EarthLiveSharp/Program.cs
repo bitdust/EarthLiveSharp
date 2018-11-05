@@ -57,10 +57,6 @@ namespace EarthLiveSharp
     }
     public static class scraper
     {
-        public static int size = 1;
-        public static string image_folder = "";
-        public static string image_source = "";
-        public static int zoom; // max_zoom = 100%
         private static string imageID = "";
         public static string last_imageID = "0";
         private static string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
@@ -96,14 +92,23 @@ namespace EarthLiveSharp
         private static int SaveImage()
         {
             WebClient client = new WebClient();
+            string image_source = "";
+            if (Cfg.source_selection == 1)
+            {
+               image_source = "http://res.cloudinary.com/" + Cfg.cloud_name + "/image/fetch/http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
+            }
+            else
+            {
+               image_source = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
+            }
             try
             {
-                for (int ii = 0; ii < size; ii++)
+                for (int ii = 0; ii < Cfg.size; ii++)
                 {
-                    for (int jj = 0; jj < size; jj++)
+                    for (int jj = 0; jj < Cfg.size; jj++)
                     {
-                        string url = string.Format("{0}/{1}d/550/{2}_{3}_{4}.png", image_source, size, imageID, ii, jj);
-                        string image_path = string.Format("{0}\\{1}_{2}.png", image_folder, ii, jj); // remove the '/' in imageID
+                        string url = string.Format("{0}/{1}d/550/{2}_{3}_{4}.png", image_source, Cfg.size, imageID, ii, jj);
+                        string image_path = string.Format("{0}\\{1}_{2}.png", Cfg.image_folder, ii, jj); // remove the '/' in imageID
                         client.DownloadFile(url, image_path);
                     }
                 }
@@ -114,7 +119,7 @@ namespace EarthLiveSharp
             catch (Exception e)
             {
                 Trace.WriteLine(e.Message + " " + imageID);
-                Trace.WriteLine(string.Format("[image_folder]{0} [image_source]{1} [size]{2}",image_folder,image_source,size));
+                Trace.WriteLine(string.Format("[image_folder]{0} [image_source]{1} [size]{2}",Cfg.image_folder, image_source, Cfg.size));
                 return -1;
             }
         }
@@ -122,34 +127,34 @@ namespace EarthLiveSharp
         private static void JoinImage()
         {
             // join & convert the images to wallpaper.bmp
-            Bitmap bitmap = new Bitmap(550 * size, 550 * size);
-            Image[,] tile = new Image[size, size];
+            Bitmap bitmap = new Bitmap(550 * Cfg.size, 550 * Cfg.size);
+            Image[,] tile = new Image[Cfg.size, Cfg.size];
             Graphics g = Graphics.FromImage(bitmap);
-            for (int ii = 0; ii < size; ii++)
+            for (int ii = 0; ii < Cfg.size; ii++)
             {
-                for (int jj = 0; jj < size; jj++)
+                for (int jj = 0; jj < Cfg.size; jj++)
                 {
-                    tile[ii,jj] = Image.FromFile(string.Format("{0}\\{1}_{2}.png", image_folder, ii, jj));
+                    tile[ii,jj] = Image.FromFile(string.Format("{0}\\{1}_{2}.png", Cfg.image_folder, ii, jj));
                     g.DrawImage(tile[ii, jj], 550 * ii, 550 * jj);
                     tile[ii, jj].Dispose();
                 }
             }
             g.Save();
             g.Dispose();
-            if (zoom == 100)
+            if (Cfg.zoom == 100)
             {
-                bitmap.Save(string.Format("{0}\\wallpaper.bmp", image_folder),System.Drawing.Imaging.ImageFormat.Bmp);
+                bitmap.Save(string.Format("{0}\\wallpaper.bmp", Cfg.image_folder),System.Drawing.Imaging.ImageFormat.Bmp);
             }
-            else if (1 < zoom & zoom <100)
+            else if (1 < Cfg.zoom & Cfg.zoom <100)
             {
-                int new_size = bitmap.Height * zoom/100;
+                int new_size = bitmap.Height * Cfg.zoom /100;
                 Bitmap zoom_bitmap = new Bitmap(new_size, new_size);
                 Graphics g_2 = Graphics.FromImage(zoom_bitmap);
                 g_2.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                 g_2.DrawImage(bitmap, 0, 0, new_size, new_size);
                 g_2.Save();
                 g_2.Dispose();
-                zoom_bitmap.Save(string.Format("{0}\\wallpaper.bmp", image_folder),System.Drawing.Imaging.ImageFormat.Bmp);
+                zoom_bitmap.Save(string.Format("{0}\\wallpaper.bmp", Cfg.image_folder),System.Drawing.Imaging.ImageFormat.Bmp);
                 zoom_bitmap.Dispose();
             }
             else
@@ -161,7 +166,7 @@ namespace EarthLiveSharp
 
         private static void InitFolder()
         {
-            if(Directory.Exists(image_folder))
+            if(Directory.Exists(Cfg.image_folder))
             {
                 // delete all images in the image folder.
                 //string[] files = Directory.GetFiles(image_folder);
@@ -173,7 +178,7 @@ namespace EarthLiveSharp
             else
             {
                 Trace.WriteLine("[create folder]");
-                Directory.CreateDirectory(image_folder);
+                Directory.CreateDirectory(Cfg.image_folder);
             }
         }
         public static void UpdateImage()
@@ -242,6 +247,12 @@ namespace EarthLiveSharp
                 Trace.WriteLine(e.Message);
                 return;
             }
+        }
+
+        public static void ResetState()
+        {
+            // reset last fetched image record
+            last_imageID = "0"; 
         }
     }
 

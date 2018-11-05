@@ -80,13 +80,9 @@ namespace EarthLiveSharp
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            scraper.size = Cfg.size;
-            scraper.zoom = Cfg.zoom;
-            scraper.image_folder = Cfg.image_folder;
-            scraper.image_source = Cfg.image_source;
             System.Threading.Thread.Sleep(10000); // wait 10 secs for Internet reconnection after system resume.
             scraper.UpdateImage();
-            Wallpaper.Set(scraper.image_folder+"\\wallpaper.bmp");
+            Wallpaper.Set(Cfg.image_folder+"\\wallpaper.bmp");
         }
 
         private void Form2_Deactivate(object sender, EventArgs e)
@@ -141,11 +137,7 @@ namespace EarthLiveSharp
         //All logic pertaining to starting the service
         private void startLogic()
         {
-            scraper.size = Cfg.size;
-            scraper.zoom = Cfg.zoom;
-            scraper.image_folder = Cfg.image_folder;
-            scraper.image_source = Cfg.image_source;
-            scraper.last_imageID = "0"; // reset the scraper record.
+            scraper.ResetState();
             if (!serviceRunning)
             {
                 button_start.Enabled = false;
@@ -155,7 +147,7 @@ namespace EarthLiveSharp
                 timer1.Interval = Cfg.interval * 1000 * 60;
                 timer1.Start();
                 Wallpaper.SetDefaultStyle();
-                Wallpaper.Set(scraper.image_folder + "\\wallpaper.bmp");
+                Wallpaper.Set(Cfg.image_folder + "\\wallpaper.bmp");
                 serviceRunning = true;
                 runningLabel.Text = "    Running";
                 runningLabel.ForeColor = Color.DarkGreen;
