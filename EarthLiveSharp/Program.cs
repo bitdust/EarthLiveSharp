@@ -49,19 +49,45 @@ namespace EarthLiveSharp
             }
             Cfg.image_folder = Application.StartupPath + @"\images";
             Cfg.Save();
-            // scraper.image_source = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
+            // Scrap_wrapper.image_source = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new mainForm());
         }
     }
-    public static class scraper
-    {
-        private static string imageID = "";
-        public static string last_imageID = "0";
-        private static string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
 
-        private static int GetImageID()
+    public static class Scrap_wrapper
+    {
+        private static string last_imageID = "0";
+        public static void UpdateImage()
+        {
+            IScraper scraper = new Scraper_himawari8();
+            last_imageID = scraper.UpdateImage(last_imageID);
+        }
+
+        public static void ResetState()
+        {
+            last_imageID = "0";
+        }
+
+        public static void CleanCDN()
+        {
+            IScraper scraper = new Scraper_himawari8();
+            scraper.CleanCDN();
+        }
+    }
+
+    interface IScraper
+    {
+        string UpdateImage(string last_imageID);
+        void CleanCDN();
+    }
+    public class Scraper_himawari8 : IScraper
+    {
+        private string imageID = "";
+        private string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
+
+        private int GetImageID()
         {
             HttpWebRequest request = WebRequest.Create(json_url) as HttpWebRequest;
             try 
@@ -89,7 +115,7 @@ namespace EarthLiveSharp
             return 0;
         }
 
-        private static int SaveImage()
+        private int SaveImage()
         {
             WebClient client = new WebClient();
             string image_source = "";
@@ -113,7 +139,6 @@ namespace EarthLiveSharp
                     }
                 }
                 Trace.WriteLine("[save image] " + imageID);
-                last_imageID = imageID;
                 return 0;
             }
             catch (Exception e)
@@ -124,7 +149,7 @@ namespace EarthLiveSharp
             }
         }
 
-        private static void JoinImage()
+        private void JoinImage()
         {
             // join & convert the images to wallpaper.bmp
             Bitmap bitmap = new Bitmap(550 * Cfg.size, 550 * Cfg.size);
@@ -164,7 +189,7 @@ namespace EarthLiveSharp
             bitmap.Dispose();
         }
 
-        private static void InitFolder()
+        private void InitFolder()
         {
             if(Directory.Exists(Cfg.image_folder))
             {
@@ -181,24 +206,24 @@ namespace EarthLiveSharp
                 Directory.CreateDirectory(Cfg.image_folder);
             }
         }
-        public static void UpdateImage()
+        public string UpdateImage(string last_imageID)
         {
             InitFolder();
             if (GetImageID() == -1)
             {
-                return;
+                return last_imageID;
             }
             if (imageID.Equals(last_imageID))
             {
-                return;
+                return last_imageID;
             }
             if (SaveImage()==0)
             {
                 JoinImage();
             }
-            return;
+            return imageID;
         }
-        public static void CleanCDN()
+        public void CleanCDN()
         {
             Cfg.Load();
             if (Cfg.api_key.Length == 0) return;
@@ -247,12 +272,6 @@ namespace EarthLiveSharp
                 Trace.WriteLine(e.Message);
                 return;
             }
-        }
-
-        public static void ResetState()
-        {
-            // reset last fetched image record
-            last_imageID = "0"; 
         }
     }
 

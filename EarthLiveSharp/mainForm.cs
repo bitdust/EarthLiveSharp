@@ -81,7 +81,7 @@ namespace EarthLiveSharp
         private void timer1_Tick(object sender, EventArgs e)
         {
             System.Threading.Thread.Sleep(10000); // wait 10 secs for Internet reconnection after system resume.
-            scraper.UpdateImage();
+            Scrap_wrapper.UpdateImage();
             Wallpaper.Set(Cfg.image_folder+"\\wallpaper.bmp");
         }
 
@@ -137,13 +137,13 @@ namespace EarthLiveSharp
         //All logic pertaining to starting the service
         private void startLogic()
         {
-            scraper.ResetState();
+            Scrap_wrapper.ResetState();
             if (!serviceRunning)
             {
                 button_start.Enabled = false;
                 button_stop.Enabled = true;
                 button_settings.Enabled = false;
-                scraper.UpdateImage();
+                Scrap_wrapper.UpdateImage();
                 timer1.Interval = Cfg.interval * 1000 * 60;
                 timer1.Start();
                 Wallpaper.SetDefaultStyle();
@@ -177,7 +177,7 @@ namespace EarthLiveSharp
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            scraper.CleanCDN();
+            Scrap_wrapper.CleanCDN();
         }
 
     }
