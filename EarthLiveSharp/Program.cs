@@ -49,7 +49,7 @@ namespace EarthLiveSharp
             }
             Cfg.image_folder = Application.StartupPath + @"\images";
             Cfg.Save();
-            // Scrap_wrapper.image_source = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
+            Scrap_wrapper.set_scraper();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new mainForm());
@@ -58,33 +58,38 @@ namespace EarthLiveSharp
 
     public static class Scrap_wrapper
     {
-        private static string last_imageID = "0";
+        private static IScraper scraper;
+        public static void set_scraper()
+        {
+            scraper = new Scraper_himawari8();
+            return;
+        }
         public static void UpdateImage()
         {
-            IScraper scraper = new Scraper_himawari8();
-            last_imageID = scraper.UpdateImage(last_imageID);
+            scraper.UpdateImage();
         }
 
         public static void ResetState()
         {
-            last_imageID = "0";
+            scraper.ResetState();
         }
 
         public static void CleanCDN()
         {
-            IScraper scraper = new Scraper_himawari8();
             scraper.CleanCDN();
         }
     }
 
     interface IScraper
     {
-        string UpdateImage(string last_imageID);
+        void UpdateImage();
         void CleanCDN();
+        void ResetState();
     }
     public class Scraper_himawari8 : IScraper
     {
         private string imageID = "";
+        private static string last_imageID = "0";
         private string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
 
         private int GetImageID()
@@ -95,16 +100,16 @@ namespace EarthLiveSharp
                 HttpWebResponse response = request.GetResponse() as HttpWebResponse;
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    throw new Exception("[connection error]");
+                    throw new Exception("[himawari8 connection error]");
                 }
                 if (!response.ContentType.Contains("application/json"))
                 {
-                    throw new Exception("[no json recieved. your Internet connection is hijacked]");
+                    throw new Exception("[himawari8 no json recieved. your Internet connection is hijacked]");
                 }
                 StreamReader reader = new StreamReader(response.GetResponseStream());
                 string date = reader.ReadToEnd();
                 imageID = date.Substring(9,19).Replace("-", "/").Replace(" ", "/").Replace(":", "");
-                Trace.WriteLine("[get latest ImageID] " + imageID);
+                Trace.WriteLine("[himawari8 get latest ImageID] " + imageID);
                 reader.Close();
             }
             catch (Exception e)
@@ -184,7 +189,7 @@ namespace EarthLiveSharp
             }
             else
             {
-                Trace.WriteLine("[zoom error]");
+                Trace.WriteLine("[himawari8 zoom error]");
             }
             bitmap.Dispose();
         }
@@ -202,26 +207,27 @@ namespace EarthLiveSharp
             }
             else
             {
-                Trace.WriteLine("[create folder]");
+                Trace.WriteLine("[himawari8 create folder]");
                 Directory.CreateDirectory(Cfg.image_folder);
             }
         }
-        public string UpdateImage(string last_imageID)
+        public void UpdateImage()
         {
             InitFolder();
             if (GetImageID() == -1)
             {
-                return last_imageID;
+                return;
             }
             if (imageID.Equals(last_imageID))
             {
-                return last_imageID;
+                return;
             }
             if (SaveImage()==0)
             {
                 JoinImage();
             }
-            return imageID;
+            last_imageID = imageID;
+            return;
         }
         public void CleanCDN()
         {
@@ -243,35 +249,39 @@ namespace EarthLiveSharp
                     response = request.GetResponse() as HttpWebResponse;
                     if (response.StatusCode != HttpStatusCode.OK)
                     {
-                        throw new Exception("[clean CND cache connection error]");
+                        throw new Exception("[himawari8 clean CND cache connection error]");
                     }
                     if (!response.ContentType.Contains("application/json"))
                     {
-                        throw new Exception("[clean CND cache no json recieved. your Internet connection is hijacked]");
+                        throw new Exception("[himawari8 clean CND cache no json recieved. your Internet connection is hijacked]");
                     }
                     reader = new StreamReader(response.GetResponseStream());
                     result = reader.ReadToEnd();
                     if (result.Contains("\"error\""))
                     {
-                        throw new Exception("[clean CND cache request error]\n" + result);
+                        throw new Exception("[himawari8 clean CND cache request error]\n" + result);
                     }
                     if (result.Contains("\"partial\":false"))
                     {
-                        Trace.WriteLine("[clean CDN cache done]");
+                        Trace.WriteLine("[himawari8 clean CDN cache done]");
                         break; // end of Clean CDN
                     }
                     else
                     {
-                        Trace.WriteLine("[more images to delete]");
+                        Trace.WriteLine("[himawari8 more images to delete]");
                     }
                 }
             }
             catch (Exception e)
             {
-                Trace.WriteLine("[error when delete CDN cache]");
+                Trace.WriteLine("[himawari8 error when delete CDN cache]");
                 Trace.WriteLine(e.Message);
                 return;
             }
+        }
+        public void ResetState()
+        {
+            last_imageID = "0";
         }
     }
 
