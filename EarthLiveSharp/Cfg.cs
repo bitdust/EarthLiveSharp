@@ -42,7 +42,7 @@ namespace EarthLiveSharp
                 source_selection = Convert.ToInt16(app.Settings["source_selection"].Value);
                 saveTexture = Convert.ToBoolean(app.Settings["saveTexture"].Value);
                 saveDirectory = Convert.ToString(app.Settings["saveDirectory"].Value);
-                saveMaxCount = Convert.ToInt16(app.Settings["saveMaxCount"].Value);
+                saveMaxCount = Convert.ToInt32(app.Settings["saveMaxCount"].Value);
                 return;
             }
             catch (Exception e)
