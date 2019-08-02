@@ -17,6 +17,10 @@ namespace EarthLiveSharp
             Cfg.interval = (int)(interval.Value);
             Cfg.zoom = (int)(image_zoom.Value);
             Cfg.autostart = autostart.Checked;
+            Cfg.saveTexture = Save_Texture.Checked;
+            Cfg.saveMaxCount = (int)Save_Max_Count.Value;
+            Cfg.saveDirectory = Directory_Display.Text;
+
             if (radioButton_CDN.Checked)
             {
                 Cfg.source_selection = 1;
@@ -54,6 +58,11 @@ namespace EarthLiveSharp
             image_zoom.Value = Cfg.zoom;
             api_key.Text = Cfg.api_key;
             api_secret.Text = Cfg.api_secret;
+            Save_Texture.Checked = Cfg.saveTexture;
+            Save_Max_Count.Value = Cfg.saveMaxCount;
+            Directory_Display.Text = Cfg.saveDirectory;
+
+
             if (Cfg.source_selection == 1)
             {
                 radioButton_CDN.Checked = true;
@@ -81,7 +90,7 @@ namespace EarthLiveSharp
                 case 16: image_size.SelectedIndex = 4; break;
                 default: image_size.SelectedIndex = 0; break;
             }
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -89,7 +98,11 @@ namespace EarthLiveSharp
             Cfg.satellite = satellite.Text;
             Cfg.interval = (int)(interval.Value);
             Cfg.zoom = (int)(image_zoom.Value);
-            Cfg.autostart = autostart.Checked;     
+            Cfg.autostart = autostart.Checked;
+            Cfg.saveTexture = Save_Texture.Checked;
+            Cfg.saveMaxCount = (int)Save_Max_Count.Value;
+            Cfg.saveDirectory = Directory_Display.Text;
+
             if (radioButton_CDN.Checked)
             {
                 Cfg.source_selection = 1;
@@ -117,7 +130,7 @@ namespace EarthLiveSharp
 
         private void radioButton_Orgin_CheckedChanged(object sender, EventArgs e)
         {
-            if(radioButton_CDN.Checked)
+            if (radioButton_CDN.Checked)
             {
                 panel2.Enabled = true;
             }
@@ -134,6 +147,17 @@ namespace EarthLiveSharp
                 case "Himawari8": image_size.Enabled = true; break;
                 case "FengYun4": image_size.Enabled = false; break;
                 default: image_size.Enabled = true; break;
+            }
+        }
+
+        private void Selected_Directory_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.Description = "selected Directory";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                //string foldPath = dialog.SelectedPath;
+                Directory_Display.Text = dialog.SelectedPath;
             }
         }
     }

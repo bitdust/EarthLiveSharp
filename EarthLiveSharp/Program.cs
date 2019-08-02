@@ -13,6 +13,7 @@ namespace EarthLiveSharp
     {
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool SetProcessDPIAware();
+        
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -58,6 +59,7 @@ namespace EarthLiveSharp
 
     public static class Scrap_wrapper
     {
+        public static int SequenceCount = 0;
         private static IScraper scraper;
         public static void set_scraper()
         {
@@ -156,6 +158,7 @@ namespace EarthLiveSharp
 
         private void JoinImage()
         {
+            //int SequenceCount = 0;
             // join & convert the images to wallpaper.bmp
             Bitmap bitmap = new Bitmap(550 * Cfg.size, 550 * Cfg.size);
             Image[,] tile = new Image[Cfg.size, Cfg.size];
@@ -186,12 +189,25 @@ namespace EarthLiveSharp
                 g_2.Dispose();
                 zoom_bitmap.Save(string.Format("{0}\\wallpaper.bmp", Cfg.image_folder),System.Drawing.Imaging.ImageFormat.Bmp);
                 zoom_bitmap.Dispose();
+
             }
             else
             {
                 Trace.WriteLine("[himawari8 zoom error]");
             }
+
             bitmap.Dispose();
+
+            if (Cfg.saveTexture && Cfg.saveDirectory != "Directory not selected")
+            {
+                if (Scrap_wrapper.SequenceCount >= Cfg.saveMaxCount)
+                {
+                    Scrap_wrapper.SequenceCount = 0;
+                }
+                File.Copy(string.Format("{0}\\wallpaper.bmp", Cfg.image_folder), Cfg.saveDirectory +"\\" + "wallpaper_"+ Scrap_wrapper.SequenceCount + ".bmp", true);
+                Scrap_wrapper.SequenceCount++;
+            }
+
         }
 
         private void InitFolder()
