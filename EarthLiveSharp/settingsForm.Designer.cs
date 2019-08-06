@@ -76,7 +76,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(53, 427);
+            this.linkLabel1.Location = new System.Drawing.Point(53, 402);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(83, 12);
             this.linkLabel1.TabIndex = 7;
@@ -86,7 +86,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(173, 417);
+            this.button3.Location = new System.Drawing.Point(173, 392);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 6;
@@ -97,7 +97,7 @@
             // version_number
             // 
             this.version_number.AutoSize = true;
-            this.version_number.Location = new System.Drawing.Point(16, 427);
+            this.version_number.Location = new System.Drawing.Point(16, 402);
             this.version_number.Name = "version_number";
             this.version_number.Size = new System.Drawing.Size(29, 12);
             this.version_number.TabIndex = 12;
@@ -106,7 +106,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(254, 417);
+            this.button1.Location = new System.Drawing.Point(254, 392);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 14;
@@ -479,7 +479,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(337, 447);
+            this.ClientSize = new System.Drawing.Size(337, 425);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button1);
