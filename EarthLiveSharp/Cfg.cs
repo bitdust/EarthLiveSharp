@@ -11,7 +11,8 @@ namespace EarthLiveSharp
         public static string satellite;
         public static string image_folder;
         public static int interval;
-        public static bool autostart;    
+        public static bool autostart;
+        public static bool setwallpaper;
         public static int size;
         public static int zoom;
         public static string cloud_name;
@@ -34,6 +35,7 @@ namespace EarthLiveSharp
                 image_folder = app.Settings["image_folder"].Value;
                 interval = Convert.ToInt32(app.Settings["interval"].Value);
                 autostart = Convert.ToBoolean(app.Settings["autostart"].Value);
+                setwallpaper = Convert.ToBoolean(app.Settings["setwallpaper"].Value);
                 size = Convert.ToInt32(app.Settings["size"].Value);
                 zoom = Convert.ToInt32(app.Settings["zoom"].Value);
                 cloud_name = app.Settings["cloud_name"].Value;
@@ -61,6 +63,7 @@ namespace EarthLiveSharp
             app.Settings["image_folder"].Value = image_folder;
             app.Settings["interval"].Value = interval.ToString();
             app.Settings["autostart"].Value = autostart.ToString();
+            app.Settings["setwallpaper"].Value = setwallpaper.ToString();
             app.Settings["size"].Value = size.ToString();
             app.Settings["cloud_name"].Value = cloud_name;
             app.Settings["api_key"].Value = api_key;

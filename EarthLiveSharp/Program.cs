@@ -202,8 +202,17 @@ namespace EarthLiveSharp
                 {
                     Scrap_wrapper.SequenceCount = 0;
                 }
-                File.Copy(string.Format("{0}\\wallpaper.bmp", Cfg.image_folder), Cfg.saveDirectory +"\\" + "wallpaper_"+ Scrap_wrapper.SequenceCount + ".bmp", true);
-                Scrap_wrapper.SequenceCount++;
+                try
+                {
+                    File.Copy(string.Format("{0}\\wallpaper.bmp", Cfg.image_folder), Cfg.saveDirectory + "\\" + "wallpaper_" + Scrap_wrapper.SequenceCount + ".bmp", true);
+                    Scrap_wrapper.SequenceCount++;
+                }
+                catch (Exception e)
+                {
+                    Trace.WriteLine("[can't save wallpaper to distDirectory]");
+                    Trace.WriteLine(e.Message);
+                    return;
+                }
             }
         }
 

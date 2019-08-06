@@ -82,7 +82,8 @@ namespace EarthLiveSharp
         {
             System.Threading.Thread.Sleep(10000); // wait 10 secs for Internet reconnection after system resume.
             Scrap_wrapper.UpdateImage();
-            Wallpaper.Set(Cfg.image_folder+"\\wallpaper.bmp");
+            if (Cfg.setwallpaper)
+                Wallpaper.Set(Cfg.image_folder+"\\wallpaper.bmp");
         }
 
         private void Form2_Deactivate(object sender, EventArgs e)
@@ -147,7 +148,8 @@ namespace EarthLiveSharp
                 timer1.Interval = Cfg.interval * 1000 * 60;
                 timer1.Start();
                 Wallpaper.SetDefaultStyle();
-                Wallpaper.Set(Cfg.image_folder + "\\wallpaper.bmp");
+                if (Cfg.setwallpaper)
+                    Wallpaper.Set(Cfg.image_folder + "\\wallpaper.bmp");
                 serviceRunning = true;
                 runningLabel.Text = "    Running";
                 runningLabel.ForeColor = Color.DarkGreen;

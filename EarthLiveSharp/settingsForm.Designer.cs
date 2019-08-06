@@ -35,7 +35,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.autostart = new System.Windows.Forms.CheckBox();
             this.interval = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.radioButton_Orgin = new System.Windows.Forms.RadioButton();
@@ -58,24 +57,26 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.Save_Texture = new System.Windows.Forms.CheckBox();
-            this.SaveMaxCount = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.Directory_Display = new System.Windows.Forms.Label();
-            this.Save_Max_Count = new System.Windows.Forms.NumericUpDown();
             this.Selected_Directory = new System.Windows.Forms.Button();
+            this.Save_Max_Count = new System.Windows.Forms.NumericUpDown();
+            this.Directory_Display = new System.Windows.Forms.Label();
+            this.SaveMaxCount = new System.Windows.Forms.Label();
+            this.Save_Texture = new System.Windows.Forms.CheckBox();
+            this.setwallpaper = new System.Windows.Forms.CheckBox();
+            this.panel4 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.interval)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_zoom)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Save_Max_Count)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(49, 449);
+            this.linkLabel1.Location = new System.Drawing.Point(53, 427);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(83, 12);
             this.linkLabel1.TabIndex = 7;
@@ -85,7 +86,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(169, 439);
+            this.button3.Location = new System.Drawing.Point(173, 417);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 6;
@@ -96,7 +97,7 @@
             // version_number
             // 
             this.version_number.AutoSize = true;
-            this.version_number.Location = new System.Drawing.Point(12, 449);
+            this.version_number.Location = new System.Drawing.Point(16, 427);
             this.version_number.Name = "version_number";
             this.version_number.Size = new System.Drawing.Size(29, 12);
             this.version_number.TabIndex = 12;
@@ -105,7 +106,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(250, 439);
+            this.button1.Location = new System.Drawing.Point(254, 417);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 14;
@@ -116,10 +117,11 @@
             // autostart
             // 
             this.autostart.AutoSize = true;
-            this.autostart.Location = new System.Drawing.Point(170, 111);
+            this.autostart.Location = new System.Drawing.Point(8, 109);
             this.autostart.Name = "autostart";
-            this.autostart.Size = new System.Drawing.Size(15, 14);
+            this.autostart.Size = new System.Drawing.Size(78, 16);
             this.autostart.TabIndex = 5;
+            this.autostart.Text = "Autostart";
             this.autostart.UseVisualStyleBackColor = true;
             // 
             // interval
@@ -144,15 +146,6 @@
             0,
             0,
             0});
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(100, 110);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 12);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Autostart";
             // 
             // label2
             // 
@@ -219,8 +212,10 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.setwallpaper);
             this.panel1.Controls.Add(this.satellite);
             this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.Save_Texture);
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label6);
@@ -231,7 +226,6 @@
             this.panel1.Controls.Add(this.radioButton_Orgin);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.interval);
             this.panel1.Controls.Add(this.autostart);
             this.panel1.Location = new System.Drawing.Point(12, 12);
@@ -402,82 +396,90 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.Selected_Directory);
             this.panel3.Controls.Add(this.Save_Max_Count);
-            this.panel3.Controls.Add(this.Directory_Display);
-            this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.SaveMaxCount);
-            this.panel3.Controls.Add(this.Save_Texture);
             this.panel3.Location = new System.Drawing.Point(12, 303);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(315, 121);
+            this.panel3.Size = new System.Drawing.Size(315, 83);
             this.panel3.TabIndex = 20;
             // 
-            // Save_Texture
+            // Selected_Directory
             // 
-            this.Save_Texture.AutoSize = true;
-            this.Save_Texture.Location = new System.Drawing.Point(17, 19);
-            this.Save_Texture.Name = "Save_Texture";
-            this.Save_Texture.Size = new System.Drawing.Size(90, 16);
-            this.Save_Texture.TabIndex = 0;
-            this.Save_Texture.Text = "SaveTexture";
-            this.Save_Texture.UseVisualStyleBackColor = true;
-            // 
-            // SaveMaxCount
-            // 
-            this.SaveMaxCount.AutoSize = true;
-            this.SaveMaxCount.Location = new System.Drawing.Point(124, 19);
-            this.SaveMaxCount.Name = "SaveMaxCount";
-            this.SaveMaxCount.Size = new System.Drawing.Size(77, 12);
-            this.SaveMaxCount.TabIndex = 3;
-            this.SaveMaxCount.Text = "SaveMaxCount";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(18, 57);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(125, 12);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "SaveTextureDirectory";
-            // 
-            // Directory_Display
-            // 
-            this.Directory_Display.AutoSize = true;
-            this.Directory_Display.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Directory_Display.Location = new System.Drawing.Point(19, 92);
-            this.Directory_Display.Name = "Directory_Display";
-            this.Directory_Display.Size = new System.Drawing.Size(137, 12);
-            this.Directory_Display.TabIndex = 5;
-            this.Directory_Display.Text = "Directory not selected";
+            this.Selected_Directory.Location = new System.Drawing.Point(166, 4);
+            this.Selected_Directory.Name = "Selected_Directory";
+            this.Selected_Directory.Size = new System.Drawing.Size(144, 23);
+            this.Selected_Directory.TabIndex = 7;
+            this.Selected_Directory.Text = "Selected Directory";
+            this.Selected_Directory.UseVisualStyleBackColor = true;
+            this.Selected_Directory.Click += new System.EventHandler(this.Selected_Directory_Click);
             // 
             // Save_Max_Count
             // 
-            this.Save_Max_Count.Location = new System.Drawing.Point(207, 14);
+            this.Save_Max_Count.Location = new System.Drawing.Point(96, 4);
             this.Save_Max_Count.Maximum = new decimal(new int[] {
             99999,
             0,
             0,
             0});
             this.Save_Max_Count.Name = "Save_Max_Count";
-            this.Save_Max_Count.Size = new System.Drawing.Size(94, 21);
+            this.Save_Max_Count.Size = new System.Drawing.Size(63, 21);
             this.Save_Max_Count.TabIndex = 6;
             // 
-            // Selected_Directory
+            // Directory_Display
             // 
-            this.Selected_Directory.Location = new System.Drawing.Point(170, 52);
-            this.Selected_Directory.Name = "Selected_Directory";
-            this.Selected_Directory.Size = new System.Drawing.Size(131, 23);
-            this.Selected_Directory.TabIndex = 7;
-            this.Selected_Directory.Text = "Selected Directory";
-            this.Selected_Directory.UseVisualStyleBackColor = true;
-            this.Selected_Directory.Click += new System.EventHandler(this.Selected_Directory_Click);
+            this.Directory_Display.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Directory_Display.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Directory_Display.Location = new System.Drawing.Point(0, 0);
+            this.Directory_Display.Name = "Directory_Display";
+            this.Directory_Display.Size = new System.Drawing.Size(294, 40);
+            this.Directory_Display.TabIndex = 5;
+            this.Directory_Display.Text = "Directory not selected";
+            // 
+            // SaveMaxCount
+            // 
+            this.SaveMaxCount.AutoSize = true;
+            this.SaveMaxCount.Location = new System.Drawing.Point(9, 9);
+            this.SaveMaxCount.Name = "SaveMaxCount";
+            this.SaveMaxCount.Size = new System.Drawing.Size(77, 12);
+            this.SaveMaxCount.TabIndex = 3;
+            this.SaveMaxCount.Text = "SaveMaxCount";
+            // 
+            // Save_Texture
+            // 
+            this.Save_Texture.AutoSize = true;
+            this.Save_Texture.Location = new System.Drawing.Point(204, 109);
+            this.Save_Texture.Name = "Save_Texture";
+            this.Save_Texture.Size = new System.Drawing.Size(90, 16);
+            this.Save_Texture.TabIndex = 0;
+            this.Save_Texture.Text = "SaveTexture";
+            this.Save_Texture.UseVisualStyleBackColor = true;
+            this.Save_Texture.CheckedChanged += new System.EventHandler(this.Save_Texture_CheckedChanged);
+            // 
+            // setwallpaper
+            // 
+            this.setwallpaper.AutoSize = true;
+            this.setwallpaper.Location = new System.Drawing.Point(96, 109);
+            this.setwallpaper.Name = "setwallpaper";
+            this.setwallpaper.Size = new System.Drawing.Size(102, 16);
+            this.setwallpaper.TabIndex = 21;
+            this.setwallpaper.Text = "Set wallpaper";
+            this.setwallpaper.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.Directory_Display);
+            this.panel4.Location = new System.Drawing.Point(11, 33);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(294, 40);
+            this.panel4.TabIndex = 8;
             // 
             // settingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(337, 484);
+            this.ClientSize = new System.Drawing.Size(337, 447);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button1);
@@ -502,6 +504,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Save_Max_Count)).EndInit();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -515,7 +518,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox autostart;
         private System.Windows.Forms.NumericUpDown interval;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButton_Orgin;
@@ -538,12 +540,13 @@
         private System.Windows.Forms.ComboBox satellite;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label SaveMaxCount;
         private System.Windows.Forms.CheckBox Save_Texture;
         private System.Windows.Forms.Label Directory_Display;
         private System.Windows.Forms.NumericUpDown Save_Max_Count;
         private System.Windows.Forms.Button Selected_Directory;
+        private System.Windows.Forms.CheckBox setwallpaper;
+        private System.Windows.Forms.Panel panel4;
     }
 }
 
