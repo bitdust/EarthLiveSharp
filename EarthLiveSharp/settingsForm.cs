@@ -156,7 +156,6 @@ namespace EarthLiveSharp
             dialog.Description = "selected Directory";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                //string foldPath = dialog.SelectedPath;
                 Directory_Display.Text = dialog.SelectedPath;
             }
         }
