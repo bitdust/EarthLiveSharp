@@ -43,6 +43,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cloud_name = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.satellite = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -55,18 +57,25 @@
             this.api_secret = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.satellite = new System.Windows.Forms.ComboBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.Save_Texture = new System.Windows.Forms.CheckBox();
+            this.SaveMaxCount = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.Directory_Display = new System.Windows.Forms.Label();
+            this.Save_Max_Count = new System.Windows.Forms.NumericUpDown();
+            this.Selected_Directory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.interval)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_zoom)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Save_Max_Count)).BeginInit();
             this.SuspendLayout();
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(50, 313);
+            this.linkLabel1.Location = new System.Drawing.Point(49, 449);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(83, 12);
             this.linkLabel1.TabIndex = 7;
@@ -76,7 +85,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(170, 303);
+            this.button3.Location = new System.Drawing.Point(169, 439);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 6;
@@ -87,7 +96,7 @@
             // version_number
             // 
             this.version_number.AutoSize = true;
-            this.version_number.Location = new System.Drawing.Point(13, 313);
+            this.version_number.Location = new System.Drawing.Point(12, 449);
             this.version_number.Name = "version_number";
             this.version_number.Size = new System.Drawing.Size(29, 12);
             this.version_number.TabIndex = 12;
@@ -96,7 +105,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(251, 303);
+            this.button1.Location = new System.Drawing.Point(250, 439);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 14;
@@ -230,6 +239,29 @@
             this.panel1.Size = new System.Drawing.Size(315, 173);
             this.panel1.TabIndex = 11;
             this.panel1.Tag = "";
+            // 
+            // satellite
+            // 
+            this.satellite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.satellite.FormattingEnabled = true;
+            this.satellite.Items.AddRange(new object[] {
+            "Himawari8",
+            "FengYun4"});
+            this.satellite.Location = new System.Drawing.Point(170, 4);
+            this.satellite.Name = "satellite";
+            this.satellite.Size = new System.Drawing.Size(100, 20);
+            this.satellite.TabIndex = 19;
+            this.satellite.SelectedIndexChanged += new System.EventHandler(this.satellite_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(98, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 12);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Satellite";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // checkBox1
             // 
@@ -367,34 +399,86 @@
             this.panel2.Size = new System.Drawing.Size(315, 106);
             this.panel2.TabIndex = 15;
             // 
-            // label10
+            // panel3
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(98, 9);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(59, 12);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Satellite";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.Selected_Directory);
+            this.panel3.Controls.Add(this.Save_Max_Count);
+            this.panel3.Controls.Add(this.Directory_Display);
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Controls.Add(this.SaveMaxCount);
+            this.panel3.Controls.Add(this.Save_Texture);
+            this.panel3.Location = new System.Drawing.Point(12, 303);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(315, 121);
+            this.panel3.TabIndex = 20;
             // 
-            // satellite
+            // Save_Texture
             // 
-            this.satellite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.satellite.FormattingEnabled = true;
-            this.satellite.Items.AddRange(new object[] {
-            "Himawari8",
-            "FengYun4"});
-            this.satellite.Location = new System.Drawing.Point(170, 4);
-            this.satellite.Name = "satellite";
-            this.satellite.Size = new System.Drawing.Size(100, 20);
-            this.satellite.TabIndex = 19;
-            this.satellite.SelectedIndexChanged += new System.EventHandler(this.satellite_SelectedIndexChanged);
+            this.Save_Texture.AutoSize = true;
+            this.Save_Texture.Location = new System.Drawing.Point(17, 19);
+            this.Save_Texture.Name = "Save_Texture";
+            this.Save_Texture.Size = new System.Drawing.Size(90, 16);
+            this.Save_Texture.TabIndex = 0;
+            this.Save_Texture.Text = "SaveTexture";
+            this.Save_Texture.UseVisualStyleBackColor = true;
+            // 
+            // SaveMaxCount
+            // 
+            this.SaveMaxCount.AutoSize = true;
+            this.SaveMaxCount.Location = new System.Drawing.Point(124, 19);
+            this.SaveMaxCount.Name = "SaveMaxCount";
+            this.SaveMaxCount.Size = new System.Drawing.Size(77, 12);
+            this.SaveMaxCount.TabIndex = 3;
+            this.SaveMaxCount.Text = "SaveMaxCount";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(18, 57);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(125, 12);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "SaveTextureDirectory";
+            // 
+            // Directory_Display
+            // 
+            this.Directory_Display.AutoSize = true;
+            this.Directory_Display.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Directory_Display.Location = new System.Drawing.Point(19, 92);
+            this.Directory_Display.Name = "Directory_Display";
+            this.Directory_Display.Size = new System.Drawing.Size(137, 12);
+            this.Directory_Display.TabIndex = 5;
+            this.Directory_Display.Text = "Directory not selected";
+            // 
+            // Save_Max_Count
+            // 
+            this.Save_Max_Count.Location = new System.Drawing.Point(207, 14);
+            this.Save_Max_Count.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.Save_Max_Count.Name = "Save_Max_Count";
+            this.Save_Max_Count.Size = new System.Drawing.Size(94, 21);
+            this.Save_Max_Count.TabIndex = 6;
+            // 
+            // Selected_Directory
+            // 
+            this.Selected_Directory.Location = new System.Drawing.Point(170, 52);
+            this.Selected_Directory.Name = "Selected_Directory";
+            this.Selected_Directory.Size = new System.Drawing.Size(131, 23);
+            this.Selected_Directory.TabIndex = 7;
+            this.Selected_Directory.Text = "Selected Directory";
+            this.Selected_Directory.UseVisualStyleBackColor = true;
+            this.Selected_Directory.Click += new System.EventHandler(this.Selected_Directory_Click);
             // 
             // settingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(337, 336);
+            this.ClientSize = new System.Drawing.Size(337, 484);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.version_number);
@@ -415,6 +499,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.image_zoom)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Save_Max_Count)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -450,6 +537,13 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox satellite;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label SaveMaxCount;
+        private System.Windows.Forms.CheckBox Save_Texture;
+        private System.Windows.Forms.Label Directory_Display;
+        private System.Windows.Forms.NumericUpDown Save_Max_Count;
+        private System.Windows.Forms.Button Selected_Directory;
     }
 }
 

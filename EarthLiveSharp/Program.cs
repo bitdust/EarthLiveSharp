@@ -13,6 +13,7 @@ namespace EarthLiveSharp
     {
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool SetProcessDPIAware();
+        
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -58,6 +59,7 @@ namespace EarthLiveSharp
 
     public static class Scrap_wrapper
     {
+        public static int SequenceCount = 0;
         private static IScraper scraper;
         public static void set_scraper()
         {
@@ -191,7 +193,18 @@ namespace EarthLiveSharp
             {
                 Trace.WriteLine("[himawari8 zoom error]");
             }
+
             bitmap.Dispose();
+
+            if (Cfg.saveTexture && Cfg.saveDirectory != "selected Directory")
+            {
+                if (Scrap_wrapper.SequenceCount >= Cfg.saveMaxCount)
+                {
+                    Scrap_wrapper.SequenceCount = 0;
+                }
+                File.Copy(string.Format("{0}\\wallpaper.bmp", Cfg.image_folder), Cfg.saveDirectory +"\\" + "wallpaper_"+ Scrap_wrapper.SequenceCount + ".bmp", true);
+                Scrap_wrapper.SequenceCount++;
+            }
         }
 
         private void InitFolder()
