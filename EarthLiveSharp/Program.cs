@@ -196,7 +196,7 @@ namespace EarthLiveSharp
 
             bitmap.Dispose();
 
-            if (Cfg.saveTexture && Cfg.saveDirectory != "Directory not selected")
+            if (Cfg.saveTexture && Cfg.saveDirectory != "selected Directory")
             {
                 if (Scrap_wrapper.SequenceCount >= Cfg.saveMaxCount)
                 {
