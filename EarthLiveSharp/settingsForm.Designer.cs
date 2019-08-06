@@ -42,8 +42,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cloud_name = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.setwallpaper = new System.Windows.Forms.CheckBox();
             this.satellite = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.Save_Texture = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -57,20 +59,18 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.Directory_Display = new System.Windows.Forms.Label();
             this.Selected_Directory = new System.Windows.Forms.Button();
             this.Save_Max_Count = new System.Windows.Forms.NumericUpDown();
-            this.Directory_Display = new System.Windows.Forms.Label();
             this.SaveMaxCount = new System.Windows.Forms.Label();
-            this.Save_Texture = new System.Windows.Forms.CheckBox();
-            this.setwallpaper = new System.Windows.Forms.CheckBox();
-            this.panel4 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.interval)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_zoom)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Save_Max_Count)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Save_Max_Count)).BeginInit();
             this.SuspendLayout();
             // 
             // linkLabel1
@@ -234,6 +234,16 @@
             this.panel1.TabIndex = 11;
             this.panel1.Tag = "";
             // 
+            // setwallpaper
+            // 
+            this.setwallpaper.AutoSize = true;
+            this.setwallpaper.Location = new System.Drawing.Point(96, 109);
+            this.setwallpaper.Name = "setwallpaper";
+            this.setwallpaper.Size = new System.Drawing.Size(96, 16);
+            this.setwallpaper.TabIndex = 21;
+            this.setwallpaper.Text = "SetWallpaper";
+            this.setwallpaper.UseVisualStyleBackColor = true;
+            // 
             // satellite
             // 
             this.satellite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -256,6 +266,17 @@
             this.label10.TabIndex = 18;
             this.label10.Text = "Satellite";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Save_Texture
+            // 
+            this.Save_Texture.AutoSize = true;
+            this.Save_Texture.Location = new System.Drawing.Point(204, 109);
+            this.Save_Texture.Name = "Save_Texture";
+            this.Save_Texture.Size = new System.Drawing.Size(90, 16);
+            this.Save_Texture.TabIndex = 0;
+            this.Save_Texture.Text = "SaveTexture";
+            this.Save_Texture.UseVisualStyleBackColor = true;
+            this.Save_Texture.CheckedChanged += new System.EventHandler(this.Save_Texture_CheckedChanged);
             // 
             // checkBox1
             // 
@@ -405,6 +426,24 @@
             this.panel3.Size = new System.Drawing.Size(315, 83);
             this.panel3.TabIndex = 20;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.Directory_Display);
+            this.panel4.Location = new System.Drawing.Point(11, 33);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(294, 40);
+            this.panel4.TabIndex = 8;
+            // 
+            // Directory_Display
+            // 
+            this.Directory_Display.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Directory_Display.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Directory_Display.Location = new System.Drawing.Point(0, 0);
+            this.Directory_Display.Name = "Directory_Display";
+            this.Directory_Display.Size = new System.Drawing.Size(294, 40);
+            this.Directory_Display.TabIndex = 5;
+            this.Directory_Display.Text = "Directory not selected";
+            // 
             // Selected_Directory
             // 
             this.Selected_Directory.Location = new System.Drawing.Point(166, 4);
@@ -427,16 +466,6 @@
             this.Save_Max_Count.Size = new System.Drawing.Size(63, 21);
             this.Save_Max_Count.TabIndex = 6;
             // 
-            // Directory_Display
-            // 
-            this.Directory_Display.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Directory_Display.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Directory_Display.Location = new System.Drawing.Point(0, 0);
-            this.Directory_Display.Name = "Directory_Display";
-            this.Directory_Display.Size = new System.Drawing.Size(294, 40);
-            this.Directory_Display.TabIndex = 5;
-            this.Directory_Display.Text = "Directory not selected";
-            // 
             // SaveMaxCount
             // 
             this.SaveMaxCount.AutoSize = true;
@@ -445,35 +474,6 @@
             this.SaveMaxCount.Size = new System.Drawing.Size(77, 12);
             this.SaveMaxCount.TabIndex = 3;
             this.SaveMaxCount.Text = "SaveMaxCount";
-            // 
-            // Save_Texture
-            // 
-            this.Save_Texture.AutoSize = true;
-            this.Save_Texture.Location = new System.Drawing.Point(204, 109);
-            this.Save_Texture.Name = "Save_Texture";
-            this.Save_Texture.Size = new System.Drawing.Size(90, 16);
-            this.Save_Texture.TabIndex = 0;
-            this.Save_Texture.Text = "SaveTexture";
-            this.Save_Texture.UseVisualStyleBackColor = true;
-            this.Save_Texture.CheckedChanged += new System.EventHandler(this.Save_Texture_CheckedChanged);
-            // 
-            // setwallpaper
-            // 
-            this.setwallpaper.AutoSize = true;
-            this.setwallpaper.Location = new System.Drawing.Point(96, 109);
-            this.setwallpaper.Name = "setwallpaper";
-            this.setwallpaper.Size = new System.Drawing.Size(102, 16);
-            this.setwallpaper.TabIndex = 21;
-            this.setwallpaper.Text = "Set wallpaper";
-            this.setwallpaper.UseVisualStyleBackColor = true;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.Directory_Display);
-            this.panel4.Location = new System.Drawing.Point(11, 33);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(294, 40);
-            this.panel4.TabIndex = 8;
             // 
             // settingsForm
             // 
@@ -503,8 +503,8 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Save_Max_Count)).EndInit();
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Save_Max_Count)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
