@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EarthLiveSharp
@@ -25,7 +26,7 @@ namespace EarthLiveSharp
             this.trayMenu.MenuItems.Add(stopService);
             this.trayMenu.MenuItems.Add(settingsMenu);
             this.trayMenu.MenuItems.Add(quitService);
-            startService.Click += new EventHandler(this.startService_Click);
+            startService.Click += new EventHandler(this.StartService_Click);
             stopService.Click += new EventHandler(this.stopService_Click);
             settingsMenu.Click += new EventHandler(this.settingsMenu_Click);
             quitService.Click += new EventHandler(this.quitService_Click);
@@ -33,9 +34,9 @@ namespace EarthLiveSharp
             contextMenuSetter();
         }
 
-        private void startService_Click(object sender, EventArgs e)
+        private async void StartService_Click(object sender, EventArgs e)
         {
-            startLogic();
+            await StartLogic();
         }
         private void stopService_Click(object sender, EventArgs e)
         {
@@ -69,19 +70,22 @@ namespace EarthLiveSharp
             f1.ShowDialog();
         }
 
-        private void button_start_Click(object sender, EventArgs e)
+        private async void button_start_Click(object sender, EventArgs e)
         {
-            startLogic();
+            await StartLogic();
         }
 
         private void button_stop_Click(object sender, EventArgs e)
         {
             stopLogic();
         }
-        private void timer1_Tick(object sender, EventArgs e)
+        private async void timer1_Tick(object sender, EventArgs e)
         {
-            System.Threading.Thread.Sleep(10000); // wait 10 secs for Internet reconnection after system resume.
-            Scrap_wrapper.UpdateImage();
+            await Task.Run(async () =>
+            {
+                await Task.Delay(TimeSpan.FromSeconds(10)); // wait 10 secs for Internet reconnection after system resume.
+                Scrap_wrapper.UpdateImage();
+            });
             if (Cfg.setwallpaper)
                 Wallpaper.Set(Cfg.image_folder+"\\wallpaper.bmp");
         }
@@ -136,29 +140,33 @@ namespace EarthLiveSharp
         }
 
         //All logic pertaining to starting the service
-        private void startLogic()
+        private async Task StartLogic()
         {
             Scrap_wrapper.ResetState();
+            button_start.Enabled = false;
+            button_stop.Enabled = true;
+            button_settings.Enabled = false;
+            timer1.Interval = Cfg.interval * 1000 * 60;
+            timer1.Start();
+            runningLabel.Text = "    Running";
+            runningLabel.ForeColor = Color.DarkGreen;
             if (!serviceRunning)
             {
-                button_start.Enabled = false;
-                button_stop.Enabled = true;
-                button_settings.Enabled = false;
-                Scrap_wrapper.UpdateImage();
-                timer1.Interval = Cfg.interval * 1000 * 60;
-                timer1.Start();
-                Wallpaper.SetDefaultStyle();
-                if (Cfg.setwallpaper)
-                    Wallpaper.Set(Cfg.image_folder + "\\wallpaper.bmp");
+                await Task.Run(() =>
+                {
+                    Scrap_wrapper.UpdateImage();
+                    Wallpaper.SetDefaultStyle();
+                    if (Cfg.setwallpaper)
+                        Wallpaper.Set(Cfg.image_folder + "\\wallpaper.bmp");
+                });
                 serviceRunning = true;
-                runningLabel.Text = "    Running";
-                runningLabel.ForeColor = Color.DarkGreen;
+                contextMenuSetter();
             }
             else
             {
                 MessageBox.Show("Service already running");
             }
-            contextMenuSetter();
+
         }
 
         //checks if service running and changes context menu based on result.
