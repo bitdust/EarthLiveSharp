@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,6 +15,7 @@ namespace EarthLiveSharp
         MenuItem quitService = new MenuItem("Quit");
         ContextMenu trayMenu = new ContextMenu();
 
+        private CancellationTokenSource _cancelSource;
         public mainForm()
         {
             InitializeComponent();
@@ -36,7 +38,25 @@ namespace EarthLiveSharp
 
         private async void StartService_Click(object sender, EventArgs e)
         {
-            await StartLogic();
+            Scrap_wrapper.ResetState();
+            button_start.Enabled = false;
+            button_stop.Enabled = true;
+            button_settings.Enabled = false;
+            timer1.Interval = Cfg.interval * 1000 * 60;
+            timer1.Start();
+            runningLabel.Text = "    Running";
+            runningLabel.ForeColor = Color.DarkGreen;
+            _cancelSource = new CancellationTokenSource();
+            if (!serviceRunning)
+            {
+                serviceRunning = true;
+                await StartLogic(_cancelSource);
+                contextMenuSetter();
+            }
+            else
+            {
+                MessageBox.Show("Service already running");
+            }
         }
         private void stopService_Click(object sender, EventArgs e)
         {
@@ -72,7 +92,26 @@ namespace EarthLiveSharp
 
         private async void button_start_Click(object sender, EventArgs e)
         {
-            await StartLogic();
+            Scrap_wrapper.ResetState();
+            button_start.Enabled = false;
+            button_stop.Enabled = true;
+            button_settings.Enabled = false;
+            timer1.Interval = Cfg.interval * 1000 * 60;
+            timer1.Start();
+            runningLabel.Text = "    Running";
+            runningLabel.ForeColor = Color.DarkGreen;
+            _cancelSource = new CancellationTokenSource();
+            if (!serviceRunning)
+            {
+                serviceRunning = true;
+                await StartLogic(_cancelSource);
+                contextMenuSetter();
+            }
+            else
+            {
+                MessageBox.Show("Service already running");
+            }
+
         }
 
         private void button_stop_Click(object sender, EventArgs e)
@@ -81,11 +120,12 @@ namespace EarthLiveSharp
         }
         private async void timer1_Tick(object sender, EventArgs e)
         {
+            _cancelSource = new CancellationTokenSource();
             await Task.Run(async () =>
             {
                 await Task.Delay(TimeSpan.FromSeconds(10)); // wait 10 secs for Internet reconnection after system resume.
-                Scrap_wrapper.UpdateImage();
-            });
+                Scrap_wrapper.UpdateImage(_cancelSource);
+            }, _cancelSource.Token);
             if (Cfg.setwallpaper)
                 Wallpaper.Set(Cfg.image_folder+"\\wallpaper.bmp");
         }
@@ -127,6 +167,7 @@ namespace EarthLiveSharp
         {
             if (serviceRunning)
             {
+                _cancelSource.Cancel();
                 timer1.Stop();
                 button_start.Enabled = true;
                 button_stop.Enabled = false;
@@ -140,33 +181,12 @@ namespace EarthLiveSharp
         }
 
         //All logic pertaining to starting the service
-        private async Task StartLogic()
+        private async Task StartLogic(CancellationTokenSource _cancelSource)
         {
-            Scrap_wrapper.ResetState();
-            button_start.Enabled = false;
-            button_stop.Enabled = true;
-            button_settings.Enabled = false;
-            timer1.Interval = Cfg.interval * 1000 * 60;
-            timer1.Start();
-            runningLabel.Text = "    Running";
-            runningLabel.ForeColor = Color.DarkGreen;
-            if (!serviceRunning)
-            {
-                await Task.Run(() =>
-                {
-                    Scrap_wrapper.UpdateImage();
-                    Wallpaper.SetDefaultStyle();
-                    if (Cfg.setwallpaper)
-                        Wallpaper.Set(Cfg.image_folder + "\\wallpaper.bmp");
-                });
-                serviceRunning = true;
-                contextMenuSetter();
-            }
-            else
-            {
-                MessageBox.Show("Service already running");
-            }
-
+            await Scrap_wrapper.UpdateImage(_cancelSource);
+            Wallpaper.SetDefaultStyle();
+            if (Cfg.setwallpaper)
+                Wallpaper.Set(Cfg.image_folder + "\\wallpaper.bmp");
         }
 
         //checks if service running and changes context menu based on result.
