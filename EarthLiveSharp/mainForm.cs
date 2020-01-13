@@ -60,7 +60,7 @@ namespace EarthLiveSharp
         }
         private void stopService_Click(object sender, EventArgs e)
         {
-            stopLogic();
+            StopLogic();
         }
         private void settingsMenu_Click(object sender, EventArgs e)
         {
@@ -72,7 +72,7 @@ namespace EarthLiveSharp
             var confirmIfQuitting = MessageBox.Show("Are you sure you want to quit?","Stopping Service", MessageBoxButtons.YesNo);
             if (confirmIfQuitting == DialogResult.Yes)
             {
-                stopLogic();
+                StopLogic();
                 Application.Exit();
             }
 
@@ -116,16 +116,13 @@ namespace EarthLiveSharp
 
         private void button_stop_Click(object sender, EventArgs e)
         {
-            stopLogic();
+            StopLogic();
         }
         private async void timer1_Tick(object sender, EventArgs e)
         {
             _cancelSource = new CancellationTokenSource();
-            await Task.Run(async () =>
-            {
-                await Task.Delay(TimeSpan.FromSeconds(10)); // wait 10 secs for Internet reconnection after system resume.
-                Scrap_wrapper.UpdateImage(_cancelSource);
-            }, _cancelSource.Token);
+            await Task.Delay(TimeSpan.FromSeconds(10)); // wait 10 secs for Internet reconnection after system resume.
+            await Scrap_wrapper.UpdateImage(_cancelSource);
             if (Cfg.setwallpaper)
                 Wallpaper.Set(Cfg.image_folder+"\\wallpaper.bmp");
         }
@@ -163,7 +160,7 @@ namespace EarthLiveSharp
         }
 
         //All logic pertaining to stopping the service
-        private void stopLogic()
+        private void StopLogic()
         {
             if (serviceRunning)
             {
