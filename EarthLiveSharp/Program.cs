@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Threading;
+using System.Net.Http;
 
 namespace EarthLiveSharp
 {
@@ -97,25 +98,23 @@ namespace EarthLiveSharp
         private static string last_imageID = "0";
         private string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
 
-        private int GetImageID()
+        private async Task<int> GetImageID(CancellationTokenSource _source)
         {
-            HttpWebRequest request = WebRequest.Create(json_url) as HttpWebRequest;
+            HttpClient client = new HttpClient();
             try 
             {
-                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                var response = await client.GetAsync(json_url, _source.Token);
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
                     throw new Exception("[himawari8 connection error]");
                 }
-                if (!response.ContentType.Contains("application/json"))
+                if (!response.Content.Headers.ContentType.MediaType.Contains("application/json"))
                 {
                     throw new Exception("[himawari8 no json recieved. your Internet connection is hijacked]");
                 }
-                StreamReader reader = new StreamReader(response.GetResponseStream());
-                string date = reader.ReadToEnd();
+                string date =await  response.Content.ReadAsStringAsync();
                 imageID = date.Substring(9,19).Replace("-", "/").Replace(" ", "/").Replace(":", "");
                 Trace.WriteLine("[himawari8 get latest ImageID] " + imageID);
-                reader.Close();
             }
             catch (Exception e)
             {
@@ -240,7 +239,7 @@ namespace EarthLiveSharp
         public async Task UpdateImage(CancellationTokenSource _source)
         {
             InitFolder();
-            if (GetImageID() == -1)
+            if (await GetImageID(_source) == -1)
             {
                 return;
             }

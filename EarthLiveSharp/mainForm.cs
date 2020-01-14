@@ -74,7 +74,7 @@ namespace EarthLiveSharp
             ChangeWidgetState();
             timer1.Interval = Cfg.interval * 1000 * 60;
             timer1.Start();
-            _cancelSource = new CancellationTokenSource();
+            _cancelSource = new CancellationTokenSource(); //send the cancelation token to the download service to support Cancelation task.
             if (!serviceRunning)
             {
                 serviceRunning = true;
