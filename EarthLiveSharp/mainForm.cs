@@ -28,7 +28,7 @@ namespace EarthLiveSharp
             this.trayMenu.MenuItems.Add(stopService);
             this.trayMenu.MenuItems.Add(settingsMenu);
             this.trayMenu.MenuItems.Add(quitService);
-            startService.Click += new EventHandler(this.StartService_Click);
+            startService.Click += new EventHandler(this.button_start_Click);
             stopService.Click += new EventHandler(this.stopService_Click);
             settingsMenu.Click += new EventHandler(this.settingsMenu_Click);
             quitService.Click += new EventHandler(this.quitService_Click);
@@ -36,28 +36,6 @@ namespace EarthLiveSharp
             contextMenuSetter();
         }
 
-        private async void StartService_Click(object sender, EventArgs e)
-        {
-            Scrap_wrapper.ResetState();
-            button_start.Enabled = false;
-            button_stop.Enabled = true;
-            button_settings.Enabled = false;
-            timer1.Interval = Cfg.interval * 1000 * 60;
-            timer1.Start();
-            runningLabel.Text = "    Running";
-            runningLabel.ForeColor = Color.DarkGreen;
-            _cancelSource = new CancellationTokenSource();
-            if (!serviceRunning)
-            {
-                serviceRunning = true;
-                await StartLogic(_cancelSource);
-                contextMenuSetter();
-            }
-            else
-            {
-                MessageBox.Show("Service already running");
-            }
-        }
         private void stopService_Click(object sender, EventArgs e)
         {
             StopLogic();
@@ -93,13 +71,9 @@ namespace EarthLiveSharp
         private async void button_start_Click(object sender, EventArgs e)
         {
             Scrap_wrapper.ResetState();
-            button_start.Enabled = false;
-            button_stop.Enabled = true;
-            button_settings.Enabled = false;
+            ChangeWidgetState();
             timer1.Interval = Cfg.interval * 1000 * 60;
             timer1.Start();
-            runningLabel.Text = "    Running";
-            runningLabel.ForeColor = Color.DarkGreen;
             _cancelSource = new CancellationTokenSource();
             if (!serviceRunning)
             {
@@ -112,6 +86,26 @@ namespace EarthLiveSharp
                 MessageBox.Show("Service already running");
             }
 
+        }
+
+        private void ChangeWidgetState()
+        {
+            if(!serviceRunning)
+            {
+                runningLabel.Text = "    Running";
+                runningLabel.ForeColor = Color.DarkGreen;
+                button_start.Enabled = false;
+                button_stop.Enabled = true;
+                button_settings.Enabled = false;
+            }
+            else
+            {
+                button_start.Enabled = true;
+                button_stop.Enabled = false;
+                button_settings.Enabled = true;
+                runningLabel.Text = "Not Running";
+                runningLabel.ForeColor = Color.DarkRed;
+            }
         }
 
         private void button_stop_Click(object sender, EventArgs e)
@@ -166,11 +160,7 @@ namespace EarthLiveSharp
             {
                 _cancelSource.Cancel();
                 timer1.Stop();
-                button_start.Enabled = true;
-                button_stop.Enabled = false;
-                button_settings.Enabled = true;
-                runningLabel.Text = "Not Running";
-                runningLabel.ForeColor = Color.DarkRed;
+                ChangeWidgetState();
                 serviceRunning = false;
             }
             else if (!serviceRunning) MessageBox.Show("Service is not currently running");
