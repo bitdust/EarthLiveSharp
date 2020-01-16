@@ -6,6 +6,10 @@ using System.IO;
 using System.Diagnostics;
 using Microsoft.Win32;
 using System.Drawing;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Threading;
+using System.Net.Http;
 
 namespace EarthLiveSharp
 {
@@ -66,9 +70,9 @@ namespace EarthLiveSharp
             scraper = new Scraper_himawari8();
             return;
         }
-        public static void UpdateImage()
+        public static async Task UpdateImage(CancellationTokenSource _cancelSource)
         {
-            scraper.UpdateImage();
+            await scraper.UpdateImage(_cancelSource);
         }
 
         public static void ResetState()
@@ -84,7 +88,7 @@ namespace EarthLiveSharp
 
     interface IScraper
     {
-        void UpdateImage();
+        Task UpdateImage(CancellationTokenSource _cancelSource);
         void CleanCDN();
         void ResetState();
     }
@@ -94,25 +98,23 @@ namespace EarthLiveSharp
         private static string last_imageID = "0";
         private string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
 
-        private int GetImageID()
+        private async Task<int> GetImageID(CancellationTokenSource _source)
         {
-            HttpWebRequest request = WebRequest.Create(json_url) as HttpWebRequest;
+            HttpClient client = new HttpClient();
             try 
             {
-                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                var response = await client.GetAsync(json_url, _source.Token);
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
                     throw new Exception("[himawari8 connection error]");
                 }
-                if (!response.ContentType.Contains("application/json"))
+                if (!response.Content.Headers.ContentType.MediaType.Contains("application/json"))
                 {
                     throw new Exception("[himawari8 no json recieved. your Internet connection is hijacked]");
                 }
-                StreamReader reader = new StreamReader(response.GetResponseStream());
-                string date = reader.ReadToEnd();
+                string date =await  response.Content.ReadAsStringAsync();
                 imageID = date.Substring(9,19).Replace("-", "/").Replace(" ", "/").Replace(":", "");
                 Trace.WriteLine("[himawari8 get latest ImageID] " + imageID);
-                reader.Close();
             }
             catch (Exception e)
             {
@@ -122,10 +124,11 @@ namespace EarthLiveSharp
             return 0;
         }
 
-        private int SaveImage()
+        private async Task<int> SaveImage(CancellationTokenSource _source)
         {
             WebClient client = new WebClient();
             string image_source = "";
+            _source.Token.Register(client.CancelAsync);
             if (Cfg.source_selection == 1)
             {
                image_source = "http://res.cloudinary.com/" + Cfg.cloud_name + "/image/fetch/http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
@@ -142,7 +145,7 @@ namespace EarthLiveSharp
                     {
                         string url = string.Format("{0}/{1}d/550/{2}_{3}_{4}.png", image_source, Cfg.size, imageID, ii, jj);
                         string image_path = string.Format("{0}\\{1}_{2}.png", Cfg.image_folder, ii, jj); // remove the '/' in imageID
-                        client.DownloadFile(url, image_path);
+                        await client.DownloadFileTaskAsync(url, image_path);
                     }
                 }
                 Trace.WriteLine("[save image] " + imageID);
@@ -233,10 +236,10 @@ namespace EarthLiveSharp
                 Directory.CreateDirectory(Cfg.image_folder);
             }
         }
-        public void UpdateImage()
+        public async Task UpdateImage(CancellationTokenSource _source)
         {
             InitFolder();
-            if (GetImageID() == -1)
+            if (await GetImageID(_source) == -1)
             {
                 return;
             }
@@ -244,9 +247,9 @@ namespace EarthLiveSharp
             {
                 return;
             }
-            if (SaveImage()==0)
+            if (await SaveImage(_source) == 0)
             {
-                JoinImage();
+               JoinImage();
             }
             last_imageID = imageID;
             return;
