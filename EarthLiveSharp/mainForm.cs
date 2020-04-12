@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace EarthLiveSharp
 {
@@ -94,11 +95,19 @@ namespace EarthLiveSharp
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Interval = Cfg.interval * 1000 * 60;
-            System.Threading.Thread.Sleep(6000); // wait 6 secs for Internet reconnection after system resume.
-            Scrap_wrapper.UpdateImage();
-            if (Cfg.setwallpaper)
-                Wallpaper.Set(Cfg.image_folder+"\\wallpaper.bmp");
+            timer1.Enabled = false; // simple way to prevent timer conflict, but it works.
+            try
+            {
+                timer1.Interval = Cfg.interval * 1000 * 60; // set the interval
+                System.Threading.Thread.Sleep(3000); // wait 3 secs for Internet reconnection after system resume.
+                Scrap_wrapper.UpdateImage();
+                if (Cfg.setwallpaper)
+                    Wallpaper.Set(Cfg.image_folder + "\\wallpaper.bmp");
+            }
+            finally
+            {
+                timer1.Enabled = true;
+            }
         }
 
         private void Form2_Deactivate(object sender, EventArgs e)
@@ -159,7 +168,7 @@ namespace EarthLiveSharp
                 button_start.Enabled = false;
                 button_stop.Enabled = true;
                 button_settings.Enabled = false;
-                timer1.Interval = 1000; // trick to trigger timer immediately.
+                timer1.Interval = 5000; // trick to trigger timer immediately.
                 timer1.Start();
                 serviceRunning = true;
                 runningLabel.Text = "    Running";
@@ -192,7 +201,8 @@ namespace EarthLiveSharp
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            Scrap_wrapper.CleanCDN();
+            if (Cfg.source_selection != 0)
+                Scrap_wrapper.CleanCDN();
         }
 
     }

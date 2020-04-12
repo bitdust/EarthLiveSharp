@@ -92,7 +92,7 @@ namespace EarthLiveSharp
     {
         private string imageID = "";
         private static string last_imageID = "0";
-        private string json_url = "http://himawari8.nict.go.jp/img/D531106/latest.json";
+        private string json_url = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/latest.json";
 
         private int GetImageID()
         {
@@ -128,20 +128,22 @@ namespace EarthLiveSharp
             string image_source = "";
             if (Cfg.source_selection == 1)
             {
-               image_source = "http://res.cloudinary.com/" + Cfg.cloud_name + "/image/fetch/http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
+               image_source = "https://res.cloudinary.com/" + Cfg.cloud_name + "/image/fetch/http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
             }
             else
             {
                image_source = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
             }
+            string url = "";
+            string image_path = "";
             try
             {
                 for (int ii = 0; ii < Cfg.size; ii++)
                 {
                     for (int jj = 0; jj < Cfg.size; jj++)
                     {
-                        string url = string.Format("{0}/{1}d/550/{2}_{3}_{4}.png", image_source, Cfg.size, imageID, ii, jj);
-                        string image_path = string.Format("{0}\\{1}_{2}.png", Cfg.image_folder, ii, jj); // remove the '/' in imageID
+                        url = string.Format("{0}/{1}d/550/{2}_{3}_{4}.png", image_source, Cfg.size, imageID, ii, jj);
+                        image_path = string.Format("{0}\\{1}_{2}.png", Cfg.image_folder, ii, jj); // remove the '/' in imageID
                         client.DownloadFile(url, image_path);
                     }
                 }
@@ -151,7 +153,7 @@ namespace EarthLiveSharp
             catch (Exception e)
             {
                 Trace.WriteLine(e.Message + " " + imageID);
-                Trace.WriteLine(string.Format("[image_folder]{0} [image_source]{1} [size]{2}",Cfg.image_folder, image_source, Cfg.size));
+                Trace.WriteLine(string.Format("[url]{0} [image_path]{1}", url, image_path));
                 return -1;
             }
         }
@@ -254,7 +256,6 @@ namespace EarthLiveSharp
         public void CleanCDN()
         {
             Cfg.Load();
-            if (Cfg.source_selection == 0) return;
             if (Cfg.api_key.Length == 0) return;
             if (Cfg.api_secret.Length == 0) return;
             try
