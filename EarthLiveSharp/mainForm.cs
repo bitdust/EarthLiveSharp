@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Threading;
 
 namespace EarthLiveSharp
 {
@@ -15,6 +16,7 @@ namespace EarthLiveSharp
         ContextMenu trayMenu = new ContextMenu();
 
         System.Timers.Timer timer1 = new System.Timers.Timer(); // timer to update image
+        static int inTimer1 = 0; // lock for timer1
         System.Timers.Timer timer2 = new System.Timers.Timer(); // timer to clean CDN cach
 
         public mainForm()
@@ -95,18 +97,15 @@ namespace EarthLiveSharp
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Enabled = false; // simple way to prevent timer conflict, but it works.
-            try
+            if (Interlocked.Exchange(ref inTimer1, 1) == 0)
             {
-                timer1.Interval = Cfg.interval * 1000 * 60; // set the interval
-                System.Threading.Thread.Sleep(3000); // wait 3 secs for Internet reconnection after system resume.
+                if (timer1.Interval != Cfg.interval * 1000 * 60)
+                    timer1.Interval = Cfg.interval * 1000 * 60; // set the interval
+                System.Threading.Thread.Sleep(5000); // wait 5 secs for Internet reconnection after system resume.
                 Scrap_wrapper.UpdateImage();
                 if (Cfg.setwallpaper)
                     Wallpaper.Set(Cfg.image_folder + "\\wallpaper.bmp");
-            }
-            finally
-            {
-                timer1.Enabled = true;
+                Interlocked.Exchange(ref inTimer1, 0);
             }
         }
 
@@ -168,7 +167,7 @@ namespace EarthLiveSharp
                 button_start.Enabled = false;
                 button_stop.Enabled = true;
                 button_settings.Enabled = false;
-                timer1.Interval = 5000; // trick to trigger timer immediately.
+                timer1.Interval = 1000; // trick to trigger timer immediately.
                 timer1.Start();
                 serviceRunning = true;
                 runningLabel.Text = "    Running";
