@@ -13,11 +13,15 @@ namespace EarthLiveSharp
         MenuItem quitService = new MenuItem("Quit");
         ContextMenu trayMenu = new ContextMenu();
 
+        System.Timers.Timer timer1 = new System.Timers.Timer(); // timer to update image
+        System.Timers.Timer timer2 = new System.Timers.Timer(); // timer to clean CDN cach
+
         public mainForm()
         {
             InitializeComponent();
             createContextMenu();
             notifyIcon1.ContextMenu = trayMenu;
+            InitializeTimers();
         }
         private void createContextMenu()
         {
@@ -31,6 +35,16 @@ namespace EarthLiveSharp
             quitService.Click += new EventHandler(this.quitService_Click);
 
             contextMenuSetter();
+        }
+        private void InitializeTimers()
+        {
+            timer1.Elapsed += new System.Timers.ElapsedEventHandler(timer1_Tick);
+            timer1.AutoReset = true;
+            timer1.Enabled = false;
+            timer2.Elapsed += new System.Timers.ElapsedEventHandler(timer2_Tick);
+            timer2.AutoReset = true;
+            timer2.Interval = 3600000;
+            timer2.Enabled = true;
         }
 
         private void startService_Click(object sender, EventArgs e)
@@ -80,7 +94,8 @@ namespace EarthLiveSharp
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            System.Threading.Thread.Sleep(10000); // wait 10 secs for Internet reconnection after system resume.
+            timer1.Interval = Cfg.interval * 1000 * 60;
+            System.Threading.Thread.Sleep(6000); // wait 6 secs for Internet reconnection after system resume.
             Scrap_wrapper.UpdateImage();
             if (Cfg.setwallpaper)
                 Wallpaper.Set(Cfg.image_folder+"\\wallpaper.bmp");
@@ -144,12 +159,8 @@ namespace EarthLiveSharp
                 button_start.Enabled = false;
                 button_stop.Enabled = true;
                 button_settings.Enabled = false;
-                Scrap_wrapper.UpdateImage();
-                timer1.Interval = Cfg.interval * 1000 * 60;
+                timer1.Interval = 1000; // trick to trigger timer immediately.
                 timer1.Start();
-                Wallpaper.SetDefaultStyle();
-                if (Cfg.setwallpaper)
-                    Wallpaper.Set(Cfg.image_folder + "\\wallpaper.bmp");
                 serviceRunning = true;
                 runningLabel.Text = "    Running";
                 runningLabel.ForeColor = Color.DarkGreen;
@@ -167,12 +178,14 @@ namespace EarthLiveSharp
             if (serviceRunning)
             {
                 startService.Enabled = false;
+                settingsMenu.Enabled = false;
                 stopService.Enabled = true;
             }
 
             if (!serviceRunning)
             {
                 stopService.Enabled = false;
+                settingsMenu.Enabled = true;
                 startService.Enabled = true;
             }
         }

@@ -254,6 +254,7 @@ namespace EarthLiveSharp
         public void CleanCDN()
         {
             Cfg.Load();
+            if (Cfg.source_selection == 0) return;
             if (Cfg.api_key.Length == 0) return;
             if (Cfg.api_secret.Length == 0) return;
             try

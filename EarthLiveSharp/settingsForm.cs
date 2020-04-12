@@ -89,7 +89,6 @@ namespace EarthLiveSharp
             }
             else
             {
-                radioButton_Orgin.Checked = true;
                 panel3.Enabled = false;
             }
 
