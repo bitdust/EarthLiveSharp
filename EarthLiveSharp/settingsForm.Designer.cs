@@ -76,9 +76,10 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(53, 379);
+            this.linkLabel1.Location = new System.Drawing.Point(66, 474);
+            this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(83, 12);
+            this.linkLabel1.Size = new System.Drawing.Size(111, 15);
             this.linkLabel1.TabIndex = 7;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "check upgrade";
@@ -86,9 +87,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(173, 369);
+            this.button3.Location = new System.Drawing.Point(216, 461);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(94, 29);
             this.button3.TabIndex = 6;
             this.button3.Text = "Apply";
             this.button3.UseVisualStyleBackColor = true;
@@ -97,18 +99,20 @@
             // version_number
             // 
             this.version_number.AutoSize = true;
-            this.version_number.Location = new System.Drawing.Point(16, 379);
+            this.version_number.Location = new System.Drawing.Point(20, 474);
+            this.version_number.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.version_number.Name = "version_number";
-            this.version_number.Size = new System.Drawing.Size(29, 12);
+            this.version_number.Size = new System.Drawing.Size(39, 15);
             this.version_number.TabIndex = 12;
             this.version_number.Text = "v0.0";
             this.version_number.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(254, 369);
+            this.button1.Location = new System.Drawing.Point(318, 461);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 14;
             this.button1.Text = "Ok";
             this.button1.UseVisualStyleBackColor = true;
@@ -117,16 +121,18 @@
             // autostart
             // 
             this.autostart.AutoSize = true;
-            this.autostart.Location = new System.Drawing.Point(8, 87);
+            this.autostart.Location = new System.Drawing.Point(10, 109);
+            this.autostart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.autostart.Name = "autostart";
-            this.autostart.Size = new System.Drawing.Size(78, 16);
+            this.autostart.Size = new System.Drawing.Size(101, 19);
             this.autostart.TabIndex = 5;
             this.autostart.Text = "Autostart";
             this.autostart.UseVisualStyleBackColor = true;
             // 
             // interval
             // 
-            this.interval.Location = new System.Drawing.Point(170, 63);
+            this.interval.Location = new System.Drawing.Point(212, 79);
+            this.interval.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.interval.Maximum = new decimal(new int[] {
             120,
             0,
@@ -139,7 +145,7 @@
             0});
             this.interval.Name = "interval";
             this.interval.ReadOnly = true;
-            this.interval.Size = new System.Drawing.Size(98, 21);
+            this.interval.Size = new System.Drawing.Size(122, 25);
             this.interval.TabIndex = 2;
             this.interval.Value = new decimal(new int[] {
             9,
@@ -150,9 +156,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 64);
+            this.label2.Location = new System.Drawing.Point(5, 80);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(155, 12);
+            this.label2.Size = new System.Drawing.Size(207, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = "Update Interval (minutes)";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -160,19 +167,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(83, 112);
+            this.label1.Location = new System.Drawing.Point(104, 140);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 12);
+            this.label1.Size = new System.Drawing.Size(103, 15);
             this.label1.TabIndex = 3;
             this.label1.Text = "Image Source";
             // 
             // radioButton_Orgin
             // 
             this.radioButton_Orgin.AutoSize = true;
-            this.radioButton_Orgin.Location = new System.Drawing.Point(170, 110);
+            this.radioButton_Orgin.Location = new System.Drawing.Point(212, 138);
             this.radioButton_Orgin.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton_Orgin.Name = "radioButton_Orgin";
-            this.radioButton_Orgin.Size = new System.Drawing.Size(53, 16);
+            this.radioButton_Orgin.Size = new System.Drawing.Size(68, 19);
             this.radioButton_Orgin.TabIndex = 8;
             this.radioButton_Orgin.TabStop = true;
             this.radioButton_Orgin.Text = "Orgin";
@@ -182,10 +190,10 @@
             // radioButton_CDN
             // 
             this.radioButton_CDN.AutoSize = true;
-            this.radioButton_CDN.Location = new System.Drawing.Point(170, 130);
+            this.radioButton_CDN.Location = new System.Drawing.Point(212, 162);
             this.radioButton_CDN.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton_CDN.Name = "radioButton_CDN";
-            this.radioButton_CDN.Size = new System.Drawing.Size(131, 16);
+            this.radioButton_CDN.Size = new System.Drawing.Size(172, 19);
             this.radioButton_CDN.TabIndex = 8;
             this.radioButton_CDN.TabStop = true;
             this.radioButton_CDN.Text = "CDN (recommended!)";
@@ -194,19 +202,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(98, 15);
+            this.label4.Location = new System.Drawing.Point(122, 19);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.Size = new System.Drawing.Size(87, 15);
             this.label4.TabIndex = 9;
             this.label4.Text = "Cloud Name";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cloud_name
             // 
-            this.cloud_name.Location = new System.Drawing.Point(170, 12);
+            this.cloud_name.Location = new System.Drawing.Point(212, 15);
             this.cloud_name.Margin = new System.Windows.Forms.Padding(2);
             this.cloud_name.Name = "cloud_name";
-            this.cloud_name.Size = new System.Drawing.Size(99, 21);
+            this.cloud_name.Size = new System.Drawing.Size(123, 25);
             this.cloud_name.TabIndex = 10;
             // 
             // panel1
@@ -228,18 +237,20 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.interval);
             this.panel1.Controls.Add(this.autostart);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(15, 15);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(315, 154);
+            this.panel1.Size = new System.Drawing.Size(393, 192);
             this.panel1.TabIndex = 11;
             this.panel1.Tag = "";
             // 
             // setwallpaper
             // 
             this.setwallpaper.AutoSize = true;
-            this.setwallpaper.Location = new System.Drawing.Point(96, 87);
+            this.setwallpaper.Location = new System.Drawing.Point(120, 109);
+            this.setwallpaper.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.setwallpaper.Name = "setwallpaper";
-            this.setwallpaper.Size = new System.Drawing.Size(96, 16);
+            this.setwallpaper.Size = new System.Drawing.Size(125, 19);
             this.setwallpaper.TabIndex = 21;
             this.setwallpaper.Text = "SetWallpaper";
             this.setwallpaper.UseVisualStyleBackColor = true;
@@ -251,9 +262,10 @@
             this.satellite.Items.AddRange(new object[] {
             "Himawari8",
             "FengYun4"});
-            this.satellite.Location = new System.Drawing.Point(3, 45);
+            this.satellite.Location = new System.Drawing.Point(4, 56);
+            this.satellite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.satellite.Name = "satellite";
-            this.satellite.Size = new System.Drawing.Size(100, 20);
+            this.satellite.Size = new System.Drawing.Size(124, 23);
             this.satellite.TabIndex = 19;
             this.satellite.Visible = false;
             this.satellite.SelectedIndexChanged += new System.EventHandler(this.satellite_SelectedIndexChanged);
@@ -261,9 +273,10 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(13, 30);
+            this.label10.Location = new System.Drawing.Point(16, 38);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(59, 12);
+            this.label10.Size = new System.Drawing.Size(79, 15);
             this.label10.TabIndex = 18;
             this.label10.Text = "Satellite";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -272,9 +285,10 @@
             // Save_Texture
             // 
             this.Save_Texture.AutoSize = true;
-            this.Save_Texture.Location = new System.Drawing.Point(204, 87);
+            this.Save_Texture.Location = new System.Drawing.Point(255, 109);
+            this.Save_Texture.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Save_Texture.Name = "Save_Texture";
-            this.Save_Texture.Size = new System.Drawing.Size(84, 16);
+            this.Save_Texture.Size = new System.Drawing.Size(109, 19);
             this.Save_Texture.TabIndex = 0;
             this.Save_Texture.Text = "SaveImages";
             this.Save_Texture.UseVisualStyleBackColor = true;
@@ -283,9 +297,10 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(119, 132);
+            this.checkBox1.Location = new System.Drawing.Point(149, 165);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.Size = new System.Drawing.Size(18, 17);
             this.checkBox1.TabIndex = 17;
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Visible = false;
@@ -293,9 +308,10 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 132);
+            this.label9.Location = new System.Drawing.Point(22, 165);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(89, 12);
+            this.label9.Size = new System.Drawing.Size(119, 15);
             this.label9.TabIndex = 16;
             this.label9.Text = "set lockscreen";
             this.label9.Visible = false;
@@ -303,16 +319,18 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(46, 37);
+            this.label6.Location = new System.Drawing.Point(58, 46);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 12);
+            this.label6.Size = new System.Drawing.Size(151, 15);
             this.label6.TabIndex = 15;
             this.label6.Text = "Wallpaper Zoom (%)";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // image_zoom
             // 
-            this.image_zoom.Location = new System.Drawing.Point(170, 34);
+            this.image_zoom.Location = new System.Drawing.Point(212, 42);
+            this.image_zoom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.image_zoom.Minimum = new decimal(new int[] {
             51,
             0,
@@ -320,7 +338,7 @@
             0});
             this.image_zoom.Name = "image_zoom";
             this.image_zoom.ReadOnly = true;
-            this.image_zoom.Size = new System.Drawing.Size(98, 21);
+            this.image_zoom.Size = new System.Drawing.Size(122, 25);
             this.image_zoom.TabIndex = 14;
             this.image_zoom.Value = new decimal(new int[] {
             100,
@@ -338,36 +356,38 @@
             "2200*2200",
             "4400*4400",
             "8800*8800"});
-            this.image_size.Location = new System.Drawing.Point(170, 8);
+            this.image_size.Location = new System.Drawing.Point(212, 10);
             this.image_size.Margin = new System.Windows.Forms.Padding(2);
             this.image_size.Name = "image_size";
-            this.image_size.Size = new System.Drawing.Size(100, 20);
+            this.image_size.Size = new System.Drawing.Size(124, 23);
             this.image_size.TabIndex = 13;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 11);
+            this.label5.Location = new System.Drawing.Point(28, 14);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(137, 12);
+            this.label5.Size = new System.Drawing.Size(183, 15);
             this.label5.TabIndex = 12;
             this.label5.Text = "Image Quality (pixels)";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // api_key
             // 
-            this.api_key.Location = new System.Drawing.Point(170, 49);
+            this.api_key.Location = new System.Drawing.Point(212, 61);
             this.api_key.Margin = new System.Windows.Forms.Padding(2);
             this.api_key.Name = "api_key";
-            this.api_key.Size = new System.Drawing.Size(99, 21);
+            this.api_key.Size = new System.Drawing.Size(123, 25);
             this.api_key.TabIndex = 17;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(117, 52);
+            this.label7.Location = new System.Drawing.Point(146, 65);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 12);
+            this.label7.Size = new System.Drawing.Size(63, 15);
             this.label7.TabIndex = 16;
             this.label7.Text = "API Key";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -375,9 +395,10 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(102, 35);
+            this.linkLabel2.Location = new System.Drawing.Point(128, 44);
+            this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(161, 12);
+            this.linkLabel2.Size = new System.Drawing.Size(215, 15);
             this.linkLabel2.TabIndex = 7;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "(How to get a cloud name?)";
@@ -385,18 +406,19 @@
             // 
             // api_secret
             // 
-            this.api_secret.Location = new System.Drawing.Point(170, 74);
+            this.api_secret.Location = new System.Drawing.Point(212, 92);
             this.api_secret.Margin = new System.Windows.Forms.Padding(2);
             this.api_secret.Name = "api_secret";
-            this.api_secret.Size = new System.Drawing.Size(99, 21);
+            this.api_secret.Size = new System.Drawing.Size(123, 25);
             this.api_secret.TabIndex = 19;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(98, 77);
+            this.label8.Location = new System.Drawing.Point(122, 96);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.Size = new System.Drawing.Size(87, 15);
             this.label8.TabIndex = 18;
             this.label8.Text = "API Secret";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -411,9 +433,10 @@
             this.panel2.Controls.Add(this.cloud_name);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.linkLabel2);
-            this.panel2.Location = new System.Drawing.Point(12, 171);
+            this.panel2.Location = new System.Drawing.Point(15, 214);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(315, 106);
+            this.panel2.Size = new System.Drawing.Size(393, 132);
             this.panel2.TabIndex = 15;
             // 
             // panel3
@@ -423,17 +446,19 @@
             this.panel3.Controls.Add(this.Selected_Directory);
             this.panel3.Controls.Add(this.Save_Max_Count);
             this.panel3.Controls.Add(this.SaveMaxCount);
-            this.panel3.Location = new System.Drawing.Point(12, 282);
+            this.panel3.Location = new System.Drawing.Point(15, 352);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(315, 83);
+            this.panel3.Size = new System.Drawing.Size(393, 103);
             this.panel3.TabIndex = 20;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.Directory_Display);
-            this.panel4.Location = new System.Drawing.Point(11, 33);
+            this.panel4.Location = new System.Drawing.Point(14, 41);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(294, 40);
+            this.panel4.Size = new System.Drawing.Size(368, 50);
             this.panel4.TabIndex = 8;
             // 
             // Directory_Display
@@ -441,47 +466,51 @@
             this.Directory_Display.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Directory_Display.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Directory_Display.Location = new System.Drawing.Point(0, 0);
+            this.Directory_Display.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Directory_Display.Name = "Directory_Display";
-            this.Directory_Display.Size = new System.Drawing.Size(294, 40);
+            this.Directory_Display.Size = new System.Drawing.Size(368, 50);
             this.Directory_Display.TabIndex = 5;
             this.Directory_Display.Text = "Directory not selected";
             // 
             // Selected_Directory
             // 
-            this.Selected_Directory.Location = new System.Drawing.Point(166, 4);
+            this.Selected_Directory.Location = new System.Drawing.Point(208, 5);
+            this.Selected_Directory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Selected_Directory.Name = "Selected_Directory";
-            this.Selected_Directory.Size = new System.Drawing.Size(144, 23);
+            this.Selected_Directory.Size = new System.Drawing.Size(180, 29);
             this.Selected_Directory.TabIndex = 7;
-            this.Selected_Directory.Text = "Selected Directory";
+            this.Selected_Directory.Text = "Select Directory";
             this.Selected_Directory.UseVisualStyleBackColor = true;
             this.Selected_Directory.Click += new System.EventHandler(this.Selected_Directory_Click);
             // 
             // Save_Max_Count
             // 
-            this.Save_Max_Count.Location = new System.Drawing.Point(96, 4);
+            this.Save_Max_Count.Location = new System.Drawing.Point(120, 7);
+            this.Save_Max_Count.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Save_Max_Count.Maximum = new decimal(new int[] {
             99999,
             0,
             0,
             0});
             this.Save_Max_Count.Name = "Save_Max_Count";
-            this.Save_Max_Count.Size = new System.Drawing.Size(63, 21);
+            this.Save_Max_Count.Size = new System.Drawing.Size(79, 25);
             this.Save_Max_Count.TabIndex = 6;
             // 
             // SaveMaxCount
             // 
             this.SaveMaxCount.AutoSize = true;
-            this.SaveMaxCount.Location = new System.Drawing.Point(9, 9);
+            this.SaveMaxCount.Location = new System.Drawing.Point(11, 11);
+            this.SaveMaxCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SaveMaxCount.Name = "SaveMaxCount";
-            this.SaveMaxCount.Size = new System.Drawing.Size(77, 12);
+            this.SaveMaxCount.Size = new System.Drawing.Size(103, 15);
             this.SaveMaxCount.TabIndex = 3;
             this.SaveMaxCount.Text = "SaveMaxCount";
             // 
             // settingsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(337, 399);
+            this.ClientSize = new System.Drawing.Size(421, 499);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button1);
@@ -491,6 +520,7 @@
             this.Controls.Add(this.button3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "settingsForm";
             this.ShowInTaskbar = false;
