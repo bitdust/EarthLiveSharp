@@ -88,7 +88,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(216, 461);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(94, 29);
             this.button3.TabIndex = 6;
@@ -110,7 +110,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(318, 461);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 14;
@@ -121,8 +121,8 @@
             // autostart
             // 
             this.autostart.AutoSize = true;
-            this.autostart.Location = new System.Drawing.Point(10, 109);
-            this.autostart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.autostart.Location = new System.Drawing.Point(17, 109);
+            this.autostart.Margin = new System.Windows.Forms.Padding(4);
             this.autostart.Name = "autostart";
             this.autostart.Size = new System.Drawing.Size(101, 19);
             this.autostart.TabIndex = 5;
@@ -131,8 +131,8 @@
             // 
             // interval
             // 
-            this.interval.Location = new System.Drawing.Point(212, 79);
-            this.interval.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.interval.Location = new System.Drawing.Point(220, 79);
+            this.interval.Margin = new System.Windows.Forms.Padding(4);
             this.interval.Maximum = new decimal(new int[] {
             120,
             0,
@@ -145,7 +145,7 @@
             0});
             this.interval.Name = "interval";
             this.interval.ReadOnly = true;
-            this.interval.Size = new System.Drawing.Size(122, 25);
+            this.interval.Size = new System.Drawing.Size(152, 25);
             this.interval.TabIndex = 2;
             this.interval.Value = new decimal(new int[] {
             9,
@@ -156,7 +156,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 80);
+            this.label2.Location = new System.Drawing.Point(10, 83);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(207, 15);
@@ -202,7 +202,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(122, 19);
+            this.label4.Location = new System.Drawing.Point(130, 19);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 15);
@@ -212,10 +212,10 @@
             // 
             // cloud_name
             // 
-            this.cloud_name.Location = new System.Drawing.Point(212, 15);
+            this.cloud_name.Location = new System.Drawing.Point(220, 15);
             this.cloud_name.Margin = new System.Windows.Forms.Padding(2);
             this.cloud_name.Name = "cloud_name";
-            this.cloud_name.Size = new System.Drawing.Size(123, 25);
+            this.cloud_name.Size = new System.Drawing.Size(152, 25);
             this.cloud_name.TabIndex = 10;
             // 
             // panel1
@@ -238,7 +238,7 @@
             this.panel1.Controls.Add(this.interval);
             this.panel1.Controls.Add(this.autostart);
             this.panel1.Location = new System.Drawing.Point(15, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(393, 192);
             this.panel1.TabIndex = 11;
@@ -247,8 +247,8 @@
             // setwallpaper
             // 
             this.setwallpaper.AutoSize = true;
-            this.setwallpaper.Location = new System.Drawing.Point(120, 109);
-            this.setwallpaper.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.setwallpaper.Location = new System.Drawing.Point(127, 109);
+            this.setwallpaper.Margin = new System.Windows.Forms.Padding(4);
             this.setwallpaper.Name = "setwallpaper";
             this.setwallpaper.Size = new System.Drawing.Size(125, 19);
             this.setwallpaper.TabIndex = 21;
@@ -263,7 +263,7 @@
             "Himawari8",
             "FengYun4"});
             this.satellite.Location = new System.Drawing.Point(4, 56);
-            this.satellite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.satellite.Margin = new System.Windows.Forms.Padding(4);
             this.satellite.Name = "satellite";
             this.satellite.Size = new System.Drawing.Size(124, 23);
             this.satellite.TabIndex = 19;
@@ -285,8 +285,8 @@
             // Save_Texture
             // 
             this.Save_Texture.AutoSize = true;
-            this.Save_Texture.Location = new System.Drawing.Point(255, 109);
-            this.Save_Texture.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Save_Texture.Location = new System.Drawing.Point(262, 109);
+            this.Save_Texture.Margin = new System.Windows.Forms.Padding(4);
             this.Save_Texture.Name = "Save_Texture";
             this.Save_Texture.Size = new System.Drawing.Size(109, 19);
             this.Save_Texture.TabIndex = 0;
@@ -298,7 +298,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(149, 165);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(18, 17);
             this.checkBox1.TabIndex = 17;
@@ -319,7 +319,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(58, 46);
+            this.label6.Location = new System.Drawing.Point(66, 48);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(151, 15);
@@ -329,8 +329,8 @@
             // 
             // image_zoom
             // 
-            this.image_zoom.Location = new System.Drawing.Point(212, 42);
-            this.image_zoom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.image_zoom.Location = new System.Drawing.Point(220, 42);
+            this.image_zoom.Margin = new System.Windows.Forms.Padding(4);
             this.image_zoom.Minimum = new decimal(new int[] {
             51,
             0,
@@ -338,7 +338,7 @@
             0});
             this.image_zoom.Name = "image_zoom";
             this.image_zoom.ReadOnly = true;
-            this.image_zoom.Size = new System.Drawing.Size(122, 25);
+            this.image_zoom.Size = new System.Drawing.Size(152, 25);
             this.image_zoom.TabIndex = 14;
             this.image_zoom.Value = new decimal(new int[] {
             100,
@@ -356,16 +356,16 @@
             "2200*2200",
             "4400*4400",
             "8800*8800"});
-            this.image_size.Location = new System.Drawing.Point(212, 10);
+            this.image_size.Location = new System.Drawing.Point(220, 10);
             this.image_size.Margin = new System.Windows.Forms.Padding(2);
             this.image_size.Name = "image_size";
-            this.image_size.Size = new System.Drawing.Size(124, 23);
+            this.image_size.Size = new System.Drawing.Size(152, 23);
             this.image_size.TabIndex = 13;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 14);
+            this.label5.Location = new System.Drawing.Point(36, 14);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(183, 15);
@@ -375,16 +375,16 @@
             // 
             // api_key
             // 
-            this.api_key.Location = new System.Drawing.Point(212, 61);
+            this.api_key.Location = new System.Drawing.Point(220, 61);
             this.api_key.Margin = new System.Windows.Forms.Padding(2);
             this.api_key.Name = "api_key";
-            this.api_key.Size = new System.Drawing.Size(123, 25);
+            this.api_key.Size = new System.Drawing.Size(152, 25);
             this.api_key.TabIndex = 17;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(146, 65);
+            this.label7.Location = new System.Drawing.Point(154, 65);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 15);
@@ -395,7 +395,7 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(128, 44);
+            this.linkLabel2.Location = new System.Drawing.Point(136, 44);
             this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(215, 15);
@@ -406,16 +406,16 @@
             // 
             // api_secret
             // 
-            this.api_secret.Location = new System.Drawing.Point(212, 92);
+            this.api_secret.Location = new System.Drawing.Point(220, 92);
             this.api_secret.Margin = new System.Windows.Forms.Padding(2);
             this.api_secret.Name = "api_secret";
-            this.api_secret.Size = new System.Drawing.Size(123, 25);
+            this.api_secret.Size = new System.Drawing.Size(152, 25);
             this.api_secret.TabIndex = 19;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(122, 96);
+            this.label8.Location = new System.Drawing.Point(130, 96);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(87, 15);
@@ -434,7 +434,7 @@
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.linkLabel2);
             this.panel2.Location = new System.Drawing.Point(15, 214);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(393, 132);
             this.panel2.TabIndex = 15;
@@ -447,7 +447,7 @@
             this.panel3.Controls.Add(this.Save_Max_Count);
             this.panel3.Controls.Add(this.SaveMaxCount);
             this.panel3.Location = new System.Drawing.Point(15, 352);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(393, 103);
             this.panel3.TabIndex = 20;
@@ -456,7 +456,7 @@
             // 
             this.panel4.Controls.Add(this.Directory_Display);
             this.panel4.Location = new System.Drawing.Point(14, 41);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(368, 50);
             this.panel4.TabIndex = 8;
@@ -474,10 +474,10 @@
             // 
             // Selected_Directory
             // 
-            this.Selected_Directory.Location = new System.Drawing.Point(208, 5);
-            this.Selected_Directory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Selected_Directory.Location = new System.Drawing.Point(220, 5);
+            this.Selected_Directory.Margin = new System.Windows.Forms.Padding(4);
             this.Selected_Directory.Name = "Selected_Directory";
-            this.Selected_Directory.Size = new System.Drawing.Size(180, 29);
+            this.Selected_Directory.Size = new System.Drawing.Size(152, 29);
             this.Selected_Directory.TabIndex = 7;
             this.Selected_Directory.Text = "Select Directory";
             this.Selected_Directory.UseVisualStyleBackColor = true;
@@ -486,7 +486,7 @@
             // Save_Max_Count
             // 
             this.Save_Max_Count.Location = new System.Drawing.Point(120, 7);
-            this.Save_Max_Count.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Save_Max_Count.Margin = new System.Windows.Forms.Padding(4);
             this.Save_Max_Count.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -520,7 +520,7 @@
             this.Controls.Add(this.button3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "settingsForm";
             this.ShowInTaskbar = false;
