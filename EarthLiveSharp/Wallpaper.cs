@@ -55,7 +55,7 @@ namespace EarthLiveSharp
             {
                 runKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Control Panel\desktop", true);
                 runKey.SetValue("TileWallpaper", "0");//0 居中 1  平铺 默认
-                runKey.SetValue("WallpaperStyle", "0");//2 拉伸 //6 适应界面(fit)
+                runKey.SetValue("WallpaperStyle", "0");//2 拉伸
             }
             finally
             {
