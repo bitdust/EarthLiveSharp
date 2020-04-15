@@ -54,7 +54,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.api_key = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.api_secret = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -64,6 +63,7 @@
             this.Selected_Directory = new System.Windows.Forms.Button();
             this.Save_Max_Count = new System.Windows.Forms.NumericUpDown();
             this.SaveMaxCount = new System.Windows.Forms.Label();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.interval)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.image_zoom)).BeginInit();
@@ -76,7 +76,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(66, 474);
+            this.linkLabel1.Location = new System.Drawing.Point(66, 470);
             this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(111, 15);
@@ -99,7 +99,7 @@
             // version_number
             // 
             this.version_number.AutoSize = true;
-            this.version_number.Location = new System.Drawing.Point(20, 474);
+            this.version_number.Location = new System.Drawing.Point(20, 470);
             this.version_number.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.version_number.Name = "version_number";
             this.version_number.Size = new System.Drawing.Size(39, 15);
@@ -202,7 +202,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(130, 19);
+            this.label4.Location = new System.Drawing.Point(43, 19);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 15);
@@ -212,10 +212,10 @@
             // 
             // cloud_name
             // 
-            this.cloud_name.Location = new System.Drawing.Point(220, 15);
+            this.cloud_name.Location = new System.Drawing.Point(133, 15);
             this.cloud_name.Margin = new System.Windows.Forms.Padding(2);
             this.cloud_name.Name = "cloud_name";
-            this.cloud_name.Size = new System.Drawing.Size(152, 25);
+            this.cloud_name.Size = new System.Drawing.Size(238, 25);
             this.cloud_name.TabIndex = 10;
             // 
             // panel1
@@ -375,16 +375,16 @@
             // 
             // api_key
             // 
-            this.api_key.Location = new System.Drawing.Point(220, 61);
+            this.api_key.Location = new System.Drawing.Point(133, 45);
             this.api_key.Margin = new System.Windows.Forms.Padding(2);
             this.api_key.Name = "api_key";
-            this.api_key.Size = new System.Drawing.Size(152, 25);
+            this.api_key.Size = new System.Drawing.Size(238, 25);
             this.api_key.TabIndex = 17;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(154, 65);
+            this.label7.Location = new System.Drawing.Point(67, 49);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 15);
@@ -392,30 +392,18 @@
             this.label7.Text = "API Key";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(136, 44);
-            this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(215, 15);
-            this.linkLabel2.TabIndex = 7;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "(How to get a cloud name?)";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // api_secret
             // 
-            this.api_secret.Location = new System.Drawing.Point(220, 92);
+            this.api_secret.Location = new System.Drawing.Point(133, 76);
             this.api_secret.Margin = new System.Windows.Forms.Padding(2);
             this.api_secret.Name = "api_secret";
-            this.api_secret.Size = new System.Drawing.Size(152, 25);
+            this.api_secret.Size = new System.Drawing.Size(238, 25);
             this.api_secret.TabIndex = 19;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(130, 96);
+            this.label8.Location = new System.Drawing.Point(43, 80);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(87, 15);
@@ -426,13 +414,13 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.linkLabel2);
             this.panel2.Controls.Add(this.api_secret);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.api_key);
             this.panel2.Controls.Add(this.cloud_name);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.linkLabel2);
             this.panel2.Location = new System.Drawing.Point(15, 214);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
@@ -506,6 +494,18 @@
             this.SaveMaxCount.TabIndex = 3;
             this.SaveMaxCount.Text = "SaveMaxCount";
             // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(158, 107);
+            this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(215, 15);
+            this.linkLabel2.TabIndex = 20;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "(How to get a cloud name?)";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // settingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -561,7 +561,6 @@
         private System.Windows.Forms.ComboBox image_size;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown image_zoom;
-        private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.TextBox api_key;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox api_secret;
@@ -579,6 +578,7 @@
         private System.Windows.Forms.Button Selected_Directory;
         private System.Windows.Forms.CheckBox setwallpaper;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }
 
