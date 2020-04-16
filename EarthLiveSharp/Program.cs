@@ -160,6 +160,10 @@ namespace EarthLiveSharp
                 Trace.WriteLine(string.Format("[url]{0} [image_path]{1}", url, image_path));
                 return -1;
             }
+            finally
+            {
+                client.Dispose();
+            }
         }
 
         private void JoinImage()
