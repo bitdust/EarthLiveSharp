@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 15</value>
+    <value>72, 17</value>
   </data>
   <data name="linkLabel1.Text" xml:space="preserve">
     <value>檢查更新</value>
@@ -128,10 +128,10 @@
     <value>應用</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
-    <value>ok</value>
+    <value>OK</value>
   </data>
   <data name="autostart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 19</value>
+    <value>110, 21</value>
   </data>
   <data name="autostart.Text" xml:space="preserve">
     <value>開機自啟動</value>
@@ -140,49 +140,52 @@
     <value>91, 83</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 15</value>
+    <value>118, 17</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>更新間隔 (分鐘)</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 15</value>
+    <value>56, 17</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>圖像源</value>
   </data>
   <data name="radioButton_Orgin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 19</value>
+    <value>109, 21</value>
   </data>
   <data name="radioButton_Orgin.Text" xml:space="preserve">
     <value>原始服务器</value>
   </data>
   <data name="radioButton_CDN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 19</value>
+    <value>144, 21</value>
   </data>
   <data name="radioButton_CDN.Text" xml:space="preserve">
     <value>CDN (強烈推薦!)</value>
   </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>45, 18</value>
+  </data>
   <data name="setwallpaper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 19</value>
+    <value>126, 21</value>
   </data>
   <data name="setwallpaper.Text" xml:space="preserve">
     <value>設置桌面壁紙</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 15</value>
+    <value>72, 17</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>衛星選擇</value>
   </data>
   <data name="Save_Texture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 19</value>
+    <value>94, 21</value>
   </data>
   <data name="Save_Texture.Text" xml:space="preserve">
     <value>保存圖片</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 15</value>
+    <value>104, 17</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>設置鎖屏壁紙</value>
@@ -191,7 +194,7 @@
     <value>113, 44</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 15</value>
+    <value>99, 17</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>圖像縮放 (%)</value>
@@ -200,16 +203,19 @@
     <value>78, 13</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 15</value>
+    <value>134, 17</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>圖像分辨率 (像素)</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>52, 79</value>
   </data>
   <data name="linkLabel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>227, 103</value>
   </data>
   <data name="linkLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 15</value>
+    <value>153, 17</value>
   </data>
   <data name="linkLabel2.Text" xml:space="preserve">
     <value>(如何獲得CDN帳號?)</value>
@@ -221,7 +227,7 @@
     <value>選擇保存位置</value>
   </data>
   <data name="SaveMaxCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 15</value>
+    <value>88, 17</value>
   </data>
   <data name="SaveMaxCount.Text" xml:space="preserve">
     <value>最大圖片數</value>

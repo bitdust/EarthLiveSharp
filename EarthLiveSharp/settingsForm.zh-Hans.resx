@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 15</value>
+    <value>72, 17</value>
   </data>
   <data name="linkLabel1.Text" xml:space="preserve">
     <value>检查更新</value>
@@ -131,82 +131,82 @@
     <value>保存</value>
   </data>
   <data name="autostart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 19</value>
+    <value>110, 21</value>
   </data>
   <data name="autostart.Text" xml:space="preserve">
     <value>开机自启动</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 83</value>
+    <value>93, 82</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 15</value>
+    <value>118, 17</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>更新间隔 (分钟)</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 15</value>
+    <value>88, 17</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>图像抓取源</value>
   </data>
   <data name="radioButton_Orgin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 19</value>
+    <value>109, 21</value>
   </data>
   <data name="radioButton_Orgin.Text" xml:space="preserve">
     <value>原始服务器</value>
   </data>
   <data name="radioButton_CDN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 19</value>
+    <value>144, 21</value>
   </data>
   <data name="radioButton_CDN.Text" xml:space="preserve">
     <value>CDN (推荐选项!)</value>
   </data>
   <data name="setwallpaper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 19</value>
+    <value>110, 21</value>
   </data>
   <data name="setwallpaper.Text" xml:space="preserve">
-    <value>设置为桌面壁纸</value>
+    <value>设置为壁纸</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 15</value>
+    <value>72, 17</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>卫星选择</value>
   </data>
   <data name="Save_Texture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 19</value>
+    <value>126, 21</value>
   </data>
   <data name="Save_Texture.Text" xml:space="preserve">
     <value>保存卫星图片</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 15</value>
+    <value>120, 17</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>设置为锁屏壁纸</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 44</value>
+    <value>112, 47</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 15</value>
+    <value>99, 17</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>缩放比例 (%)</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 13</value>
+    <value>78, 13</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 15</value>
+    <value>134, 17</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>图像分辨率 (像素)</value>
   </data>
   <data name="linkLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 15</value>
+    <value>157, 17</value>
   </data>
   <data name="linkLabel2.Text" xml:space="preserve">
     <value>(如何获取CDN 帐号?)</value>
@@ -218,7 +218,7 @@
     <value>选择保存文件夹</value>
   </data>
   <data name="SaveMaxCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 15</value>
+    <value>88, 17</value>
   </data>
   <data name="SaveMaxCount.Text" xml:space="preserve">
     <value>最大图片数</value>

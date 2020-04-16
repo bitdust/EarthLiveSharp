@@ -48,10 +48,10 @@ namespace EarthLiveSharp
                 }
                 #endif
             }
-            if (Cfg.language.Equals("en")| Cfg.language.Equals("zh-Hans")| Cfg.language.Equals("zh-Hant"))
-            {
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Cfg.language);
-            }
+            //if (Cfg.language.Equals("en")| Cfg.language.Equals("zh-Hans")| Cfg.language.Equals("zh-Hant"))
+            //{
+            //    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Cfg.language);
+            //}
             Cfg.image_folder = Application.StartupPath + @"\images";
             Cfg.Save();
             Scrap_wrapper.set_scraper();
