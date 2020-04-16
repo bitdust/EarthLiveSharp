@@ -8,6 +8,7 @@ namespace EarthLiveSharp
     public static class Cfg
     {
         public static string version;
+        public static string language;
         public static string satellite;
         public static string image_folder;
         public static int interval;
@@ -31,6 +32,7 @@ namespace EarthLiveSharp
                 Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
                 AppSettingsSection app = config.AppSettings;
                 version = app.Settings["version"].Value;
+                language = app.Settings["language"].Value;
                 satellite = app.Settings["satellite"].Value;
                 image_folder = app.Settings["image_folder"].Value;
                 interval = Convert.ToInt32(app.Settings["interval"].Value);
@@ -60,6 +62,7 @@ namespace EarthLiveSharp
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             AppSettingsSection app = config.AppSettings;
             app.Settings["satellite"].Value = satellite;
+            app.Settings["language"].Value = language;
             app.Settings["image_folder"].Value = image_folder;
             app.Settings["interval"].Value = interval.ToString();
             app.Settings["autostart"].Value = autostart.ToString();
