@@ -96,10 +96,11 @@ namespace EarthLiveSharp
     {
         private string imageID = "";
         private static string last_imageID = "0";
-        private string json_url = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106/latest.json";
+        private string json_url = "https://himawari8-dl.nict.go.jp/himawari8/img/FULL_24h/latest.json";
 
         private int GetImageID()
         {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             HttpWebRequest request = WebRequest.Create(json_url) as HttpWebRequest;
             try 
             {
@@ -128,15 +129,16 @@ namespace EarthLiveSharp
 
         private int SaveImage()
         {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             WebClient client = new WebClient();
             string image_source = "";
             if (Cfg.source_selection == 1)
             {
-               image_source = "https://res.cloudinary.com/" + Cfg.cloud_name + "/image/fetch/http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
+               image_source = "https://res.cloudinary.com/" + Cfg.cloud_name + "/image/fetch/https://himawari8-dl.nict.go.jp/himawari8/img/D531106";
             }
             else
             {
-               image_source = "http://himawari8-dl.nict.go.jp/himawari8/img/D531106";
+               image_source = "https://himawari8-dl.nict.go.jp/himawari8/img/D531106";
             }
             string url = "";
             string image_path = "";
@@ -268,7 +270,7 @@ namespace EarthLiveSharp
             if (Cfg.api_secret.Length == 0) return;
             try
             {
-                HttpWebRequest request = WebRequest.Create("https://api.cloudinary.com/v1_1/" + Cfg.cloud_name + "/resources/image/fetch?prefix=http://himawari8-dl") as HttpWebRequest;
+                HttpWebRequest request = WebRequest.Create("https://api.cloudinary.com/v1_1/" + Cfg.cloud_name + "/resources/image/fetch?prefix=https://himawari8-dl") as HttpWebRequest;
                 request.Method = "DELETE";
                 request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
                 string svcCredentials = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(Cfg.api_key + ":" + Cfg.api_secret));
